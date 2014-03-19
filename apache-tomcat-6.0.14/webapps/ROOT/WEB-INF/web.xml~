@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+   version="2.5">
+
+  <display-name>Servlets</display-name>
+  <description> Servlets </description>- 
+
+<!-- 
+ Define servlets that are included in the example application 
+--> 
+- <servlet> 
+<servlet-name>HelloWorldServlet</servlet-name> 
+<servlet-class>HelloWorldServlet</servlet-class> 
+</servlet>
+
+
+- <servlet> 
+<servlet-name>HelloToServlet</servlet-name> 
+<servlet-class>HelloToServlet</servlet-class> 
+</servlet>
+
+- <servlet> 
+<servlet-name>DateBirth</servlet-name> 
+<servlet-class>DateBirth</servlet-class> 
+</servlet>
+
+- <servlet> 
+<servlet-name>QuidServlet</servlet-name> 
+<servlet-class>QuidServlet</servlet-class> 
+</servlet>
+
+- <servlet> 
+<servlet-name>SessionServlet</servlet-name> 
+<servlet-class>SessionServlet</servlet-class> 
+</servlet>
+
+- <servlet> 
+<servlet-name>SessionServlet</servlet-name> 
+<servlet-class>SessionServlet</servlet-class> 
+</servlet>
+
+Counter
+- <servlet-mapping> 
+<servlet-name>HelloWorldServlet</servlet-name> 
+<url-pattern>/servlet/HelloWorldServlet</url-pattern> 
+</servlet-mapping>
+
+- <servlet-mapping> 
+<servlet-name>HelloToServlet</servlet-name> 
+<url-pattern>/servlet/HelloToServlet</url-pattern> 
+</servlet-mapping>
+
+- <servlet-mapping> 
+<servlet-name>DateBirth</servlet-name> 
+<url-pattern>/servlet/DateBirth</url-pattern> 
+</servlet-mapping>
+
+- <servlet-mapping> 
+<servlet-name>QuidServlet</servlet-name> 
+<url-pattern>/servlet/QuidServlet</url-pattern> 
+</servlet-mapping>
+
+- <servlet-mapping> 
+<servlet-name>SessionServlet</servlet-name> 
+<url-pattern>/servlet/SessionServlet</url-pattern> 
+</servlet-mapping>
+
+- <servlet-mapping> 
+<servlet-name>Counter</servlet-name> 
+<url-pattern>/servlet/Counter</url-pattern> 
+</servlet-mapping>
+
+</web-app>

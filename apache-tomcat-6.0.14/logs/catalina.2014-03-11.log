@@ -1,0 +1,24 @@
+mars 11, 2014 10:11:08 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 11, 2014 10:11:08 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 11, 2014 10:11:08 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 930 ms
+mars 11, 2014 10:11:08 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 11, 2014 10:11:08 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 11, 2014 10:11:08 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 11, 2014 10:11:08 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 11, 2014 10:11:08 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/43  config=null
+mars 11, 2014 10:11:09 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 780 ms
+mars 11, 2014 11:07:45 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 11, 2014 11:07:46 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 11, 2014 11:07:46 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080

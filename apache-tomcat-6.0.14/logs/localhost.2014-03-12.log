@@ -1,0 +1,68 @@
+mars 12, 2014 5:13:48 PM org.apache.catalina.core.StandardWrapperValve invoke
+Grave: "Servlet.service()" pour la servlet DateBirth a généré une exception
+java.lang.NullPointerException
+	at DateBirth.doGet(DateBirth.java:62)
+	at DateBirth.doPost(DateBirth.java:97)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:175)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:128)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:263)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:844)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:584)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:447)
+	at java.lang.Thread.run(Thread.java:744)
+
+mars 12, 2014 5:28:14 PM org.apache.catalina.core.ApplicationContext log
+Infos: La servlet SessionServlet est marqué comme indisponible
+mars 12, 2014 5:28:14 PM org.apache.catalina.core.ApplicationContext log
+Grave: Error loading WebappClassLoader
+  delegate: false
+  repositories:
+    /WEB-INF/classes/
+----------> Parent Classloader:
+org.apache.catalina.loader.StandardClassLoader@edd36cc
+ SessionServlet
+java.lang.ClassNotFoundException: SessionServlet
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1358)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1204)
+	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1083)
+	at org.apache.catalina.core.StandardWrapper.allocate(StandardWrapper.java:806)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:129)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:175)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:128)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:263)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:844)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:584)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:447)
+	at java.lang.Thread.run(Thread.java:744)
+
+mars 12, 2014 5:28:14 PM org.apache.catalina.core.StandardWrapperValve invoke
+Grave: Exception lors de l'allocation pour la servlet SessionServlet
+java.lang.ClassNotFoundException: SessionServlet
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1358)
+	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1204)
+	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1083)
+	at org.apache.catalina.core.StandardWrapper.allocate(StandardWrapper.java:806)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:129)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:175)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:128)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:263)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:844)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:584)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:447)
+	at java.lang.Thread.run(Thread.java:744)
+
+mars 12, 2014 5:28:32 PM org.apache.catalina.core.StandardWrapperValve invoke
+Infos: La servlet SessionServlet est actuellement indisponible
+mars 12, 2014 5:28:35 PM org.apache.catalina.core.StandardWrapperValve invoke
+Infos: La servlet SessionServlet est actuellement indisponible

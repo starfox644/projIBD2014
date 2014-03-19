@@ -1,0 +1,72 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.61 [en] (WinNT; I) [Netscape]">
+   <meta name="Author" content="Sara Bouchenak">
+   <title>Servlets</title>
+</head>
+<body bgcolor="#FFFFFF">
+<b><font face="Arial, Helvetica, sans-serif">
+<font size=+2>Servlet Examples with Code</font></font></b>
+<table BORDER=0 CELLSPACING=5 WIDTH="85%" >
+<tr VALIGN=TOP>
+<td>Hello World</td>
+
+<td VALIGN=TOP WIDTH="30%"><a href="servlet/HelloWorldServlet">Execute</a></td>
+
+<td WIDTH="30%"><a href="src/HelloWorldServlet.java">Source</a></td>
+</tr>
+
+<tr VALIGN=TOP>
+<td>Hello To</td>
+
+<td WIDTH="30%"><a href="servlet/HelloToServlet">Execute</a></td>
+
+<td WIDTH="30%"><a href="src/HelloToServlet.java">Source</a></td>
+</tr>
+
+<tr VALIGN=TOP>
+<td>Hello To John</td>
+
+<td WIDTH="30%"><a href="servlet/HelloToServlet?firstname=John&lastname=Malkovich">Execute</a></td>
+
+<td WIDTH="30%"><a href="src/HelloToServlet.java">Source</a></td>
+</tr>
+
+<tr VALIGN=TOP>
+<td>Date of Birth</td>
+
+<td WIDTH="30%"><a href="servlet/DateBirth">Execute</a></td>
+
+<td WIDTH="30%"><a href="src/DateBirth.java">Source</a></td>
+</tr>
+
+<tr VALIGN=TOP>
+<td>Quid </td>
+
+<td WIDTH="30%"><a href="servlet/QuidServlet">Execute</a></td>
+
+<td WIDTH="30%"><a href="src/QuidServlet.java">Source</a></td>
+</tr>
+
+<tr VALIGN=TOP>
+<td>Session </td>
+
+<td WIDTH="30%"><a href="servlet/SessionServlet">Execute</a></td>
+
+<td WIDTH="30%"><a href="src/SessionServlet.java">Source</a></td>
+</tr>
+
+<tr VALIGN=TOP>
+<td>Counter </td>
+
+<td WIDTH="30%"><a href="servlet/SessionServlet">Execute</a></td>
+
+<td WIDTH="30%"><a href="src/SessionServlet.java">Source</a></td>
+</tr>
+</table>
+
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+user=plassonc
+mdp=bd2013
+url = jdbc:oracle:thin:@localhost:1521:ufrima
+driver= oracle.jdbc.OracleDriver
