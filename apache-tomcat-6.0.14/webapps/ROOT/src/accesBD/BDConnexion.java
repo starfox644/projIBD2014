@@ -8,6 +8,7 @@ import java.util.Properties;
 import jus.util.IO;
 
 import oracle.jdbc.pool.OracleDataSource;
+import utils.Constantes;
 import exceptions.ExceptionConnexion;
 
 public final class BDConnexion {
@@ -29,7 +30,7 @@ public final class BDConnexion {
 			// lecture des parametres de connexion dans connection.conf
 			Properties p = new Properties();
 			InputStream is = null;
-			is = new FileInputStream(utils.Constantes.Config);
+			is = new FileInputStream(utils.Constantes.getConfigPath());
 			p.load(is);
 			String url = p.getProperty("url");
 			String driver = p.getProperty("driver");

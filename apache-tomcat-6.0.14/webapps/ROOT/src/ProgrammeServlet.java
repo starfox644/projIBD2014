@@ -14,6 +14,7 @@ import exceptions.CategorieException;
 import exceptions.ExceptionConnexion;
 import exceptions.ExceptionUtilisateur;
 
+import utils.ErrorLog;
 import utils.Utilitaires;
 
 import accesBD.BDRequests;
@@ -62,7 +63,9 @@ public class ProgrammeServlet extends HttpServlet {
 		// afficher resultat requete
 		Utilisateur user;
 		try {
+			System.out.println("avant identification");
 			user = Utilitaires.Identification();
+			System.out.println("apres identification");
 			Vector<Representation> reps = BDRequests.getRepresentations(user);
 			
 			out.println("Dates des repr&eacute;sentations <br>");
@@ -72,8 +75,8 @@ public class ProgrammeServlet extends HttpServlet {
 			}
 		} catch (ExceptionConnexion | ExceptionUtilisateur | CategorieException | IOException e) 
 		{
-			
-			// TODO Auto-generated catch block
+			ErrorLog log = new ErrorLog();
+			log.write("test line");
 			out.println("impossible d'acc&eacute;der aux informations demand&eacute;es");
 			out.println(e.getMessage());
 			e.printStackTrace();

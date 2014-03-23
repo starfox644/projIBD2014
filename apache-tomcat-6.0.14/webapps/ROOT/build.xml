@@ -13,7 +13,12 @@
 	    <path refid="libs.classpath"/>
     </path>
 
-	<target name="compile">
-	    <javac srcdir="${src}" destdir="${build}" classpathref="build.classpath"/>
+	<target name="compile" depends="clean">
+		<mkdir dir="WEB-INF/classes"/>
+		<javac srcdir="${src}" destdir="${build}" classpathref="build.classpath"/>
+	</target>
+	
+	<target name="clean">
+	    <delete dir="WEB-INF/classes"/>
 	</target>
 </project>

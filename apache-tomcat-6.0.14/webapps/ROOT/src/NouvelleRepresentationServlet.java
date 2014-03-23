@@ -10,6 +10,7 @@ import exceptions.CategorieException;
 import exceptions.ExceptionConnexion;
 import exceptions.ExceptionUtilisateur;
 
+import utils.ErrorLog;
 import utils.Utilitaires;
 
 import accesBD.BDRequests;
@@ -74,19 +75,31 @@ public class NouvelleRepresentationServlet extends HttpServlet {
             	out.println("<br>");
             	out.println("<input type=submit>");
             	out.println("</form>");
-	  } else {
-	  	// TO DO
+	  } else 
+	  {
+	  	ErrorLog errorLog = new ErrorLog();
 		try {
 			Utilisateur user = Utilitaires.Identification();
-			/*String requete = "INSERT INTO LesRepresentations VALUES (";
-			requete += "'" + numS + "'" + ", to_date('" + dateS + "', 'MM/DD/YY'));";//+ " " + heure + ");";
-			out.println(requete);*/
+			//String requete = "INSERT INTO LesRepresentations VALUES (";
+			//requete += "'" + numS + "'" + ", to_date('" + dateS + "', 'MM/DD/YY'));";//+ " " + heure + ");";
+			//out.println(requete);
 			BDRequests.addRepresentation(user, Integer.parseInt(numS) , dateS, heureS);
-		} catch (ExceptionConnexion | NumberFormatException| ExceptionUtilisateur | CategorieException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			out.println(e.getMessage());
+		} catch (ExceptionConnexion e)
+		{
+			errorLog.writeException(e);
 		} 
+		catch(NumberFormatException e)
+		{
+			errorLog.writeException(e);
+		}
+		catch(ExceptionUtilisateur e)
+		{
+			errorLog.writeException(e);
+		}
+		catch(CategorieException e)
+		{
+			errorLog.writeException(e);
+		}
 		// Transformation des parametres vers les types adequats.
 	  	// Ajout de la nouvelle representation.
 	  	// Puis construction dynamique d'une page web de reponse.

@@ -65,9 +65,10 @@ public class BDRequests {
 					//requete = "INSERT INTO LesRepresentations VALUES (";
 					//requete += "'" + num + "'" + ",to_date('" + date + "', 'MM/DD/YY'));";//+ " " + heure + ");";
 					
-					requete = "INSERT INTO LesRepresentations VALUES (102, to_date('06/12/1990', 'MM/DD/YY'));";//+ " " + heure + ");";
-					
+					//requete = "INSERT INTO LesRepresentations VALUES (102, to_date('06/12/1990', 'MM/DD/YY'));";//+ " " + heure + ");";
+					requete = "INSERT INTO LesRepresentations VALUES (102, to_date('06-12-1990', 'MM-DD-YY'));";
 					rs = stmt.executeQuery(requete);
+					conn.commit();
 					/*while (rs.next()) {
 						System.out.println(rs.getString(1));
 						res.addElement(new Representation (rs.getString(1), rs.getString(2), rs.getInt(3)));
@@ -75,9 +76,9 @@ public class BDRequests {
 					// ajout dans la table des representations 
 					
 				} catch (SQLException e) {
-					throw new CategorieException (" Problème dans l'interrogation des représentations.."
-							+ "Code Oracle " + e.getErrorCode()
-							+ "Message " + e.getMessage());
+					throw new CategorieException (" Erreur dans l'interrogation des représentations : \n"
+							+ "Code Oracle : " + e.getErrorCode() + "\n"
+							+ "Message : " + e.getMessage() + "\n");
 				}
 				BDConnexion.FermerTout(conn, stmt, rs);
 				//return res;

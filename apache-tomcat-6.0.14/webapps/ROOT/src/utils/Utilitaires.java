@@ -77,7 +77,7 @@ public class Utilitaires {
 		// lecture des parametres de connexion dans connection.conf
 		Properties p = new Properties();
 		InputStream is = null;
-		is = new FileInputStream(utils.Constantes.Config);
+		is = new FileInputStream(utils.Constantes.getConfigPath());
 		p.load(is);
 		login = p.getProperty("user");
 		passwd = p.getProperty("mdp");
@@ -89,12 +89,15 @@ public class Utilitaires {
 			passwd = login_dialog.getPwd();
 		}*/
 		/* test de la connexion */
+		System.out.println("avant connexion");
 		Connection conn = BDConnexion.getConnexion(login, passwd);
 		if (conn != null) {
 			IO.afficherln("Connexion reussie...");
+			System.out.println("connexion ok");
 			BDConnexion.FermerTout(conn, null, null);
 			user = new Utilisateur(login, passwd);
 		} else {
+			System.out.println("connexion impossible");
 			throw new ExceptionConnexion("Connexion impossible\n");
 		}
 		return user;
