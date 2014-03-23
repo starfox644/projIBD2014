@@ -66,7 +66,7 @@ public class BDRequests {
 					//requete += "'" + num + "'" + ",to_date('" + date + "', 'MM/DD/YY'));";//+ " " + heure + ");";
 					
 					//requete = "INSERT INTO LesRepresentations VALUES (102, to_date('06/12/1990', 'MM/DD/YY'));";//+ " " + heure + ");";
-					requete = "INSERT INTO LesRepresentations VALUES (102, '06-12-1990');";
+					requete = "INSERT INTO LesRepresentations VALUES (102, to_date('06/12/90', 'DD/MM/YY'))";
 					rs = stmt.executeQuery(requete);
 					conn.commit();
 					/*while (rs.next()) {
