@@ -62,6 +62,7 @@ public class ProgrammeServlet extends HttpServlet {
 		out.println("<p><i><font color=\"#FFFFFF\">");
 		// afficher resultat requete
 		Utilisateur user;
+		ErrorLog errorLog = new ErrorLog();
 		try {
 			System.out.println("avant identification");
 			user = Utilitaires.Identification();
@@ -73,15 +74,22 @@ public class ProgrammeServlet extends HttpServlet {
 			{
 				out.println(r.getNom() + " : " + r.getDate() + "<br>");
 			}
-		} catch (ExceptionConnexion | ExceptionUtilisateur | CategorieException | IOException e) 
+		} catch (ExceptionConnexion e)
 		{
-			ErrorLog log = new ErrorLog();
-			log.write("test line");
-			out.println("impossible d'acc&eacute;der aux informations demand&eacute;es");
-			out.println(e.getMessage());
-			e.printStackTrace();
+			errorLog.writeException(e);
 		}
-		
+		catch (ExceptionUtilisateur e)
+		{
+			errorLog.writeException(e);
+		}
+		catch (CategorieException e)
+		{
+			errorLog.writeException(e);
+		}
+		catch (IOException e) 
+		{
+			errorLog.writeException(e);
+		}
 		
 		out.println("</i></p>");
 		out.println("<p><i><font color=\"#FFFFFF\">...</i></p>");
