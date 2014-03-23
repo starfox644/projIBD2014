@@ -84,26 +84,14 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 			//requete += "'" + numS + "'" + ", to_date('" + dateS + "', 'MM/DD/YY'));";//+ " " + heure + ");";
 			//out.println(requete);
 			BDRequests.addRepresentation(user, Integer.parseInt(numS) , dateS, heureS);
-		} catch (ExceptionConnexion e)
+		} catch (Exception e)
 		{
+			out.println("<p><i><font color=\"#FFFFFF\">Impossible d'ajouter la representation.</i></p>");
 			errorLog.writeException(e);
 		} 
-		catch(NumberFormatException e)
-		{
-			errorLog.writeException(e);
-		}
-		catch(ExceptionUtilisateur e)
-		{
-			errorLog.writeException(e);
-		}
-		catch(CategorieException e)
-		{
-			errorLog.writeException(e);
-		}
 		// Transformation des parametres vers les types adequats.
 	  	// Ajout de la nouvelle representation.
 	  	// Puis construction dynamique d'une page web de reponse.
-	  	out.println("<p><i><font color=\"#FFFFFF\">A compl&eacute;ter</i></p>");
 	  	out.println("<p><i><font color=\"#FFFFFF\">...</i></p>");
 	  }
 
