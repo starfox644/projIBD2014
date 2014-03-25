@@ -84,25 +84,11 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 		dateS		= req.getParameter("date");
 		heureS	= req.getParameter("heure");
 		if (numS == null || dateS == null || heureS == null) {
-			out.println("<font color=\"#FFFFFF\">Veuillez saisir les informations relatives &agrave; la nouvelle repr&eacute;sentation :");
-			out.println("<P>");
-			out.print("<form action=\"");
-			out.print("NouvelleRepresentationServlet\" ");
-			out.println("method=POST>");
-			out.println("Num&eacute;ro de spectacle :");
-			out.println("<input type=text size=20 name=numS>");
-			out.println("<br>");
-			out.println("Date de la repr&eacute;sentation :");
-			out.println("<input type=text size=20 name=date>");
-			out.println("<br>");
-			out.println("Heure de d&eacute;but de la repr&eacute;sentation :");
-			out.println("<input type=text size=20 name=heure>");
-			out.println("<br>");
-			out.println("<input type=submit>");
-			out.println("</form>");
+			printForm(out);
 		} 
 		else 
 		{
+			
 			try {
 				Utilisateur user = Utilitaires.Identification();
 				// on verifie que l'heure est valide
@@ -113,30 +99,39 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 					{
 						// on verifie que la representation n'est pas deja presente
 						if (BDRequests.existeDateRep (user, Integer.parseInt(numS),dateS))
-							out.println("<br> Cette date de representation existe deja, veuillez verifier ce dernier dans la liste ci-dessus <br>");
+						{
+							out.println("<br> Cette date de representation existe deja <br>");
+							printForm(out);
+						}
 						else
 						{
 							BDRequests.addRepresentation(user, Integer.parseInt(numS), dateS, heureS);
-							out.println("<br> ajout possible <br>");
+							out.println("<br> ajout de la representation realise <br>");
 						}
 					}
 					else
+					{
 						out.println("<br> Ce numero de spectacle n'existe pas, veuillez verifier ce dernier dans la liste ci-dessus <br>");
+						printForm(out);
+					}
 				}
 				else
 				{
-					out.println("<br> Heure invalide, impossible d'ajouter la representation. Veuillez ressaisir les informations <br>");
+					out.println("<br> Heure invalide, impossible d'ajouter la representation. <br>");
+					printForm(out);
 				}
 			}
 			catch (SQLException e)
 			{
 				out.println("<p><i><font color=\"#FFFFFF\">Impossible d'ajouter la representation. Veuillez verifier le format de la date</i></p>");
 				out.println("<p><i><font color=\"#FFFFFF\">exemple : 01/12/2014</i></p>");
+				printForm(out);
 				errorLog.writeException(e);
 			} 
 			catch (Exception e)
 			{
 				out.println("<p><i><font color=\"#FFFFFF\">Impossible d'ajouter la representation.</i></p>");
+				printForm(out);
 				errorLog.writeException(e);
 			} 
 			// Transformation des parametres vers les types adequats.
@@ -148,8 +143,7 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");
 		out.println("</BODY>");
 		out.close();
-
-			}
+	}
 
 	/**
 	 * HTTP POST request entry point.
@@ -178,6 +172,26 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 
 	public String getServletInfo() {
 		return "Ajoute une representation e une date donnee pour un spectacle existant";
+	}
+	
+	public static void printForm(ServletOutputStream out) throws IOException
+	{
+		out.println("<font color=\"#FFFFFF\">Veuillez saisir les informations relatives &agrave; la nouvelle repr&eacute;sentation :");
+		out.println("<P>");
+		out.print("<form action=\"");
+		out.print("NouvelleRepresentationServlet\" ");
+		out.println("method=POST>");
+		out.println("Num&eacute;ro de spectacle :");
+		out.println("<input type=text size=20 name=numS>");
+		out.println("<br>");
+		out.println("Date de la repr&eacute;sentation :");
+		out.println("<input type=text size=20 name=date>");
+		out.println("<br>");
+		out.println("Heure de d&eacute;but de la repr&eacute;sentation :");
+		out.println("<input type=text size=20 name=heure>");
+		out.println("<br>");
+		out.println("<input type=submit>");
+		out.println("</form>");
 	}
 
 }
