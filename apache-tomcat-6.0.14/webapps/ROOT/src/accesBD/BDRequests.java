@@ -73,6 +73,66 @@ public class BDRequests
 	 * @throws CategorieException erreur lors de l'acces a la base
 	 * @throws ExceptionConnexion en cas de probleme de connexion 
 	 */
+	public static Vector<String> getSpectacleRepresentations (Utilisateur user, String numS)
+			throws CategorieException, ExceptionConnexion {
+				Vector<String> res = new Vector<String>();
+				String requete ;
+				Statement stmt ;
+				ResultSet rs ;
+				Connection conn = BDConnexion.getConnexion(user.getLogin(), user.getmdp());
+				
+				requete = "select dateRep from LesRepresentations where numS = " + numS + " order by dateRep";
+				
+				try {
+					stmt = conn.createStatement();
+					rs = stmt.executeQuery(requete);
+					while (rs.next()) {
+						System.out.println(rs.getString(1));
+						res.addElement(rs.getString(1));
+					}
+				} catch (SQLException e) {
+					throw new CategorieException (" Problème dans l'interrogation des représentations.."
+							+ "Code Oracle " + e.getErrorCode()
+							+ "Message " + e.getMessage());
+				}
+				BDConnexion.FermerTout(conn, stmt, rs);
+				return res;
+			}
+	
+	/**
+	 * 		Returns the name of a spectacle with its number.
+	 * @param user
+	 * @param numS
+	 * @return	The name of the spectacle associated to the number, or null if there is no spectacle with the given number
+	 * @throws CategorieException
+	 * @throws ExceptionConnexion
+	 */
+	public static String getNomSpectacle(Utilisateur user, String numS) throws CategorieException, ExceptionConnexion
+	{
+		String requete ;
+		Statement stmt ;
+		ResultSet rs ;
+		String nom = null;
+		Connection conn = BDConnexion.getConnexion(user.getLogin(), user.getmdp());
+		
+		requete = "select nomS from LesSpectacles where " + numS + "=numS";
+		
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(requete);
+			if(rs.next()) 
+			{
+				nom = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			throw new CategorieException (" Problème dans l'interrogation des représentations.."
+					+ "Code Oracle " + e.getErrorCode()
+					+ "Message " + e.getMessage());
+		}
+		BDConnexion.FermerTout(conn, stmt, rs);
+		return nom;
+	}
+	
 	public static void addRepresentation (Utilisateur user, int num , String date, String heure)
 			throws CategorieException, ExceptionConnexion 
 	{
