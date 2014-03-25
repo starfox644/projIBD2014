@@ -6,6 +6,7 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Vector;
 
 import javax.servlet.ServletException;
@@ -89,11 +90,12 @@ public class ProgrammeServlet extends HttpServlet {
 		catch (IOException e) 
 		{
 			errorLog.writeException(e);
+		} /*catch (ParseException e) {
+			// TODO Auto-generated catch block
+			errorLog.writeException(e);
 		}
-		
+		*/
 		out.println("</i></p>");
-		out.println("<p><i><font color=\"#FFFFFF\">...</i></p>");
-
 		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
 		out.println("</BODY>");
 		out.close();
