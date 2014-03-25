@@ -9,68 +9,44 @@
   <description> Servlets </description>- 
 
 <!-- 
- Define servlets that are included in the example application 
+ Define servlets that are included in the Theater application 
 --> 
-- <servlet> 
-<servlet-name>HelloWorldServlet</servlet-name> 
-<servlet-class>HelloWorldServlet</servlet-class> 
-</servlet>
 
 
 - <servlet> 
-<servlet-name>HelloToServlet</servlet-name> 
-<servlet-class>HelloToServlet</servlet-class> 
+<servlet-name>ProgrammeServlet</servlet-name> 
+<servlet-class>ProgrammeServlet</servlet-class> 
 </servlet>
 
 - <servlet> 
-<servlet-name>DateBirth</servlet-name> 
-<servlet-class>DateBirth</servlet-class> 
+<servlet-name>NouvelleRepresentationServlet</servlet-name> 
+<servlet-class>NouvelleRepresentationServlet</servlet-class> 
 </servlet>
 
 - <servlet> 
-<servlet-name>QuidServlet</servlet-name> 
-<servlet-class>QuidServlet</servlet-class> 
+<servlet-name>RepresentationsServlet</servlet-name> 
+<servlet-class>RepresentationsServlet</servlet-class> 
 </servlet>
 
 - <servlet> 
-<servlet-name>SessionServlet</servlet-name> 
-<servlet-class>SessionServlet</servlet-class> 
+<servlet-name>PlaceDispoServlet</servlet-name> 
+<servlet-class>PlaceDispoServlet</servlet-class> 
 </servlet>
 
-- <servlet> 
-<servlet-name>SessionServlet</servlet-name> 
-<servlet-class>SessionServlet</servlet-class> 
-</servlet>
-
-Counter
 - <servlet-mapping> 
-<servlet-name>HelloWorldServlet</servlet-name> 
-<url-pattern>/servlet/HelloWorldServlet</url-pattern> 
+<servlet-name>ProgrammeServlet</servlet-name> 
+<url-pattern>/servlet/ProgrammeServlet</url-pattern> 
 </servlet-mapping>
 
 - <servlet-mapping> 
-<servlet-name>HelloToServlet</servlet-name> 
-<url-pattern>/servlet/HelloToServlet</url-pattern> 
+<servlet-name>NouvelleRepresentationServlet</servlet-name> 
+<url-pattern>/servlet/NouvelleRepresentationServlet</url-pattern> 
 </servlet-mapping>
 
 - <servlet-mapping> 
-<servlet-name>DateBirth</servlet-name> 
-<url-pattern>/servlet/DateBirth</url-pattern> 
+<servlet-name>RepresentationsServlet</servlet-name> 
+<url-pattern>/servlet/RepresentationsServlet</url-pattern> 
 </servlet-mapping>
 
-- <servlet-mapping> 
-<servlet-name>QuidServlet</servlet-name> 
-<url-pattern>/servlet/QuidServlet</url-pattern> 
-</servlet-mapping>
-
-- <servlet-mapping> 
-<servlet-name>SessionServlet</servlet-name> 
-<url-pattern>/servlet/SessionServlet</url-pattern> 
-</servlet-mapping>
-
-- <servlet-mapping> 
-<servlet-name>Counter</servlet-name> 
-<url-pattern>/servlet/Counter</url-pattern> 
-</servlet-mapping>
 
 </web-app>

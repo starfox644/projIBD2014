@@ -1,26 +1,8 @@
 package accesBD;
-
-import java.io.IOException;
-import java.sql.Connection;
-import java.util.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
+import java.sql.*;
 import java.util.Vector;
-
-import javax.servlet.ServletOutputStream;
-
 import utils.Utilitaires;
-
-import exceptions.CategorieException;
-import exceptions.ExceptionConnexion;
-
-/*import modele.Representation;
-import modele.Utilisateur;*/
+import exceptions.*;
 import modele.*;
 
 public class BDRequests 
@@ -262,14 +244,19 @@ public class BDRequests
 			}
 
 	/**
-	 *   Requete de places libres
-	 *   
-	 *   
+	 * Renvoie la liste des places disponibles pour la representation du spectacle
+	 * de numero numS prevu a la date passee en parametre
+	 * @param user
+	 * @param date date de la representation
+	 * @param numS numero du spectacle
+	 * @return retour la liste des  places disponibles pour cette representatoion
+	 * @throws CategorieException
+	 * @throws ExceptionConnexion
 	 */
-	public static Vector<Integer> getPlacesDispo (Utilisateur user, String date, String numS)
+	public static Vector<Place> getPlacesDispo (Utilisateur user, String date, String numS)
 			throws CategorieException, ExceptionConnexion 
-			{
-		Vector<Integer> res = new Vector<Integer>();
+	{
+		Vector<Place> res = new Vector<Place>();
 		String requete ;
 		Statement stmt ;
 		ResultSet rs ;
@@ -277,18 +264,19 @@ public class BDRequests
 
 		try {
 			stmt = conn.createStatement();
-			requete = "select noPlace, noRang" +
+			requete =
+					"select noPlace, noRang, numZ" +
+					" from LesPlaces " +
+					" natural join" +
+					" (select noPlace, noRang" +
 					"	from LesPlaces" +
 					"	minus" +
-					"	select noPlace, noRang" +
-					"	from LesTickets" +
-					"	where dateRep = to_date('" + date + "', 'DD-MM-YY')" +
-					"	and numS = " + numS;
+					"	select noPlace, noRang from LesTickets where dateRep = to_date('"+date+"' , 'DD/MM/YY') and numS = " + numS + ") order by noRang";
 			rs = stmt.executeQuery(requete);
 			conn.commit();
 
 			while (rs.next()) {
-				//res.addElement(new Spectacle (rs.getInt(1), rs.getString(2)));
+				res.addElement(new Place (rs.getInt(1), rs.getInt(2), rs.getInt(3)));
 			}
 
 		} catch (SQLException e) {
@@ -298,7 +286,80 @@ public class BDRequests
 		}
 		BDConnexion.FermerTout(conn, stmt, rs);
 		return res;
-			}
+	}
+	
+	/**
+	 * Renvoie le nombre de places occupees pour la representation du spectacle
+	 * de numero numS prevu a la date passee en parametre
+	 * @param user
+	 * @param date date de la representation
+	 * @param numS numero du spectacle
+	 * @return le nombre de places occupees pour cette representation
+	 * @throws CategorieException 
+	 * @throws ExceptionConnexion
+	 * @throws SQLException
+	 */
+	public static int getNbPlacesOccupees (Utilisateur user, String date, String numS) 
+			throws CategorieException, ExceptionConnexion, SQLException
+	{
+		String requete ;
+		Statement stmt ;
+		ResultSet rs ;
+		Vector<Integer> res = new Vector<Integer>();
+		Connection conn = BDConnexion.getConnexion(user.getLogin(), user.getmdp());
 
+		try {
+			stmt = conn.createStatement();
+			requete = "select count(noPlace) " +
+					  "from LesTickets " +
+					  "where dateRep = to_date('"+date+"' , 'DD/MM/YY') and numS = " + numS;
+		rs = stmt.executeQuery(requete);
+			conn.commit();
+			while (rs.next()) {
+				res.addElement(rs.getInt(1));
+			}
+		} catch (SQLException e) {
+			throw new CategorieException (" Erreur dans l'interrogation des places : \n"
+					+ "Code Oracle : " + e.getErrorCode() + "\n"
+					+ "Message : " + e.getMessage() + "\n");
+		}
+		BDConnexion.FermerTout(conn, stmt, rs);
+		return res.get(0);
+	}
+	
+	
+	/**
+	 * Renvoie le nombre de places de la salle de theatre
+	 * @param user
+	 * @return le nombre de places que contient le theatre
+	 * @throws ExceptionConnexion
+	 * @throws SQLException
+	 */
+	public static int getNbPlacesTotales (Utilisateur user)
+			throws ExceptionConnexion, SQLException 
+	{
+		String requete ;
+		Statement stmt ;
+		ResultSet rs ;
+		Vector<Integer> res = new Vector<Integer>();
+		Connection conn = BDConnexion.getConnexion(user.getLogin(), user.getmdp());
+
+		try {
+			stmt = conn.createStatement();
+			requete = "select count(noPlace) " +
+					  "from LesPlaces ";
+		rs = stmt.executeQuery(requete);
+			conn.commit();
+			while (rs.next()) {
+				res.addElement(rs.getInt(1));
+			}
+		} catch (SQLException e) {
+			throw new CategorieException (" Erreur dans l'interrogation des places : \n"
+					+ "Code Oracle : " + e.getErrorCode() + "\n"
+					+ "Message : " + e.getMessage() + "\n");
+		}
+		BDConnexion.FermerTout(conn, stmt, rs);
+		return res.get(0);
+	}
 
 }

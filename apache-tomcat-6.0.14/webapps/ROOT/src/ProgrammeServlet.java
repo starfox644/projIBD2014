@@ -6,22 +6,11 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.Vector;
-
-import javax.servlet.ServletException;
-
-import exceptions.CategorieException;
-import exceptions.ExceptionConnexion;
-import exceptions.ExceptionUtilisateur;
-
-import utils.ErrorLog;
-import utils.Utilitaires;
-
+import exceptions.*;
+import utils.*;
 import accesBD.BDRequests;
-
-import modele.Representation;
-import modele.Utilisateur;
+import modele.*;
 
 /**
  * Proramme Servlet.

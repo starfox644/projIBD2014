@@ -2,71 +2,56 @@
 <html>
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-   <meta name="GENERATOR" content="Mozilla/4.61 [en] (WinNT; I) [Netscape]">
+   <meta name="GENERATOR" content="Microsoft FrontPage 5.0">
    <meta name="Author" content="Sara Bouchenak">
-   <title>Servlets</title>
+   <title>Petit Théatre de l'Informatique</title>
 </head>
 <body bgcolor="#FFFFFF">
-<b><font face="Arial, Helvetica, sans-serif">
-<font size=+2>Servlet Examples with Code</font></font></b>
-<table BORDER=0 CELLSPACING=5 WIDTH="85%" >
-<tr VALIGN=TOP>
-<td>Hello World</td>
-
-<td VALIGN=TOP WIDTH="30%"><a href="servlet/HelloWorldServlet">Execute</a></td>
-
-<td WIDTH="30%"><a href="src/HelloWorldServlet.java">Source</a></td>
-</tr>
-
-<tr VALIGN=TOP>
-<td>Hello To</td>
-
-<td WIDTH="30%"><a href="servlet/HelloToServlet">Execute</a></td>
-
-<td WIDTH="30%"><a href="src/HelloToServlet.java">Source</a></td>
-</tr>
-
-<tr VALIGN=TOP>
-<td>Hello To John</td>
-
-<td WIDTH="30%"><a href="servlet/HelloToServlet?firstname=John&lastname=Malkovich">Execute</a></td>
-
-<td WIDTH="30%"><a href="src/HelloToServlet.java">Source</a></td>
-</tr>
-
-<tr VALIGN=TOP>
-<td>Date of Birth</td>
-
-<td WIDTH="30%"><a href="servlet/DateBirth">Execute</a></td>
-
-<td WIDTH="30%"><a href="src/DateBirth.java">Source</a></td>
-</tr>
-
-<tr VALIGN=TOP>
-<td>Quid </td>
-
-<td WIDTH="30%"><a href="servlet/QuidServlet">Execute</a></td>
-
-<td WIDTH="30%"><a href="src/QuidServlet.java">Source</a></td>
-</tr>
-
-<tr VALIGN=TOP>
-<td>Session </td>
-
-<td WIDTH="30%"><a href="servlet/SessionServlet">Execute</a></td>
-
-<td WIDTH="30%"><a href="src/SessionServlet.java">Source</a></td>
-</tr>
-
-<tr VALIGN=TOP>
-<td>Counter </td>
-
-<td WIDTH="30%"><a href="servlet/SessionServlet">Execute</a></td>
-
-<td WIDTH="30%"><a href="src/SessionServlet.java">Source</a></td>
-</tr>
+<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#FFFFFF" width="100%" id="AutoNumber1" height="1">
+  <tr>
+    <td width="25%" align="left" valign="top" height="1">
+    <font face="Monotype Corsiva">
+    <img border="0" src="/images/rideau-gauche.jpg" width="151" height="504"></font></td>
+    <td width="50%" align="center" valign="top" height="65">
+    <font face="Monotype Corsiva">
+    <img border="0" src="/images/theatre.jpg" width="143" height="129"></font><p>
+    <font face="Monotype Corsiva" size="5">Petit Théatre de l'Informatique</font></p>
+    <p align="left">&nbsp;</p>
+    <p align="left"><font face="Monotype Corsiva" style="font-size: 16pt">
+    Bienvenue au Petit Théatre de l'Informatique.</font></p>
+    <ul type="square">
+      <li>
+      <p align="left"><font face="Monotype Corsiva" style="font-size: 16pt">
+      <a href="index.html">Accueil</a><br>
+&nbsp;</font></li>
+      <li>
+      <p align="left"><font face="Monotype Corsiva" style="font-size: 16pt">
+      <a href="servlet/ProgrammeServlet">Programme</a><br>
+&nbsp;</font></li>
+      <li>
+      <p align="left"><font face="Monotype Corsiva" style="font-size: 16pt">
+      <a href="servlet/RepresentationsServlet">Représentations d'un programme</a><br>
+&nbsp;</font></li>
+	  <li>
+      <p align="left"><font face="Monotype Corsiva" style="font-size: 16pt">
+      <a href="servlet/PlaceDispoServlet">Places disponibles pour une representation</a><br>
+&nbsp;</font></li>
+      <li>
+      <p align="left"><font face="Monotype Corsiva" style="font-size: 16pt">
+      Réservation</font></li>
+    </ul>
+    <p align="left">&nbsp;</p>
+    <ul>
+      <li>
+      <p align="left"><font face="Monotype Corsiva" style="font-size: 16pt">
+      <a href="admin/admin.html">Administration - Accès restreint</a></font></li>
+    </ul>
+    </td>
+    <td width="25%" align="right" valign="top" height="1">
+    <font face="Monotype Corsiva">
+    <img border="0" src="/images/rideau-droit.jpg" width="153" height="504"></font></td>
+  </tr>
 </table>
-
 
 </body>
 </html>

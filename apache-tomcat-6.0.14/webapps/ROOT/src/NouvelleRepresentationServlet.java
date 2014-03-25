@@ -5,23 +5,11 @@
  */
 import javax.servlet.*;
 import javax.servlet.http.*;
-
-import exceptions.CategorieException;
-import exceptions.ExceptionConnexion;
-import exceptions.ExceptionUtilisateur;
-
-import utils.ErrorLog;
-import utils.Utilitaires;
-
-import accesBD.BDRequests;
-
-import modele.Representation;
-import modele.Spectacle;
-import modele.Utilisateur;
-
+import utils.*;
+import accesBD.*;
+import modele.*;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Vector;
 
 /**
@@ -53,7 +41,6 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 		
 		String numS, dateS, heureS;
 		ServletOutputStream out = res.getOutputStream();   
-		int i = 0;
 
 		res.setContentType("text/html");
 
