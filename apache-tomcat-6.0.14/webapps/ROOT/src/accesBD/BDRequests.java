@@ -78,10 +78,10 @@ public class BDRequests {
 			}
 	
 	/**
-	 * 		Returns the name of a spectacle with its number.
+	 * 		Permet de recuperer le nom d'un spectacle a partir de son numero.
 	 * @param user
 	 * @param numS
-	 * @return	The name of the spectacle associated to the number, or null if there is no spectacle with the given number
+	 * @return Le nom du spectacle associe au numero, ou null s'il n'y en a pas d'associe au numero.
 	 * @throws CategorieException
 	 * @throws ExceptionConnexion
 	 */
