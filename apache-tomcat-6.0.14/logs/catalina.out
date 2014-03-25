@@ -5202,6 +5202,25 @@ Connexion reussie...
 connexion ok
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
+<<<<<<< HEAD
+mars 23, 2014 5:52:41 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 23, 2014 5:52:41 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 5:52:41 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 459 ms
+mars 23, 2014 5:52:41 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 23, 2014 5:52:41 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 23, 2014 5:52:42 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 5:52:42 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 23, 2014 5:52:42 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/21  config=null
+mars 23, 2014 5:52:42 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 381 ms
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
@@ -5209,6 +5228,1422 @@ Connexion reussie...
 connexion ok
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
+mars 23, 2014 6:09:47 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:09:48 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 23, 2014 6:09:48 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:09:50 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 23, 2014 6:09:50 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:09:50 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 471 ms
+mars 23, 2014 6:09:50 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 23, 2014 6:09:50 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 23, 2014 6:09:51 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:09:51 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 23, 2014 6:09:51 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/32  config=null
+mars 23, 2014 6:09:51 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 424 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 23, 2014 6:11:43 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:11:44 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 23, 2014 6:11:44 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:11:46 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 23, 2014 6:11:46 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:11:46 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 542 ms
+mars 23, 2014 6:11:46 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 23, 2014 6:11:46 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 23, 2014 6:11:46 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:11:46 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 23, 2014 6:11:46 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/25  config=null
+mars 23, 2014 6:11:46 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 469 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant identification
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+apres identification
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Metallica
+Cats
+Metallica
+Cirque du Soleil
+Cirque du Soleil
+Cirque du Soleil
+Cirque du Soleil
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 23, 2014 6:16:23 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:16:24 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 23, 2014 6:16:24 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:16:25 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 23, 2014 6:16:25 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:16:25 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 478 ms
+mars 23, 2014 6:16:25 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 23, 2014 6:16:25 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 23, 2014 6:16:25 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:16:25 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 23, 2014 6:16:25 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/30  config=null
+mars 23, 2014 6:16:25 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 465 ms
+mars 23, 2014 6:18:25 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:18:26 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 23, 2014 6:18:26 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:18:28 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 23, 2014 6:18:28 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:18:28 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 474 ms
+mars 23, 2014 6:18:28 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 23, 2014 6:18:28 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 23, 2014 6:18:28 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:18:28 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 23, 2014 6:18:28 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/25  config=null
+mars 23, 2014 6:18:28 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 466 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 23, 2014 6:21:32 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:21:33 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 23, 2014 6:21:33 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:21:35 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 23, 2014 6:21:35 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:21:35 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 523 ms
+mars 23, 2014 6:21:35 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 23, 2014 6:21:35 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 23, 2014 6:21:35 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:21:35 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 23, 2014 6:21:35 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/21  config=null
+mars 23, 2014 6:21:35 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 430 ms
+avant identification
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+apres identification
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+Metallica
+Cats
+Metallica
+Cirque du Soleil
+Cirque du Soleil
+Cirque du Soleil
+Cirque du Soleil
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 23, 2014 6:26:14 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:26:15 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 23, 2014 6:26:15 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:26:17 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 23, 2014 6:26:17 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:26:17 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 498 ms
+mars 23, 2014 6:26:17 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 23, 2014 6:26:17 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 23, 2014 6:26:17 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:26:17 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 23, 2014 6:26:17 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/23  config=null
+mars 23, 2014 6:26:17 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 477 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 23, 2014 6:27:56 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:27:57 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 23, 2014 6:27:57 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:27:59 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 23, 2014 6:27:59 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:27:59 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 492 ms
+mars 23, 2014 6:27:59 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 23, 2014 6:27:59 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 23, 2014 6:27:59 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 23, 2014 6:27:59 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 23, 2014 6:28:00 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/26  config=null
+mars 23, 2014 6:28:00 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 451 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 3:04:02 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 3:04:02 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:04:02 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 622 ms
+mars 25, 2014 3:04:02 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 3:04:02 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 3:04:03 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:04:03 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 3:04:03 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/36  config=null
+mars 25, 2014 3:04:03 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 669 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant identification
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+apres identification
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Cats
+Metallica
+Cirque du Soleil
+Cirque du Soleil
+Cirque du Soleil
+Cirque du Soleil
+mars 25, 2014 3:32:00 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:32:01 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 3:32:01 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:32:02 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 3:32:02 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:32:02 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 463 ms
+mars 25, 2014 3:32:02 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 3:32:02 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 3:32:03 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:32:03 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 3:32:03 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/22  config=null
+mars 25, 2014 3:32:03 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 422 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant identification
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+apres identification
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Cats
+Metallica
+Cirque du Soleil
+Cirque du Soleil
+Cirque du Soleil
+Cirque du Soleil
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 3:40:23 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:40:24 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 3:40:24 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:40:25 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 3:40:26 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:40:26 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 582 ms
+mars 25, 2014 3:40:26 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 3:40:26 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 3:40:26 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:40:26 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 3:40:26 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/21  config=null
+mars 25, 2014 3:40:26 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 375 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 3:42:28 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:42:29 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 3:42:29 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:42:31 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 3:42:31 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:42:31 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 500 ms
+mars 25, 2014 3:42:31 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 3:42:31 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 3:42:32 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:42:32 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 3:42:32 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/26  config=null
+mars 25, 2014 3:42:32 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 433 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 3:46:30 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:46:31 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 3:46:31 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:46:33 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 3:46:33 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:46:33 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 503 ms
+mars 25, 2014 3:46:33 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 3:46:33 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 3:46:34 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:46:34 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 3:46:34 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/25  config=null
+mars 25, 2014 3:46:34 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 430 ms
+mars 25, 2014 3:46:46 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:46:47 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 3:46:47 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:46:49 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 3:46:49 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:46:49 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 462 ms
+mars 25, 2014 3:46:49 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 3:46:49 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 3:46:49 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:46:49 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 3:46:49 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/42  config=null
+mars 25, 2014 3:46:49 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 525 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 3:49:06 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:49:07 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 3:49:07 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:49:09 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 3:49:09 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:49:09 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 495 ms
+mars 25, 2014 3:49:09 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 3:49:09 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 3:49:10 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:49:10 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 3:49:10 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/25  config=null
+mars 25, 2014 3:49:10 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 466 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 3:54:59 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:55:00 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 3:55:00 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:55:02 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 3:55:02 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:55:02 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 476 ms
+mars 25, 2014 3:55:02 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 3:55:02 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 3:55:03 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 3:55:03 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 3:55:03 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/22  config=null
+mars 25, 2014 3:55:03 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 458 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+apres connexion
+Connexion reussie...
+connexion ok
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+apres connexion
+Connexion reussie...
+connexion ok
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+apres connexion
+mars 25, 2014 4:00:34 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:00:35 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 4:00:35 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:00:37 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 4:00:37 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:00:37 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 473 ms
+mars 25, 2014 4:00:37 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 4:00:37 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 4:00:37 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:00:37 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 4:00:37 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/27  config=null
+mars 25, 2014 4:00:37 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 451 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 4:07:30 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:07:31 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 4:07:31 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:07:33 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 4:07:33 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:07:33 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 504 ms
+mars 25, 2014 4:07:33 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 4:07:33 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 4:07:33 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:07:33 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 4:07:33 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/23  config=null
+mars 25, 2014 4:07:33 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 469 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 4:08:30 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:08:31 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 4:08:31 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:08:33 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 4:08:33 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:08:33 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 555 ms
+mars 25, 2014 4:08:33 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 4:08:33 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 4:08:34 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:08:34 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 4:08:34 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/26  config=null
+mars 25, 2014 4:08:34 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 461 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+Connexion impossible : Exception d'E/S: The Network Adapter could not establish the connection
+SQLException: Exception d'E/S: The Network Adapter could not establish the connection
+SQLState: null
+VendorError: 17002
+connexion impossible
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 4:11:02 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:11:03 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 4:11:03 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:11:05 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 4:11:05 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:11:05 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 589 ms
+mars 25, 2014 4:11:05 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 4:11:05 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 4:11:06 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:11:06 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 4:11:06 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/32  config=null
+mars 25, 2014 4:11:06 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 518 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant identification
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+apres identification
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Cats
+Metallica
+Cirque du Soleil
+Cirque du Soleil
+Cirque du Soleil
+Cirque du Soleil
+avant identification
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+apres identification
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Cats
+Metallica
+Cirque du Soleil
+Cirque du Soleil
+Cirque du Soleil
+Cirque du Soleil
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 4:15:43 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:15:44 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 4:15:44 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:15:46 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 4:15:46 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:15:46 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 555 ms
+mars 25, 2014 4:15:46 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 4:15:46 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 4:15:47 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:15:47 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 4:15:47 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/23  config=null
+mars 25, 2014 4:15:47 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 472 ms
+mars 25, 2014 4:16:42 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:16:43 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 4:16:43 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:16:45 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 4:16:45 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:16:45 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 459 ms
+mars 25, 2014 4:16:45 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 4:16:45 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 4:16:46 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:16:46 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 4:16:46 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/25  config=null
+mars 25, 2014 4:16:46 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 448 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 4:19:15 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:19:16 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 4:19:16 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:19:18 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 4:19:18 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:19:18 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 533 ms
+mars 25, 2014 4:19:18 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 4:19:18 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 4:19:19 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:19:19 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 4:19:19 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/31  config=null
+mars 25, 2014 4:19:19 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 423 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 4:24:29 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:24:30 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 4:24:30 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:24:32 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 4:24:32 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:24:32 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 512 ms
+mars 25, 2014 4:24:32 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 4:24:32 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 4:24:33 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:24:33 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 4:24:33 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/25  config=null
+mars 25, 2014 4:24:33 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 459 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+apres connexion
+Connexion reussie...
+connexion ok
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 4:27:03 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:27:04 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 4:27:04 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:27:06 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 4:27:06 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:27:06 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 465 ms
+mars 25, 2014 4:27:06 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 4:27:06 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 4:27:07 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:27:07 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 4:27:07 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/34  config=null
+mars 25, 2014 4:27:07 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 449 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+=======
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+<<<<<<< HEAD
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 4:28:44 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:28:45 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 4:28:45 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:28:47 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 4:28:47 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:28:47 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 473 ms
+mars 25, 2014 4:28:47 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 4:28:47 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 4:28:47 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:28:47 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 4:28:47 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=1/72  config=null
+mars 25, 2014 4:28:47 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 458 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+=======
 mars 25, 2014 4:08:28 PM org.apache.catalina.core.AprLifecycleListener init
 Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
 mars 25, 2014 4:08:28 PM org.apache.coyote.http11.Http11Protocol init
@@ -5228,11 +6663,107 @@ Infos: Jk running ID=0 time=0/29  config=null
 mars 25, 2014 4:08:29 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 486 ms
 avant identification
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 Connexion reussie...
 connexion ok
+<<<<<<< HEAD
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 4:30:09 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:30:10 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 4:30:10 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:30:12 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 4:30:12 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:30:12 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 489 ms
+mars 25, 2014 4:30:12 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 4:30:12 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 4:30:12 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:30:13 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 4:30:13 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/29  config=null
+mars 25, 2014 4:30:13 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 460 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 4:32:59 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:33:00 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 4:33:00 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:33:01 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 4:33:02 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:33:02 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 452 ms
+mars 25, 2014 4:33:02 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 4:33:02 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 4:33:02 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:33:02 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 4:33:02 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/22  config=null
+mars 25, 2014 4:33:02 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 421 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+=======
 apres identification
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
@@ -5441,6 +6972,7 @@ mars 25, 2014 4:17:04 PM org.apache.jk.server.JkMain start
 Infos: Jk running ID=0 time=0/33  config=null
 mars 25, 2014 4:17:04 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 516 ms
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
@@ -5448,6 +6980,62 @@ Connexion reussie...
 connexion ok
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
+<<<<<<< HEAD
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 4:35:56 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:35:57 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 4:35:57 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:35:58 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 4:35:59 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:35:59 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 500 ms
+mars 25, 2014 4:35:59 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 4:35:59 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 4:35:59 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:35:59 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 4:35:59 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/33  config=null
+mars 25, 2014 4:35:59 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 497 ms
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant identification
+=======
 Cats
 Metallica
 Cirque du Soleil
@@ -5478,11 +7066,16 @@ mars 25, 2014 4:20:05 PM org.apache.jk.server.JkMain start
 Infos: Jk running ID=0 time=0/33  config=null
 mars 25, 2014 4:20:05 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 552 ms
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 Connexion reussie...
 connexion ok
+<<<<<<< HEAD
+apres identification
+=======
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 Cats
@@ -5491,11 +7084,21 @@ Cirque du Soleil
 Cirque du Soleil
 Cirque du Soleil
 Cirque du Soleil
+<<<<<<< HEAD
+Metallica
+Manu Chao
+avant identification
+=======
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 Connexion reussie...
 connexion ok
+<<<<<<< HEAD
+apres identification
+=======
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 Cats
@@ -5504,6 +7107,35 @@ Cirque du Soleil
 Cirque du Soleil
 Cirque du Soleil
 Cirque du Soleil
+<<<<<<< HEAD
+Metallica
+Manu Chao
+mars 25, 2014 4:44:05 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:44:06 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 4:44:06 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:44:09 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 4:44:09 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:44:09 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 538 ms
+mars 25, 2014 4:44:09 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 4:44:09 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 4:44:09 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:44:09 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 4:44:09 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/25  config=null
+mars 25, 2014 4:44:09 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 463 ms
+avant identification
+=======
 Manu Chao
 mars 25, 2014 4:33:29 PM org.apache.coyote.http11.Http11Protocol pause
 Infos: Suspension de Coyote HTTP/1.1 sur http-8080
@@ -5529,11 +7161,42 @@ mars 25, 2014 4:33:33 PM org.apache.jk.server.JkMain start
 Infos: Jk running ID=0 time=0/25  config=null
 mars 25, 2014 4:33:33 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 459 ms
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 Connexion reussie...
 connexion ok
+<<<<<<< HEAD
+apres identification
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 4:55:11 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:55:12 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 4:55:12 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:55:14 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 4:55:14 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:55:14 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 525 ms
+mars 25, 2014 4:55:14 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 4:55:14 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 4:55:14 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 4:55:14 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 4:55:14 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/22  config=null
+mars 25, 2014 4:55:14 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 450 ms
+avant identification
+=======
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 mars 25, 2014 4:35:18 PM org.apache.coyote.http11.Http11Protocol pause
@@ -5560,11 +7223,51 @@ mars 25, 2014 4:35:22 PM org.apache.jk.server.JkMain start
 Infos: Jk running ID=0 time=0/26  config=null
 mars 25, 2014 4:35:22 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 522 ms
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 Connexion reussie...
 connexion ok
+<<<<<<< HEAD
+apres identification
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 5:02:50 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:02:51 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 5:02:51 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:02:53 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 5:02:53 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:02:53 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 479 ms
+mars 25, 2014 5:02:53 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 5:02:53 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 5:02:54 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:02:54 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 5:02:54 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/26  config=null
+mars 25, 2014 5:02:54 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 458 ms
+avant identification
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+apres identification
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant identification
+=======
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 mars 25, 2014 4:38:14 PM org.apache.coyote.http11.Http11Protocol pause
@@ -5591,11 +7294,42 @@ mars 25, 2014 4:38:18 PM org.apache.jk.server.JkMain start
 Infos: Jk running ID=0 time=0/34  config=null
 mars 25, 2014 4:38:18 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 518 ms
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 Connexion reussie...
 connexion ok
+<<<<<<< HEAD
+apres identification
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 5:09:52 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:09:53 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 5:09:53 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:09:55 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 5:09:55 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:09:55 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 475 ms
+mars 25, 2014 5:09:55 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 5:09:55 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 5:09:55 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:09:55 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 5:09:55 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/22  config=null
+mars 25, 2014 5:09:55 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 486 ms
+avant identification
+=======
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 mars 25, 2014 4:39:46 PM org.apache.coyote.http11.Http11Protocol pause
@@ -5622,11 +7356,42 @@ mars 25, 2014 4:39:50 PM org.apache.jk.server.JkMain start
 Infos: Jk running ID=0 time=0/25  config=null
 mars 25, 2014 4:39:50 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 531 ms
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 Connexion reussie...
 connexion ok
+<<<<<<< HEAD
+apres identification
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 5:10:57 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:10:58 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 5:10:58 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:11:00 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 5:11:00 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:11:00 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 470 ms
+mars 25, 2014 5:11:00 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 5:11:00 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 5:11:00 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:11:01 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 5:11:01 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/43  config=null
+mars 25, 2014 5:11:01 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 432 ms
+avant identification
+=======
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 mars 25, 2014 4:40:29 PM org.apache.coyote.http11.Http11Protocol pause
@@ -5653,6 +7418,18 @@ mars 25, 2014 4:40:34 PM org.apache.jk.server.JkMain start
 Infos: Jk running ID=0 time=0/27  config=null
 mars 25, 2014 4:40:34 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 540 ms
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+<<<<<<< HEAD
+apres identification
+=======
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
@@ -5660,13 +7437,8 @@ Connexion reussie...
 connexion ok
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
-avant connexion
-avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
-apres connexion
-Connexion reussie...
-connexion ok
-avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
-apres connexion
+<<<<<<< HEAD
+=======
 mars 25, 2014 4:41:57 PM org.apache.coyote.http11.Http11Protocol pause
 Infos: Suspension de Coyote HTTP/1.1 sur http-8080
 mars 25, 2014 4:41:58 PM org.apache.catalina.core.StandardService stop
@@ -5691,6 +7463,7 @@ mars 25, 2014 4:42:01 PM org.apache.jk.server.JkMain start
 Infos: Jk running ID=0 time=0/26  config=null
 mars 25, 2014 4:42:01 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 478 ms
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
@@ -5698,6 +7471,8 @@ Connexion reussie...
 connexion ok
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
+<<<<<<< HEAD
+=======
 mars 25, 2014 4:42:37 PM org.apache.coyote.http11.Http11Protocol pause
 Infos: Suspension de Coyote HTTP/1.1 sur http-8080
 mars 25, 2014 4:42:38 PM org.apache.catalina.core.StandardService stop
@@ -5722,11 +7497,40 @@ mars 25, 2014 4:42:41 PM org.apache.jk.server.JkMain start
 Infos: Jk running ID=0 time=0/34  config=null
 mars 25, 2014 4:42:41 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 538 ms
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 Connexion reussie...
 connexion ok
+<<<<<<< HEAD
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 5:12:04 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:12:05 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 5:12:05 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:12:07 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 5:12:07 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:12:07 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 504 ms
+mars 25, 2014 5:12:07 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 5:12:07 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 5:12:08 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:12:08 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 5:12:08 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/23  config=null
+mars 25, 2014 5:12:08 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 536 ms
+=======
 nums : 101
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
@@ -5754,11 +7558,16 @@ mars 25, 2014 4:44:47 PM org.apache.jk.server.JkMain start
 Infos: Jk running ID=0 time=0/38  config=null
 mars 25, 2014 4:44:47 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 573 ms
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 Connexion reussie...
 connexion ok
+<<<<<<< HEAD
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+=======
 nums : 101
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
@@ -5786,12 +7595,16 @@ mars 25, 2014 4:45:24 PM org.apache.jk.server.JkMain start
 Infos: Jk running ID=0 time=0/36  config=null
 mars 25, 2014 4:45:24 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 587 ms
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 Connexion reussie...
 connexion ok
+<<<<<<< HEAD
+=======
 nums : 101
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 avant connexion
@@ -5799,6 +7612,36 @@ avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , 
 apres connexion
 Connexion reussie...
 connexion ok
+<<<<<<< HEAD
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 5:21:27 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:21:28 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 5:21:28 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:21:31 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 5:21:31 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:21:31 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 541 ms
+mars 25, 2014 5:21:31 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 5:21:31 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 5:21:31 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:21:31 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 5:21:31 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/25  config=null
+mars 25, 2014 5:21:31 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 422 ms
+=======
 nums : 10
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
@@ -5826,11 +7669,23 @@ mars 25, 2014 4:58:48 PM org.apache.jk.server.JkMain start
 Infos: Jk running ID=0 time=0/36  config=null
 mars 25, 2014 4:58:48 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 575 ms
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 Connexion reussie...
 connexion ok
+<<<<<<< HEAD
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+=======
 nums : 101
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
@@ -5861,11 +7716,25 @@ mars 25, 2014 5:01:06 PM org.apache.jk.server.JkMain start
 Infos: Jk running ID=0 time=0/26  config=null
 mars 25, 2014 5:01:06 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 557 ms
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 Connexion reussie...
 connexion ok
+<<<<<<< HEAD
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+=======
 nums : 101
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
@@ -5907,6 +7776,7 @@ mars 25, 2014 5:14:36 PM org.apache.jk.server.JkMain start
 Infos: Jk running ID=0 time=0/38  config=null
 mars 25, 2014 5:14:36 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 504 ms
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
@@ -5916,7 +7786,10 @@ avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , 
 apres connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
+<<<<<<< HEAD
+=======
 2014-10-05 00:00:00.0
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
@@ -5924,9 +7797,12 @@ Connexion reussie...
 connexion ok
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
+<<<<<<< HEAD
+=======
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 2008-11-06 00:00:00.0
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
@@ -5941,6 +7817,36 @@ Connexion reussie...
 connexion ok
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
+<<<<<<< HEAD
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+mars 25, 2014 5:27:08 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:27:09 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 25, 2014 5:27:09 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:27:11 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 25, 2014 5:27:11 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:27:11 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 477 ms
+mars 25, 2014 5:27:11 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 25, 2014 5:27:11 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 25, 2014 5:27:11 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 5:27:11 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 25, 2014 5:27:11 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/25  config=null
+mars 25, 2014 5:27:11 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 472 ms
+=======
 mars 25, 2014 5:23:53 PM org.apache.coyote.http11.Http11Protocol pause
 Infos: Suspension de Coyote HTTP/1.1 sur http-8080
 mars 25, 2014 5:23:54 PM org.apache.catalina.core.StandardService stop
@@ -5965,6 +7871,7 @@ mars 25, 2014 5:23:58 PM org.apache.jk.server.JkMain start
 Infos: Jk running ID=0 time=0/32  config=null
 mars 25, 2014 5:23:58 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 570 ms
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
@@ -5972,6 +7879,13 @@ Connexion reussie...
 connexion ok
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
+<<<<<<< HEAD
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+=======
 mars 25, 2014 5:25:10 PM org.apache.coyote.http11.Http11Protocol pause
 Infos: Suspension de Coyote HTTP/1.1 sur http-8080
 mars 25, 2014 5:25:11 PM org.apache.catalina.core.StandardService stop
@@ -5996,6 +7910,7 @@ mars 25, 2014 5:25:14 PM org.apache.jk.server.JkMain start
 Infos: Jk running ID=0 time=0/35  config=null
 mars 25, 2014 5:25:14 PM org.apache.catalina.startup.Catalina start
 Infos: Server startup in 597 ms
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
@@ -6003,12 +7918,24 @@ Connexion reussie...
 connexion ok
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
+<<<<<<< HEAD
+=======
 avant identification
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
 avant connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
 Connexion reussie...
 connexion ok
+<<<<<<< HEAD
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+=======
 apres identification
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
@@ -6020,3 +7947,4 @@ Cirque du Soleil
 Cirque du Soleil
 Metallica
 Manu Chao
+>>>>>>> d2d77dad9c0b82455100b64a6fc97c6aa6e4bc74
