@@ -5,11 +5,12 @@
  */
 import javax.servlet.*;
 import javax.servlet.http.*;
+import exceptions.ConnectionException;
+import exceptions.RequestException;
 import utils.*;
 import accesBD.*;
 import modele.*;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Vector;
 
 /**
@@ -38,9 +39,12 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException
 	{
-		
+
+		// Transformation des parametres vers les types adequats.
+		// Ajout de la nouvelle representation.
+		// Puis construction dynamique d'une page web de reponse.
 		String numS, dateS, heureS;
-		ServletOutputStream out = res.getOutputStream();   
+		ServletOutputStream out = res.getOutputStream();  
 
 		res.setContentType("text/html");
 
@@ -54,15 +58,14 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 		out.println("<font color=\"#FFFFFF\"><h1> Listes des spectacles existants : </h1>");
 		try 
 		{
-			Utilisateur user = Utilitaires.Identification();
-			Vector<Spectacle> spec = BDRequests.getSpectacles(user);
+			Vector<Spectacle> spec = BDRequests.getSpectacles();
 			for (Spectacle s : spec)
 			{
 				out.println(s.getNom() + " : " + s.getNumero() + "<br>");
 			}
 		}catch(Exception e)
 		{					
-			out.println("<p><i><font color=\"#FFFFFF\">Impossible d'ajouter la representation.</i></p>");
+			out.println("<p><i><font color=\"#FFFFFF\">Impossible d'afficher la liste des spectacles.</i></p>");
 			errorLog.writeException(e);
 		}
 		out.println("<font color=\"#FFFFFF\"><h1> Ajouter une nouvelle repr&eacute;sentation </h1>");
@@ -77,23 +80,22 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 		{
 			
 			try {
-				Utilisateur user = Utilitaires.Identification();
 				// on verifie que l'heure est valide
 				if (Integer.parseInt(heureS) >= 0 && Integer.parseInt(heureS) <= 23)
 				{
 					// on verifie que le numero de spectacle existe
-					if (BDRequests.isInSpectacles(user, Integer.parseInt(numS)))
+					if (BDRequests.isInSpectacles(Integer.parseInt(numS)))
 					{
 						// on verifie que la representation n'est pas deja presente
-						if (BDRequests.existeDateRep (user, Integer.parseInt(numS),dateS))
+						if (BDRequests.existeDateRep (Integer.parseInt(numS),dateS))
 						{
 							out.println("<br> Cette date de representation existe deja <br>");
 							printForm(out);
 						}
 						else
 						{
-							BDRequests.addRepresentation(user, Integer.parseInt(numS), dateS, heureS);
-							out.println("<br> ajout de la representation realise <br>");
+							BDRequests.addRepresentation(Integer.parseInt(numS), dateS, heureS);
+							out.println("<br> ajout de la representation realisee <br>");
 						}
 					}
 					else
@@ -108,22 +110,21 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 					printForm(out);
 				}
 			}
-			catch (SQLException e)
+			catch (RequestException e)
 			{
 				out.println("<p><i><font color=\"#FFFFFF\">Impossible d'ajouter la representation. Veuillez verifier le format de la date</i></p>");
 				out.println("<p><i><font color=\"#FFFFFF\">exemple : 01/12/2014</i></p>");
 				printForm(out);
 				errorLog.writeException(e);
 			} 
-			catch (Exception e)
+			catch (IOException e) 
 			{
-				out.println("<p><i><font color=\"#FFFFFF\">Impossible d'ajouter la representation.</i></p>");
-				printForm(out);
 				errorLog.writeException(e);
 			} 
-			// Transformation des parametres vers les types adequats.
-			// Ajout de la nouvelle representation.
-			// Puis construction dynamique d'une page web de reponse.
+			catch (ConnectionException e)
+			{
+				errorLog.writeException(e);
+			}
 		}
 
 		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");

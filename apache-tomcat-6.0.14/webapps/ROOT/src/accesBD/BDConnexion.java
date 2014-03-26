@@ -9,7 +9,7 @@ import jus.util.IO;
 
 import oracle.jdbc.pool.OracleDataSource;
 import utils.Constantes;
-import exceptions.ExceptionConnexion;
+import exceptions.ConnectionException;
 
 public final class BDConnexion {
 
@@ -20,10 +20,10 @@ public final class BDConnexion {
 	    * Obtenir une nouvelle connexion a la BD, en fonction des parametres
 	    * contenus dans un fichier de configuration.
 	    * @return  une nouvelle connexion a la BD
-	    * @throws ExceptionConnexion si la connexion a echoue
+	    * @throws ConnectionException si la connexion a echoue
 	    */
 
-	public static Connection getConnexion(String login, String mdp) throws ExceptionConnexion {
+	public static Connection getConnexion() throws ConnectionException {
 		Connection conn = null ;
 		try {
 
@@ -34,7 +34,8 @@ public final class BDConnexion {
 			p.load(is);
 			String url = p.getProperty("url");
 			String driver = p.getProperty("driver");
-			
+			String login = p.getProperty("user");
+			String mdp = p.getProperty("mdp");
 			Class.forName(driver);
 			// hopper@UFR, Oracle
 			System.out.println("avant connect : " + url + ", " + ", " + login +" , " + mdp);
@@ -47,9 +48,9 @@ public final class BDConnexion {
 			IO.afficherln("SQLState: " + e.getSQLState());
 			IO.afficherln("VendorError: " + e.getErrorCode());
 		} catch (IOException e) {
-			throw new ExceptionConnexion ("fichier conf illisible \n" + e.getMessage());
+			throw new ConnectionException ("fichier conf illisible \n" + e.getMessage());
 		} catch (ClassNotFoundException e) {
-			throw new ExceptionConnexion ("problème d'identification du pilote \n" + e.getMessage());
+			throw new ConnectionException ("problème d'identification du pilote \n" + e.getMessage());
 		}
 		return conn ;
 	}

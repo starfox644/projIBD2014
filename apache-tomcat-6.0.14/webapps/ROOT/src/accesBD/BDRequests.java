@@ -1,6 +1,10 @@
 package accesBD;
+import java.io.IOException;
 import java.sql.*;
 import java.util.Vector;
+
+import javax.servlet.ServletOutputStream;
+import utils.ErrorLog;
 import utils.Utilitaires;
 import exceptions.*;
 import modele.*;
@@ -18,16 +22,23 @@ public class BDRequests
 	 * @param Utilisateur
 	 * @return Vector<Categorie> liste des representations
 	 * @throws CategorieException erreur lors de l'acces a la base
-	 * @throws ExceptionConnexion cas d'erreur de connexion 
+	 * @throws ConnectionException cas d'erreur de connexion 
+	 * @throws RequestException 
 	 */
-	public static Vector<Representation> getRepresentations (Utilisateur user)
-			throws ExceptionConnexion, CategorieException
+	public static Vector<Representation> getRepresentations ()
+			throws ConnectionException, RequestException
 			{
+		try {
+			ErrorLog errorLog = new ErrorLog();
+		} catch (IOException e2) 
+		{
+			throw new ConnectionException(e2.getMessage());
+		}
 		Vector<Representation> res = new Vector<Representation>();
 		String requete ;
 		Statement stmt ;
 		ResultSet rs ;
-		Connection conn = BDConnexion.getConnexion(user.getLogin(), user.getmdp());
+		Connection conn = BDConnexion.getConnexion();
 
 		requete = "select nomS, dateRep, numS from LesRepresentations natural join LesSpectacles order by dateRep";
 
@@ -38,7 +49,7 @@ public class BDRequests
 				res.addElement(new Representation (rs.getString(1), Utilitaires.printDate(rs.getString(2)), rs.getInt(3)));
 			}
 		} catch (SQLException e) {
-			throw new CategorieException (" Problème dans l'interrogation des représentations.."
+			throw new RequestException (" Problème dans l'interrogation des représentations.."
 					+ "Code Oracle " + e.getErrorCode()
 					+ "Message " + e.getMessage());
 		}
@@ -52,16 +63,16 @@ public class BDRequests
 	 * @param num numero du spectacle
 	 * @param date date de la representation 
 	 * @param heure	heure de la representation 
-	 * @throws CategorieException erreur lors de l'acces a la base
-	 * @throws ExceptionConnexion en cas de probleme de connexion 
+	 * @throws RequestException erreur lors de l'acces a la base
+	 * @throws ConnectionException en cas de probleme de connexion 
 	 */
-	public static Vector<String> getSpectacleRepresentations (Utilisateur user, String numS)
-			throws CategorieException, ExceptionConnexion {
+	public static Vector<String> getSpectacleRepresentations (String numS)
+			throws RequestException, ConnectionException {
 		Vector<String> res = new Vector<String>();
 		String requete ;
 		Statement stmt ;
 		ResultSet rs ;
-		Connection conn = BDConnexion.getConnexion(user.getLogin(), user.getmdp());
+		Connection conn = BDConnexion.getConnexion();
 
 		requete = "select dateRep from LesRepresentations where numS = " + numS + " order by dateRep";
 
@@ -73,7 +84,7 @@ public class BDRequests
 				res.addElement(rs.getString(1));
 			}
 		} catch (SQLException e) {
-			throw new CategorieException (" Problème dans l'interrogation des représentations.."
+			throw new RequestException (" Problème dans l'interrogation des représentations.."
 					+ "Code Oracle " + e.getErrorCode()
 					+ "Message " + e.getMessage());
 		}
@@ -86,16 +97,16 @@ public class BDRequests
 	 * @param user
 	 * @param numS
 	 * @return Le nom du spectacle associe au numero, ou null s'il n'y en a pas d'associe au numero.
-	 * @throws CategorieException
-	 * @throws ExceptionConnexion
+	 * @throws RequestException
+	 * @throws ConnectionException
 	 */
-	public static String getNomSpectacle(Utilisateur user, String numS) throws CategorieException, ExceptionConnexion
+	public static String getNomSpectacle(String numS) throws RequestException, ConnectionException
 	{
 		String requete ;
 		Statement stmt ;
 		ResultSet rs ;
 		String nom = null;
-		Connection conn = BDConnexion.getConnexion(user.getLogin(), user.getmdp());
+		Connection conn = BDConnexion.getConnexion();
 
 		requete = "select nomS from LesSpectacles where " + numS + "=numS";
 
@@ -107,7 +118,7 @@ public class BDRequests
 				nom = rs.getString(1);
 			}
 		} catch (SQLException e) {
-			throw new CategorieException (" Problème dans l'interrogation des représentations.."
+			throw new RequestException (" Problème dans l'interrogation des représentations.."
 					+ "Code Oracle " + e.getErrorCode()
 					+ "Message " + e.getMessage());
 		}
@@ -115,13 +126,13 @@ public class BDRequests
 		return nom;
 	}
 
-	public static void addRepresentation (Utilisateur user, int num , String date, String heure)
-			throws CategorieException, ExceptionConnexion 
+	public static void addRepresentation (int num , String date, String heure)
+			throws RequestException, ConnectionException 
 			{
 		String requete ;
 		Statement stmt ;
 		ResultSet rs ;
-		Connection conn = BDConnexion.getConnexion(user.getLogin(), user.getmdp());
+		Connection conn = BDConnexion.getConnexion();
 
 		try {
 			stmt = conn.createStatement();
@@ -129,7 +140,7 @@ public class BDRequests
 			rs = stmt.executeQuery(requete);
 			conn.commit();
 		} catch (SQLException e) {
-			throw new CategorieException (" Erreur dans l'interrogation des représentations : \n"
+			throw new RequestException (" Erreur dans l'interrogation des représentations : \n"
 					+ "num =" + num
 					+ "Code Oracle : " + e.getErrorCode() + "\n"
 					+ "Message : " + e.getMessage() + "\n");
@@ -141,17 +152,17 @@ public class BDRequests
 	 * Retourne la liste des spectacles
 	 * @param user
 	 * @return liste des spectacles 
-	 * @throws CategorieException erreur lors de l'acces a la base
-	 * @throws ExceptionConnexion erreur de connexion 
+	 * @throws RequestException erreur lors de l'acces a la base
+	 * @throws ConnectionException erreur de connexion 
 	 */
-	public static Vector<Spectacle> getSpectacles (Utilisateur user)
-			throws CategorieException, ExceptionConnexion 
+	public static Vector<Spectacle> getSpectacles ()
+			throws RequestException, ConnectionException 
 			{
 		Vector<Spectacle> res = new Vector<Spectacle>();
 		String requete ;
 		Statement stmt ;
 		ResultSet rs ;
-		Connection conn = BDConnexion.getConnexion(user.getLogin(), user.getmdp());
+		Connection conn = BDConnexion.getConnexion();
 
 		try {
 			stmt = conn.createStatement();
@@ -164,7 +175,7 @@ public class BDRequests
 			}
 
 		} catch (SQLException e) {
-			throw new CategorieException (" Erreur dans l'interrogation des représentations : \n"
+			throw new RequestException (" Erreur dans l'interrogation des représentations : \n"
 					+ "Code Oracle : " + e.getErrorCode() + "\n"
 					+ "Message : " + e.getMessage() + "\n");
 		}
@@ -178,18 +189,18 @@ public class BDRequests
 	 * @param user
 	 * @param numS numero du spectacle 
 	 * @return vrai si le spectacle identifie pas numS existe, faux sinon
-	 * @throws CategorieException erreur lors de l'acces a la base	
-	 * @throws ExceptionConnexion erreur de connexion 
+	 * @throws RequestException erreur lors de l'acces a la base	
+	 * @throws ConnectionException erreur de connexion 
 	 */
-	public static boolean isInSpectacles (Utilisateur user, int numS)
-			throws CategorieException, ExceptionConnexion 
+	public static boolean isInSpectacles (int numS)
+			throws RequestException, ConnectionException 
 			{
 		Vector<String> list = new Vector<String>();
 		String requete ;
 		Statement stmt ;
 		ResultSet rs ;
 		boolean res = false;
-		Connection conn = BDConnexion.getConnexion(user.getLogin(), user.getmdp());
+		Connection conn = BDConnexion.getConnexion();
 
 
 		try {
@@ -203,7 +214,7 @@ public class BDRequests
 			res = !list.isEmpty();
 
 		} catch (SQLException e) {
-			throw new CategorieException (" Erreur dans l'interrogation des représentations : \n"
+			throw new RequestException (" Erreur dans l'interrogation des représentations : \n"
 					+ "Code Oracle : " + e.getErrorCode() + "\n"
 					+ "Message : " + e.getMessage() + "\n");
 		}
@@ -217,28 +228,34 @@ public class BDRequests
 	 * @param num	numero du spectacle 
 	 * @param date	date de la representation 
 	 * @return	vrai si le spectacle est programme a cette date, faux sinon
-	 * @throws ExceptionConnexion erreur de connexion 
-	 * @throws SQLException	erreur lors de l'interogation de la base (format date)
+	 * @throws RequestException erreur de connexion 
+	 * @throws ConnectionException	erreur lors de l'interogation de la base (format date)
 	 */
-	public static boolean existeDateRep (Utilisateur user, int num, String date)
-			throws ExceptionConnexion, SQLException 
+	public static boolean existeDateRep (int num, String date)
+			throws RequestException, ConnectionException
 			{
 		Vector<String> list = new Vector<String>();
 		String requete ;
 		Statement stmt ;
 		ResultSet rs ;
 		boolean res = false;
-		Connection conn = BDConnexion.getConnexion(user.getLogin(), user.getmdp());
-
-		stmt = conn.createStatement();
-		requete = "select numS, dateRep from LesRepresentations " +
-				"  where numS=" + num + " and dateRep = to_date( '"+date+"' , 'DD/MM/YY')";
-
-		rs = stmt.executeQuery(requete);
-		while (rs.next()) {
-			list.addElement(rs.getString(1));
+		Connection conn;
+		conn = BDConnexion.getConnexion();
+		try
+		{
+			stmt = conn.createStatement();
+			requete = "select numS, dateRep from LesRepresentations " +
+					"  where numS=" + num + " and dateRep = to_date( '"+date+"' , 'DD/MM/YY')";
+	
+			rs = stmt.executeQuery(requete);
+			while (rs.next()) {
+				list.addElement(rs.getString(1));
+			}
+			res = !list.isEmpty();
+		} catch(SQLException e)
+		{
+			throw new RequestException(e.getMessage());
 		}
-		res = !list.isEmpty();
 		BDConnexion.FermerTout(conn, stmt, rs);
 		return res;
 			}
@@ -250,17 +267,17 @@ public class BDRequests
 	 * @param date date de la representation
 	 * @param numS numero du spectacle
 	 * @return retour la liste des  places disponibles pour cette representatoion
-	 * @throws CategorieException
-	 * @throws ExceptionConnexion
+	 * @throws RequestException
+	 * @throws ConnectionException
 	 */
-	public static Vector<Place> getPlacesDispo (Utilisateur user, String date, String numS)
-			throws CategorieException, ExceptionConnexion 
-	{
+	public static Vector<Place> getPlacesDispo (String date, String numS)
+			throws RequestException, ConnectionException 
+			{
 		Vector<Place> res = new Vector<Place>();
 		String requete ;
 		Statement stmt ;
 		ResultSet rs ;
-		Connection conn = BDConnexion.getConnexion(user.getLogin(), user.getmdp());
+		Connection conn = BDConnexion.getConnexion();
 
 		try {
 			stmt = conn.createStatement();
@@ -280,7 +297,7 @@ public class BDRequests
 			}
 
 		} catch (SQLException e) {
-			throw new CategorieException (" Erreur dans l'interrogation des places : \n"
+			throw new RequestException (" Erreur dans l'interrogation des places : \n"
 					+ "Code Oracle : " + e.getErrorCode() + "\n"
 					+ "Message : " + e.getMessage() + "\n");
 		}
@@ -295,18 +312,17 @@ public class BDRequests
 	 * @param date date de la representation
 	 * @param numS numero du spectacle
 	 * @return le nombre de places occupees pour cette representation
-	 * @throws CategorieException 
-	 * @throws ExceptionConnexion
-	 * @throws SQLException
+	 * @throws RequestException 
+	 * @throws ConnectionException
 	 */
 	public static int getNbPlacesOccupees (Utilisateur user, String date, String numS) 
-			throws CategorieException, ExceptionConnexion, SQLException
+			throws ConnectionException, RequestException
 	{
 		String requete ;
 		Statement stmt ;
 		ResultSet rs ;
 		Vector<Integer> res = new Vector<Integer>();
-		Connection conn = BDConnexion.getConnexion(user.getLogin(), user.getmdp());
+		Connection conn = BDConnexion.getConnexion();
 
 		try {
 			stmt = conn.createStatement();
@@ -319,7 +335,7 @@ public class BDRequests
 				res.addElement(rs.getInt(1));
 			}
 		} catch (SQLException e) {
-			throw new CategorieException (" Erreur dans l'interrogation des places : \n"
+			throw new RequestException (" Erreur dans l'interrogation des places : \n"
 					+ "Code Oracle : " + e.getErrorCode() + "\n"
 					+ "Message : " + e.getMessage() + "\n");
 		}
@@ -332,17 +348,17 @@ public class BDRequests
 	 * Renvoie le nombre de places de la salle de theatre
 	 * @param user
 	 * @return le nombre de places que contient le theatre
-	 * @throws ExceptionConnexion
-	 * @throws SQLException
+	 * @throws ConnectionException
+	 * @throws RequestException
 	 */
 	public static int getNbPlacesTotales (Utilisateur user)
-			throws ExceptionConnexion, SQLException 
+			throws ConnectionException, RequestException
 	{
 		String requete ;
 		Statement stmt ;
 		ResultSet rs ;
 		Vector<Integer> res = new Vector<Integer>();
-		Connection conn = BDConnexion.getConnexion(user.getLogin(), user.getmdp());
+		Connection conn = BDConnexion.getConnexion();
 
 		try {
 			stmt = conn.createStatement();
@@ -354,7 +370,7 @@ public class BDRequests
 				res.addElement(rs.getInt(1));
 			}
 		} catch (SQLException e) {
-			throw new CategorieException (" Erreur dans l'interrogation des places : \n"
+			throw new RequestException (" Erreur dans l'interrogation des places : \n"
 					+ "Code Oracle : " + e.getErrorCode() + "\n"
 					+ "Message : " + e.getMessage() + "\n");
 		}

@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.Vector;
 
 import exceptions.CategorieException;
-import exceptions.ExceptionConnexion;
+import exceptions.ConnectionException;
 
 import modele.Categorie;
 import modele.Utilisateur;
@@ -22,15 +22,15 @@ public class BDCategories {
 	 * @param Utilisateur
 	 * @return Vector<Categorie>
 	 * @throws CategorieException
-	 * @throws ExceptionConnexion
+	 * @throws ConnectionException
 	 */
-	public static Vector<Categorie> getCategorie (Utilisateur user)
-	throws CategorieException, ExceptionConnexion {
+	public static Vector<Categorie> getCategorie ()
+	throws CategorieException, ConnectionException {
 		Vector<Categorie> res = new Vector<Categorie>();
 		String requete ;
 		Statement stmt ;
 		ResultSet rs ;
-		Connection conn = BDConnexion.getConnexion(user.getLogin(), user.getmdp());
+		Connection conn = BDConnexion.getConnexion();
 		
 		requete = "select nomc, prix from LesCategories order by nomc";
 		System.out.println(requete);
