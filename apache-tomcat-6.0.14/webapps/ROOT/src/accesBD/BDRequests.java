@@ -41,19 +41,20 @@ public class BDRequests
 		Connection conn = BDConnexion.getConnexion();
 
 		requete = "select nomS, dateRep, numS from LesRepresentations natural join LesSpectacles order by dateRep";
-
-		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(requete);
+		SQLRequest request = new SQLRequest("select nomS, dateRep, numS from LesRepresentations natural join LesSpectacles order by dateRep");
+		rs = request.execute();
+		try
+		{
 			while (rs.next()) {
 				res.addElement(new Representation (rs.getString(1), Utilitaires.printDate(rs.getString(2)), rs.getInt(3)));
 			}
-		} catch (SQLException e) {
-			throw new RequestException (" Problème dans l'interrogation des représentations.."
-					+ "Code Oracle " + e.getErrorCode()
-					+ "Message " + e.getMessage());
 		}
-		BDConnexion.FermerTout(conn, stmt, rs);
+		catch(SQLException e)
+		{
+			/*throw new RequestException(e.getMessage()
+					+ */
+		}
+		request.close();
 		return res;
 			}
 
