@@ -52,7 +52,7 @@ public class Theatre {
 						IO.afficherln("au revoir...");
 					} else if (choix == 1) {
 						/* consulter les categories */
-						Utilitaires.AfficherCategories(user);
+						Utilitaires.AfficherCategories();
 					} else if (choix == 2) {
 						IO.afficherln ("programme a completer");
 					} else if (choix == 3) {

@@ -6,22 +6,18 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.Vector;
 
 import javax.servlet.ServletException;
 
-import exceptions.CategorieException;
-import exceptions.ExceptionConnexion;
-import exceptions.ExceptionUtilisateur;
+import exceptions.ConnectionException;
+import exceptions.RequestException;
 
 import utils.ErrorLog;
-import utils.Utilitaires;
 
 import accesBD.BDRequests;
 
 import modele.Representation;
-import modele.Utilisateur;
 
 /**
  * Proramme Servlet.
@@ -62,39 +58,27 @@ public class ProgrammeServlet extends HttpServlet {
 		// Puis construction dynamique d'une page web decrivant ces spectacles.
 		out.println("<p><i><font color=\"#FFFFFF\">");
 		// afficher resultat requete
-		Utilisateur user;
 		ErrorLog errorLog = new ErrorLog();
 		try {
-			System.out.println("avant identification");
-			user = Utilitaires.Identification();
-			System.out.println("apres identification");
-			Vector<Representation> reps = BDRequests.getRepresentations(user);
-			
+			Vector<Representation> reps = BDRequests.getRepresentations();
 			out.println("Dates des repr&eacute;sentations <br>");
 			for (Representation r : reps)
 			{
 				out.println(r.getNom() + " : " + r.getDate() + "<br>");
 			}
-		} catch (ExceptionConnexion e)
-		{
-			errorLog.writeException(e);
-		}
-		catch (ExceptionUtilisateur e)
-		{
-			errorLog.writeException(e);
-		}
-		catch (CategorieException e)
-		{
-			errorLog.writeException(e);
 		}
 		catch (IOException e) 
 		{
 			errorLog.writeException(e);
-		} /*catch (ParseException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (ConnectionException e)
+		{
 			errorLog.writeException(e);
 		}
-		*/
+		catch (RequestException e) 
+		{
+			errorLog.writeException(e);
+		}
 		out.println("</i></p>");
 		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
 		out.println("</BODY>");

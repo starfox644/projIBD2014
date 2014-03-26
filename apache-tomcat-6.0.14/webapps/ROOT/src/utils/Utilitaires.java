@@ -16,7 +16,7 @@ import accesBD.BDConnexion;
 import modele.Utilisateur;
 import modele.Categorie;
 import exceptions.ExceptionUtilisateur;
-import exceptions.ExceptionConnexion;
+import exceptions.ConnectionException;
 import exceptions.CategorieException;
 
 /**
@@ -35,15 +35,15 @@ public class Utilitaires {
 	 * 
 	 * @param user
 	 *            l'utilisateur identifie
-	 * @throws ExceptionConnexion
+	 * @throws ConnectionException
 	 * @throws IOException
 	 */
-	public static void AfficherCategories(Utilisateur user) throws IOException {
+	public static void AfficherCategories() throws IOException {
 		Vector<Categorie> res = new Vector<Categorie>();
 		try {
 			IO.afficherln("===================");
 			IO.afficherln("Listes des categories tarifaires");
-			res = BDCategories.getCategorie(user);
+			res = BDCategories.getCategorie();
 			if (res.isEmpty()) {
 				IO.afficherln(" Liste vide ");
 			} else {
@@ -56,7 +56,7 @@ public class Utilitaires {
 		} catch (CategorieException e) {
 			IO.afficherln(" Erreur dans l'affichage des categories : "
 					+ e.getMessage());
-		} catch (ExceptionConnexion e) {
+		} catch (ConnectionException e) {
 			IO.afficherln(" Erreur dans l'affichage des categories : "
 					+ e.getMessage());
 		}
@@ -69,7 +69,7 @@ public class Utilitaires {
 	 * @return l'oid de l'objet utilisateur
 	 * @throws ExceptionUtilisateur
 	 */
-	public static Utilisateur Identification() throws ExceptionConnexion,
+	public static Utilisateur Identification() throws ConnectionException,
 			ExceptionUtilisateur, IOException {
 		Utilisateur user = null;
 		String login;
@@ -90,7 +90,7 @@ public class Utilitaires {
 		}*/
 		/* test de la connexion */
 		System.out.println("avant connexion");
-		Connection conn = BDConnexion.getConnexion(login, passwd);
+		Connection conn = BDConnexion.getConnexion();
 		if (conn != null) {
 			IO.afficherln("Connexion reussie...");
 			System.out.println("connexion ok");
@@ -98,7 +98,7 @@ public class Utilitaires {
 			user = new Utilisateur(login, passwd);
 		} else {
 			System.out.println("connexion impossible");
-			throw new ExceptionConnexion("Connexion impossible\n");
+			throw new ConnectionException("Connexion impossible\n");
 		}
 		return user;
 	}

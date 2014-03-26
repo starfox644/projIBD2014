@@ -11,8 +11,9 @@ import java.util.Vector;
 import javax.servlet.ServletException;
 
 import exceptions.CategorieException;
-import exceptions.ExceptionConnexion;
+import exceptions.ConnectionException;
 import exceptions.ExceptionUtilisateur;
+import exceptions.RequestException;
 
 import utils.ErrorLog;
 import utils.Utilitaires;
@@ -82,12 +83,11 @@ public class RepresentationsServlet extends HttpServlet {
 			if(!error)
 			{
 				try {
-					user = Utilitaires.Identification();
-					nom = BDRequests.getNomSpectacle(user, numS);
+					nom = BDRequests.getNomSpectacle(numS);
 					// si le nom n'est pas nul, le spectacle existe
 					if(nom != null)
 					{
-						Vector<String> reps = BDRequests.getSpectacleRepresentations(user, numS);
+						Vector<String> reps = BDRequests.getSpectacleRepresentations(numS);
 						if(reps.size() == 0)
 						{
 							out.println("Aucune repr&eacute;sentation pr&eacute;vue. <br>");
@@ -106,22 +106,18 @@ public class RepresentationsServlet extends HttpServlet {
 					{
 						out.println("<p><i><font color=\"#FFFFFF\">Ce num&eacute;ro de spectacle n'existe pas</i></p>");
 					}
-				} catch (ExceptionConnexion e)
-				{
-					errorLog.writeException(e);
-					error = true;
-				}
-				catch (ExceptionUtilisateur e)
-				{
-					errorLog.writeException(e);
-					error = true;
-				}
-				catch (CategorieException e)
-				{
-					errorLog.writeException(e);
-					error = true;
-				}
+				} 
 				catch (IOException e) 
+				{
+					errorLog.writeException(e);
+					error = true;
+				}
+				catch (ConnectionException e)
+				{
+					errorLog.writeException(e);
+					error = true;
+				}
+				catch (RequestException e)
 				{
 					errorLog.writeException(e);
 					error = true;
