@@ -1,29 +1,12 @@
 package accesBD;
-
 import java.io.IOException;
-import java.sql.Connection;
-import java.util.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
+import java.sql.*;
 import java.util.Vector;
 
 import javax.servlet.ServletOutputStream;
-
 import utils.ErrorLog;
 import utils.Utilitaires;
-
-import exceptions.CategorieException;
-import exceptions.ConnectionException;
-import exceptions.ExceptionUtilisateur;
-import exceptions.RequestException;
-
-/*import modele.Representation;
-import modele.Utilisateur;*/
+import exceptions.*;
 import modele.*;
 
 public class BDRequests 
@@ -80,7 +63,7 @@ public class BDRequests
 	 * @param num numero du spectacle
 	 * @param date date de la representation 
 	 * @param heure	heure de la representation 
-	 * @throws CategorieException erreur lors de l'acces a la base
+	 * @throws RequestException erreur lors de l'acces a la base
 	 * @throws ConnectionException en cas de probleme de connexion 
 	 */
 	public static Vector<String> getSpectacleRepresentations (String numS)
@@ -114,7 +97,7 @@ public class BDRequests
 	 * @param user
 	 * @param numS
 	 * @return Le nom du spectacle associe au numero, ou null s'il n'y en a pas d'associe au numero.
-	 * @throws CategorieException
+	 * @throws RequestException
 	 * @throws ConnectionException
 	 */
 	public static String getNomSpectacle(String numS) throws RequestException, ConnectionException
@@ -169,7 +152,7 @@ public class BDRequests
 	 * Retourne la liste des spectacles
 	 * @param user
 	 * @return liste des spectacles 
-	 * @throws CategorieException erreur lors de l'acces a la base
+	 * @throws RequestException erreur lors de l'acces a la base
 	 * @throws ConnectionException erreur de connexion 
 	 */
 	public static Vector<Spectacle> getSpectacles ()
@@ -206,7 +189,7 @@ public class BDRequests
 	 * @param user
 	 * @param numS numero du spectacle 
 	 * @return vrai si le spectacle identifie pas numS existe, faux sinon
-	 * @throws CategorieException erreur lors de l'acces a la base	
+	 * @throws RequestException erreur lors de l'acces a la base	
 	 * @throws ConnectionException erreur de connexion 
 	 */
 	public static boolean isInSpectacles (int numS)
@@ -245,8 +228,8 @@ public class BDRequests
 	 * @param num	numero du spectacle 
 	 * @param date	date de la representation 
 	 * @return	vrai si le spectacle est programme a cette date, faux sinon
-	 * @throws ConnectionException erreur de connexion 
-	 * @throws SQLException	erreur lors de l'interogation de la base (format date)
+	 * @throws RequestException erreur de connexion 
+	 * @throws ConnectionException	erreur lors de l'interogation de la base (format date)
 	 */
 	public static boolean existeDateRep (int num, String date)
 			throws RequestException, ConnectionException
@@ -278,14 +261,19 @@ public class BDRequests
 			}
 
 	/**
-	 *   Requete de places libres
-	 *   
-	 *   
+	 * Renvoie la liste des places disponibles pour la representation du spectacle
+	 * de numero numS prevu a la date passee en parametre
+	 * @param user
+	 * @param date date de la representation
+	 * @param numS numero du spectacle
+	 * @return retour la liste des  places disponibles pour cette representatoion
+	 * @throws RequestException
+	 * @throws ConnectionException
 	 */
-	public static Vector<Integer> getPlacesDispo (String date, String numS)
+	public static Vector<Place> getPlacesDispo (String date, String numS)
 			throws RequestException, ConnectionException 
 			{
-		Vector<Integer> res = new Vector<Integer>();
+		Vector<Place> res = new Vector<Place>();
 		String requete ;
 		Statement stmt ;
 		ResultSet rs ;
@@ -293,18 +281,19 @@ public class BDRequests
 
 		try {
 			stmt = conn.createStatement();
-			requete = "select noPlace, noRang" +
+			requete =
+					"select noPlace, noRang, numZ" +
+					" from LesPlaces " +
+					" natural join" +
+					" (select noPlace, noRang" +
 					"	from LesPlaces" +
 					"	minus" +
-					"	select noPlace, noRang" +
-					"	from LesTickets" +
-					"	where dateRep = to_date('" + date + "', 'DD-MM-YY')" +
-					"	and numS = " + numS;
+					"	select noPlace, noRang from LesTickets where dateRep = to_date('"+date+"' , 'DD/MM/YY') and numS = " + numS + ") order by noRang";
 			rs = stmt.executeQuery(requete);
 			conn.commit();
 
 			while (rs.next()) {
-				//res.addElement(new Spectacle (rs.getInt(1), rs.getString(2)));
+				res.addElement(new Place (rs.getInt(1), rs.getInt(2), rs.getInt(3)));
 			}
 
 		} catch (SQLException e) {
@@ -314,7 +303,79 @@ public class BDRequests
 		}
 		BDConnexion.FermerTout(conn, stmt, rs);
 		return res;
-			}
+	}
+	
+	/**
+	 * Renvoie le nombre de places occupees pour la representation du spectacle
+	 * de numero numS prevu a la date passee en parametre
+	 * @param user
+	 * @param date date de la representation
+	 * @param numS numero du spectacle
+	 * @return le nombre de places occupees pour cette representation
+	 * @throws RequestException 
+	 * @throws ConnectionException
+	 */
+	public static int getNbPlacesOccupees (Utilisateur user, String date, String numS) 
+			throws ConnectionException, RequestException
+	{
+		String requete ;
+		Statement stmt ;
+		ResultSet rs ;
+		Vector<Integer> res = new Vector<Integer>();
+		Connection conn = BDConnexion.getConnexion();
 
+		try {
+			stmt = conn.createStatement();
+			requete = "select count(noPlace) " +
+					  "from LesTickets " +
+					  "where dateRep = to_date('"+date+"' , 'DD/MM/YY') and numS = " + numS;
+		rs = stmt.executeQuery(requete);
+			conn.commit();
+			while (rs.next()) {
+				res.addElement(rs.getInt(1));
+			}
+		} catch (SQLException e) {
+			throw new RequestException (" Erreur dans l'interrogation des places : \n"
+					+ "Code Oracle : " + e.getErrorCode() + "\n"
+					+ "Message : " + e.getMessage() + "\n");
+		}
+		BDConnexion.FermerTout(conn, stmt, rs);
+		return res.get(0);
+	}
+	
+	
+	/**
+	 * Renvoie le nombre de places de la salle de theatre
+	 * @param user
+	 * @return le nombre de places que contient le theatre
+	 * @throws ConnectionException
+	 * @throws RequestException
+	 */
+	public static int getNbPlacesTotales (Utilisateur user)
+			throws ConnectionException, RequestException
+	{
+		String requete ;
+		Statement stmt ;
+		ResultSet rs ;
+		Vector<Integer> res = new Vector<Integer>();
+		Connection conn = BDConnexion.getConnexion();
+
+		try {
+			stmt = conn.createStatement();
+			requete = "select count(noPlace) " +
+					  "from LesPlaces ";
+		rs = stmt.executeQuery(requete);
+			conn.commit();
+			while (rs.next()) {
+				res.addElement(rs.getInt(1));
+			}
+		} catch (SQLException e) {
+			throw new RequestException (" Erreur dans l'interrogation des places : \n"
+					+ "Code Oracle : " + e.getErrorCode() + "\n"
+					+ "Message : " + e.getMessage() + "\n");
+		}
+		BDConnexion.FermerTout(conn, stmt, rs);
+		return res.get(0);
+	}
 
 }

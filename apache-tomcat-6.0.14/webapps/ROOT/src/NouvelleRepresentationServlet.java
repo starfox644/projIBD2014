@@ -5,20 +5,12 @@
  */
 import javax.servlet.*;
 import javax.servlet.http.*;
-
 import exceptions.ConnectionException;
 import exceptions.RequestException;
-
-import utils.ErrorLog;
-import utils.Utilitaires;
-
-import accesBD.BDRequests;
-
-import modele.Spectacle;
-import modele.Utilisateur;
-
+import utils.*;
+import accesBD.*;
+import modele.*;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Vector;
 
 /**
