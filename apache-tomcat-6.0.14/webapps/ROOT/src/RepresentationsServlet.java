@@ -39,7 +39,8 @@ public class RepresentationsServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException
 			{
-		String numS;
+		String strNumS;
+		int numS;
 		ServletOutputStream out = res.getOutputStream();   
 
 		res.setContentType("text/html");
@@ -49,8 +50,8 @@ public class RepresentationsServlet extends HttpServlet {
 		out.println("<font color=\"#FFFFFF\"><h1> Liste des representations </h1>");
 		out.println("<p><i><font color=\"#FFFFFF\">");
 
-		numS = req.getParameter("numS");
-		if (numS == null) 
+		strNumS = req.getParameter("numS");
+		if (strNumS == null) 
 		{
 			printForm(out);
 		} else 
@@ -58,17 +59,17 @@ public class RepresentationsServlet extends HttpServlet {
 			boolean error = false;
 			String nom;
 			// afficher resultat requete
-			Utilisateur user;
 			ErrorLog errorLog = new ErrorLog();
 			try
 			{
-				Integer.parseInt(numS);
+				numS = Integer.parseInt(strNumS);
 			}
 			catch(NumberFormatException e)
 			{
 				error = true;
 				out.println("<p><i><font color=\"#FFFFFF\">Vous n'avez pas entr&eacute; un nombre.</i></p>");
 				printForm(out);
+				return;
 			}
 			if(!error)
 			{

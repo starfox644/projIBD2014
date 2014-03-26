@@ -17,7 +17,6 @@ public class SQLRequest
 	
 	/**
 	 * 		Cree une nouvelle requete sql a partir d'un String.
-	 * @param request String contenant la requete SQL.
 	 * @throws ConnectionException 
 	 */
 	public SQLRequest() throws ConnectionException
@@ -27,6 +26,7 @@ public class SQLRequest
 	
 	/**
 	 * 		Execute la requete SQL et renvoie un ResultSet contenant son resultat.
+	 * @param String requete a executer
 	 * @return	Un ResultSet correspondant au resultat de la requete.
 	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
@@ -39,9 +39,9 @@ public class SQLRequest
 			_rs = _stmt.executeQuery(_request);
 		} catch (SQLException e) 
 		{
-			throw new RequestException (e.getMessage()
-					+ "Code Oracle " + e.getErrorCode()
-					+ "Message " + e.getMessage());
+			throw new RequestException ("Erreur d'execution de requete"
+					+ "Code Oracle : " + e.getErrorCode()
+					+ "\nMessage : " + e.getMessage());
 		}
 		return _rs;
 	}
@@ -54,8 +54,8 @@ public class SQLRequest
 				_conn.commit();
 			} catch (SQLException e) {
 				throw new RequestException (e.getMessage()
-						+ "Code Oracle " + e.getErrorCode()
-						+ "Message " + e.getMessage());
+						+ "Code Oracle : " + e.getErrorCode()
+						+ "\nMessage : " + e.getMessage());
 			}
 		}
 	}

@@ -59,7 +59,6 @@ public class PlaceDispoServlet extends HttpServlet {
 		{
 			
 			try {
-				Utilisateur user = Utilitaires.Identification();
 				// on verifie que le numero de spectacle existe
 				if (BDRequests.isInSpectacles(Integer.parseInt(numS)))
 				{
@@ -67,9 +66,9 @@ public class PlaceDispoServlet extends HttpServlet {
 					if (BDRequests.existeDateRep (Integer.parseInt(numS),dateS))
 					{
 						Vector<Place> list= BDRequests.getPlacesDispo(dateS, numS);
-						int nb = BDRequests.getNbPlacesOccupees (user, dateS, numS);
+						int nb = BDRequests.getNbPlacesOccupees (dateS, numS);
 						out.println("<br> Il y a " + nb+ " places occupees sur "
-								+ BDRequests.getNbPlacesTotales(user)+ "  places au total<br>");
+								+ BDRequests.getNbPlacesTotales()+ "  places au total<br>");
 						out.println("<br> Voici la liste des places disponibes <br>");
 						
 						for (Place p : list)
