@@ -25,24 +25,14 @@ public class BDRequests
 	 * @throws ConnectionException cas d'erreur de connexion 
 	 * @throws RequestException 
 	 */
-	public static Vector<Representation> getRepresentations ()
-			throws ConnectionException, RequestException
-			{
-		try {
-			ErrorLog errorLog = new ErrorLog();
-		} catch (IOException e2) 
-		{
-			throw new ConnectionException(e2.getMessage());
-		}
+	public static Vector<Representation> getRepresentations () throws ConnectionException, RequestException
+	{
 		Vector<Representation> res = new Vector<Representation>();
-		String requete ;
-		Statement stmt ;
-		ResultSet rs ;
-		Connection conn = BDConnexion.getConnexion();
-
-		requete = "select nomS, dateRep, numS from LesRepresentations natural join LesSpectacles order by dateRep";
-		SQLRequest request = new SQLRequest("select nomS, dateRep, numS from LesRepresentations natural join LesSpectacles order by dateRep");
-		rs = request.execute();
+		String str = "select nomS, dateRep, numS " +
+					 "from LesRepresentations " +
+					 "natural join LesSpectacles order by dateRep";
+		SQLRequest request = new SQLRequest();
+		ResultSet rs = request.execute(str);
 		try
 		{
 			while (rs.next()) {
@@ -51,12 +41,13 @@ public class BDRequests
 		}
 		catch(SQLException e)
 		{
-			/*throw new RequestException(e.getMessage()
-					+ */
+			throw new RequestException (e.getMessage()
+					+ "Code Oracle " + e.getErrorCode()
+					+ "Message " + e.getMessage());
 		}
 		request.close();
 		return res;
-			}
+	}
 
 	/**
 	 * Ajoute une representation du spectacle a la date et l'heure passee en parametre 
@@ -70,18 +61,11 @@ public class BDRequests
 	public static Vector<String> getSpectacleRepresentations (String numS)
 			throws RequestException, ConnectionException {
 		Vector<String> res = new Vector<String>();
-		String requete ;
-		Statement stmt ;
-		ResultSet rs ;
-		Connection conn = BDConnexion.getConnexion();
-
-		requete = "select dateRep from LesRepresentations where numS = " + numS + " order by dateRep";
-
-		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(requete);
+		String str = "select dateRep from LesRepresentations where numS = " + numS + " order by dateRep";
+		SQLRequest request = new SQLRequest();
+		ResultSet rs = request.execute(str);
+		try {		
 			while (rs.next()) {
-				System.out.println(rs.getString(1));
 				res.addElement(rs.getString(1));
 			}
 		} catch (SQLException e) {
@@ -89,7 +73,7 @@ public class BDRequests
 					+ "Code Oracle " + e.getErrorCode()
 					+ "Message " + e.getMessage());
 		}
-		BDConnexion.FermerTout(conn, stmt, rs);
+		request.close();
 		return res;
 	}
 
@@ -103,17 +87,11 @@ public class BDRequests
 	 */
 	public static String getNomSpectacle(String numS) throws RequestException, ConnectionException
 	{
-		String requete ;
-		Statement stmt ;
-		ResultSet rs ;
 		String nom = null;
-		Connection conn = BDConnexion.getConnexion();
-
-		requete = "select nomS from LesSpectacles where " + numS + "=numS";
-
+		String str = "select nomS from LesSpectacles where " + numS + "=numS";
+		SQLRequest request = new SQLRequest();
+		ResultSet rs = request.execute(str);
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(requete);
 			if(rs.next()) 
 			{
 				nom = rs.getString(1);
@@ -123,31 +101,18 @@ public class BDRequests
 					+ "Code Oracle " + e.getErrorCode()
 					+ "Message " + e.getMessage());
 		}
-		BDConnexion.FermerTout(conn, stmt, rs);
+		request.close();
 		return nom;
 	}
 
-	public static void addRepresentation (int num , String date, String heure)
-			throws RequestException, ConnectionException 
-			{
-		String requete ;
-		Statement stmt ;
-		ResultSet rs ;
-		Connection conn = BDConnexion.getConnexion();
-
-		try {
-			stmt = conn.createStatement();
-			requete = "INSERT INTO LesRepresentations VALUES ("+num+", to_date( '"+date+" "+heure+"', 'DD/MM/YY HH24'))";
-			rs = stmt.executeQuery(requete);
-			conn.commit();
-		} catch (SQLException e) {
-			throw new RequestException (" Erreur dans l'interrogation des représentations : \n"
-					+ "num =" + num
-					+ "Code Oracle : " + e.getErrorCode() + "\n"
-					+ "Message : " + e.getMessage() + "\n");
-		}
-		BDConnexion.FermerTout(conn, stmt, rs);
-			}
+	public static void addRepresentation (int num , String date, String heure) throws RequestException, ConnectionException 
+	{
+		String str = "INSERT INTO LesRepresentations VALUES ("+num+", to_date( '"+date+" "+heure+"', 'DD/MM/YY HH24'))";
+		SQLRequest request = new SQLRequest();
+		request.execute(str);
+		request.commit();
+		request.close();
+	}
 
 	/**
 	 * Retourne la liste des spectacles
@@ -156,33 +121,23 @@ public class BDRequests
 	 * @throws RequestException erreur lors de l'acces a la base
 	 * @throws ConnectionException erreur de connexion 
 	 */
-	public static Vector<Spectacle> getSpectacles ()
-			throws RequestException, ConnectionException 
-			{
+	public static Vector<Spectacle> getSpectacles () throws RequestException, ConnectionException 
+	{
 		Vector<Spectacle> res = new Vector<Spectacle>();
-		String requete ;
-		Statement stmt ;
-		ResultSet rs ;
-		Connection conn = BDConnexion.getConnexion();
-
+		SQLRequest request = new SQLRequest();
+		ResultSet rs = request.execute("select * from LesSpectacles");
 		try {
-			stmt = conn.createStatement();
-			requete = "select * from LesSpectacles";
-			rs = stmt.executeQuery(requete);
-			conn.commit();
-
 			while (rs.next()) {
 				res.addElement(new Spectacle (rs.getInt(1), rs.getString(2)));
 			}
-
 		} catch (SQLException e) {
 			throw new RequestException (" Erreur dans l'interrogation des représentations : \n"
 					+ "Code Oracle : " + e.getErrorCode() + "\n"
 					+ "Message : " + e.getMessage() + "\n");
 		}
-		BDConnexion.FermerTout(conn, stmt, rs);
+		request.close();
 		return res;
-			}
+	}
 
 
 	/**
@@ -193,22 +148,14 @@ public class BDRequests
 	 * @throws RequestException erreur lors de l'acces a la base	
 	 * @throws ConnectionException erreur de connexion 
 	 */
-	public static boolean isInSpectacles (int numS)
-			throws RequestException, ConnectionException 
-			{
+	public static boolean isInSpectacles (int numS) throws RequestException, ConnectionException 
+	{
 		Vector<String> list = new Vector<String>();
-		String requete ;
-		Statement stmt ;
-		ResultSet rs ;
 		boolean res = false;
-		Connection conn = BDConnexion.getConnexion();
-
+		SQLRequest request = new SQLRequest();
+		ResultSet rs = request.execute("select * from LesSpectacles");
 
 		try {
-			stmt = conn.createStatement();
-			requete = "select nomS from LesSpectacles where numS=" + numS;
-
-			rs = stmt.executeQuery(requete);
 			while (rs.next()) {
 				list.addElement(rs.getString(1));
 			}
@@ -219,9 +166,9 @@ public class BDRequests
 					+ "Code Oracle : " + e.getErrorCode() + "\n"
 					+ "Message : " + e.getMessage() + "\n");
 		}
-		BDConnexion.FermerTout(conn, stmt, rs);
+		request.close();
 		return res;
-			}
+	}
 
 	/**
 	 * Renvoie vrai si le spectacle identifie par num est programme a la date passee en parametre, faux sinon
@@ -232,24 +179,18 @@ public class BDRequests
 	 * @throws RequestException erreur de connexion 
 	 * @throws ConnectionException	erreur lors de l'interogation de la base (format date)
 	 */
-	public static boolean existeDateRep (int num, String date)
-			throws RequestException, ConnectionException
-			{
+	public static boolean existeDateRep (int num, String date) throws RequestException, ConnectionException
+	{
 		Vector<String> list = new Vector<String>();
-		String requete ;
-		Statement stmt ;
-		ResultSet rs ;
 		boolean res = false;
-		Connection conn;
-		conn = BDConnexion.getConnexion();
+		String str = "select numS, dateRep from LesRepresentations " +
+				"  where numS=" + num + " and dateRep = to_date( '"+date+"' , 'DD/MM/YY')";
+		SQLRequest request = new SQLRequest();
+		ResultSet rs = request.execute(str);
 		try
 		{
-			stmt = conn.createStatement();
-			requete = "select numS, dateRep from LesRepresentations " +
-					"  where numS=" + num + " and dateRep = to_date( '"+date+"' , 'DD/MM/YY')";
-	
-			rs = stmt.executeQuery(requete);
-			while (rs.next()) {
+			while (rs.next()) 
+			{
 				list.addElement(rs.getString(1));
 			}
 			res = !list.isEmpty();
@@ -257,9 +198,9 @@ public class BDRequests
 		{
 			throw new RequestException(e.getMessage());
 		}
-		BDConnexion.FermerTout(conn, stmt, rs);
+		request.close();
 		return res;
-			}
+	}
 
 	/**
 	 * Renvoie la liste des places disponibles pour la representation du spectacle
@@ -271,28 +212,20 @@ public class BDRequests
 	 * @throws RequestException
 	 * @throws ConnectionException
 	 */
-	public static Vector<Place> getPlacesDispo (String date, String numS)
-			throws RequestException, ConnectionException 
-			{
+	public static Vector<Place> getPlacesDispo (String date, String numS) throws RequestException, ConnectionException 
+	{
 		Vector<Place> res = new Vector<Place>();
-		String requete ;
-		Statement stmt ;
-		ResultSet rs ;
-		Connection conn = BDConnexion.getConnexion();
+		String str = "select noPlace, noRang, numZ" +
+				" from LesPlaces " +
+				" natural join" +
+				" (select noPlace, noRang" +
+				"	from LesPlaces" +
+				"	minus" +
+				"	select noPlace, noRang from LesTickets where dateRep = to_date('"+date+"' , 'DD/MM/YY') and numS = " + numS + ") order by noRang";
 
+		SQLRequest request = new SQLRequest();
+		ResultSet rs = request.execute(str);
 		try {
-			stmt = conn.createStatement();
-			requete =
-					"select noPlace, noRang, numZ" +
-					" from LesPlaces " +
-					" natural join" +
-					" (select noPlace, noRang" +
-					"	from LesPlaces" +
-					"	minus" +
-					"	select noPlace, noRang from LesTickets where dateRep = to_date('"+date+"' , 'DD/MM/YY') and numS = " + numS + ") order by noRang";
-			rs = stmt.executeQuery(requete);
-			conn.commit();
-
 			while (rs.next()) {
 				res.addElement(new Place (rs.getInt(1), rs.getInt(2), rs.getInt(3)));
 			}
@@ -302,10 +235,10 @@ public class BDRequests
 					+ "Code Oracle : " + e.getErrorCode() + "\n"
 					+ "Message : " + e.getMessage() + "\n");
 		}
-		BDConnexion.FermerTout(conn, stmt, rs);
+		request.close();
 		return res;
 	}
-	
+
 	/**
 	 * Renvoie le nombre de places occupees pour la representation du spectacle
 	 * de numero numS prevu a la date passee en parametre
@@ -316,22 +249,17 @@ public class BDRequests
 	 * @throws RequestException 
 	 * @throws ConnectionException
 	 */
-	public static int getNbPlacesOccupees (Utilisateur user, String date, String numS) 
-			throws ConnectionException, RequestException
+	public static int getNbPlacesOccupees (Utilisateur user, String date, String numS) throws ConnectionException, RequestException
 	{
-		String requete ;
-		Statement stmt ;
-		ResultSet rs ;
 		Vector<Integer> res = new Vector<Integer>();
-		Connection conn = BDConnexion.getConnexion();
 
+		String str = "select count(noPlace) " +
+				"from LesTickets " +
+				"where dateRep = to_date('"+date+"' , 'DD/MM/YY') and numS = " + numS;
+
+		SQLRequest request = new SQLRequest();
+		ResultSet rs = request.execute(str);
 		try {
-			stmt = conn.createStatement();
-			requete = "select count(noPlace) " +
-					  "from LesTickets " +
-					  "where dateRep = to_date('"+date+"' , 'DD/MM/YY') and numS = " + numS;
-		rs = stmt.executeQuery(requete);
-			conn.commit();
 			while (rs.next()) {
 				res.addElement(rs.getInt(1));
 			}
@@ -340,11 +268,11 @@ public class BDRequests
 					+ "Code Oracle : " + e.getErrorCode() + "\n"
 					+ "Message : " + e.getMessage() + "\n");
 		}
-		BDConnexion.FermerTout(conn, stmt, rs);
+		request.close();
 		return res.get(0);
 	}
-	
-	
+
+
 	/**
 	 * Renvoie le nombre de places de la salle de theatre
 	 * @param user
@@ -352,21 +280,15 @@ public class BDRequests
 	 * @throws ConnectionException
 	 * @throws RequestException
 	 */
-	public static int getNbPlacesTotales (Utilisateur user)
-			throws ConnectionException, RequestException
+	public static int getNbPlacesTotales (Utilisateur user)	throws ConnectionException, RequestException
 	{
-		String requete ;
-		Statement stmt ;
-		ResultSet rs ;
-		Vector<Integer> res = new Vector<Integer>();
-		Connection conn = BDConnexion.getConnexion();
 
+		Vector<Integer> res = new Vector<Integer>();
+		String str = "select count(noPlace) " +
+				"from LesPlaces ";
+		SQLRequest request = new SQLRequest();
+		ResultSet rs = request.execute(str);
 		try {
-			stmt = conn.createStatement();
-			requete = "select count(noPlace) " +
-					  "from LesPlaces ";
-		rs = stmt.executeQuery(requete);
-			conn.commit();
 			while (rs.next()) {
 				res.addElement(rs.getInt(1));
 			}
@@ -375,7 +297,7 @@ public class BDRequests
 					+ "Code Oracle : " + e.getErrorCode() + "\n"
 					+ "Message : " + e.getMessage() + "\n");
 		}
-		BDConnexion.FermerTout(conn, stmt, rs);
+		request.close();
 		return res.get(0);
 	}
 

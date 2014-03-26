@@ -18,10 +18,11 @@ public class SQLRequest
 	/**
 	 * 		Cree une nouvelle requete sql a partir d'un String.
 	 * @param request String contenant la requete SQL.
+	 * @throws ConnectionException 
 	 */
-	public SQLRequest(String request)
+	public SQLRequest() throws ConnectionException
 	{
-		_request = request;
+		_conn = BDConnexion.getConnexion();
 	}
 	
 	/**
@@ -30,18 +31,33 @@ public class SQLRequest
 	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
-	public ResultSet execute() throws RequestException, ConnectionException
+	public ResultSet execute(String request) throws RequestException
 	{
-		_conn = BDConnexion.getConnexion();
+		_request = request;
 		try {
 			_stmt = _conn.createStatement();
 			_rs = _stmt.executeQuery(_request);
-		} catch (SQLException e) {
+		} catch (SQLException e) 
+		{
 			throw new RequestException (e.getMessage()
 					+ "Code Oracle " + e.getErrorCode()
 					+ "Message " + e.getMessage());
 		}
 		return _rs;
+	}
+	
+	public void commit() throws RequestException
+	{
+		if(_conn != null)
+		{
+			try {
+				_conn.commit();
+			} catch (SQLException e) {
+				throw new RequestException (e.getMessage()
+						+ "Code Oracle " + e.getErrorCode()
+						+ "Message " + e.getMessage());
+			}
+		}
 	}
 	
 	/**

@@ -6,6 +6,8 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import exceptions.RequestException;
+
 import utils.ErrorLog;
 import utils.Utilitaires;
 
@@ -59,12 +61,12 @@ public class PlaceDispoServlet extends HttpServlet {
 			try {
 				Utilisateur user = Utilitaires.Identification();
 				// on verifie que le numero de spectacle existe
-				if (BDRequests.isInSpectacles(user, Integer.parseInt(numS)))
+				if (BDRequests.isInSpectacles(Integer.parseInt(numS)))
 				{
 					// on verifie que la date de la representation existe et est valide
-					if (BDRequests.existeDateRep (user, Integer.parseInt(numS),dateS))
+					if (BDRequests.existeDateRep (Integer.parseInt(numS),dateS))
 					{
-						Vector<Place> list= BDRequests.getPlacesDispo(user, dateS, numS);
+						Vector<Place> list= BDRequests.getPlacesDispo(dateS, numS);
 						int nb = BDRequests.getNbPlacesOccupees (user, dateS, numS);
 						out.println("<br> Il y a " + nb+ " places occupees sur "
 								+ BDRequests.getNbPlacesTotales(user)+ "  places au total<br>");
@@ -89,7 +91,7 @@ public class PlaceDispoServlet extends HttpServlet {
 					printForm(out);
 				}
 			}
-			catch (SQLException e)
+			catch (RequestException e)
 			{
 				out.println("<p><i><font color=\"#FFFFFF\">Impossible d'acceder a la liste des places disponibles. Veuillez verifier le format de la date</i></p>");
 				out.println("<p><i><font color=\"#FFFFFF\">exemple : 01/12/2014</i></p>");
