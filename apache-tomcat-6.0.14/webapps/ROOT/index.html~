@@ -38,7 +38,8 @@
 &nbsp;</font></li>
       <li>
       <p align="left"><font face="Monotype Corsiva" style="font-size: 16pt">
-      Réservation</font></li>
+      <a href="servlet/ReservationServlet">Reservation pour une representation</a><br>
+&nbsp;</font></li>
     </ul>
     <p align="left">&nbsp;</p>
     <ul>

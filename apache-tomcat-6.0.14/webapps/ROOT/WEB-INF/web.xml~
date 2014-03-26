@@ -33,6 +33,11 @@
 <servlet-class>PlaceDispoServlet</servlet-class> 
 </servlet>
 
+- <servlet> 
+<servlet-name>ReservationServlet</servlet-name> 
+<servlet-class>ReservationServlet</servlet-class> 
+</servlet>
+
 - <servlet-mapping> 
 <servlet-name>ProgrammeServlet</servlet-name> 
 <url-pattern>/servlet/ProgrammeServlet</url-pattern> 
@@ -48,5 +53,13 @@
 <url-pattern>/servlet/RepresentationsServlet</url-pattern> 
 </servlet-mapping>
 
+- <servlet-mapping> 
+<servlet-name>PlaceDispoServlet</servlet-name> 
+<url-pattern>/servlet/PlaceDispoServlet</url-pattern> 
+</servlet-mapping>
 
+- <servlet-mapping> 
+<servlet-name>ReservationServlet</servlet-name> 
+<url-pattern>/servlet/ReservationServlet</url-pattern> 
+</servlet-mapping>
 </web-app>
