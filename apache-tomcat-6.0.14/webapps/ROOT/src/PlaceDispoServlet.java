@@ -101,7 +101,6 @@ public class PlaceDispoServlet extends HttpServlet {
 			catch (Exception e)
 			{
 				out.println("<p><i><font color=\"#FFFFFF\">Impossible d'acceder a la liste des places disponibles.</i></p>");
-				printForm(out);
 				errorLog.writeException(e);
 			}
 		}
