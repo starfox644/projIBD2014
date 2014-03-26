@@ -1,12 +1,13 @@
 package utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Properties;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.Vector;
-import java.awt.Frame;
 
 import jus.util.IO;
 
@@ -19,6 +20,7 @@ import exceptions.ExceptionUtilisateur;
 import exceptions.ConnectionException;
 import exceptions.CategorieException;
 
+
 /**
  * les operations de l'application
  * 
@@ -27,6 +29,8 @@ import exceptions.CategorieException;
  */
 public class Utilitaires {
 
+	public final static String dateFormat = "dd/MM/yyyy";
+	
 	public Utilitaires() {
 	}
 
@@ -159,5 +163,34 @@ public class Utilitaires {
 		String[] h = d[1].split(":");
 		String newdate = ymd[2] + " "+ printMonth(Integer.parseInt(ymd[1]))+ " " + ymd[0] + " a " + h[0] + "H";
 		return newdate;
+	}
+	
+	public static boolean validDateFormat(String date)
+	{
+		boolean res = true;
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+		try
+		{
+			formatter.parse(date);
+		}
+		catch(ParseException e)
+		{
+			res = false;
+		}
+		return res;
+	}
+	
+	public static boolean validIntegerFormat(String integer)
+	{
+		boolean res = true;
+		try
+		{
+			Integer.parseInt(integer);
+		}
+		catch(NumberFormatException e)
+		{
+			res = false;
+		}
+		return res;
 	}
 }

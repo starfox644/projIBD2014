@@ -57,7 +57,7 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 		ErrorLog errorLog = new ErrorLog();
 		
 		// affichage de la listes des spectacles 
-		out.println("<font color=\"#FFFFFF\"><h1> Listes des spectacles existants : </h1>");
+		out.println("<font color=\"#FFFFFF\"><p> Liste des spectacles existants : </p>");
 		try 
 		{
 			Vector<Spectacle> spec = BDRequests.getSpectacles();
@@ -80,12 +80,7 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 		}
 		else 
 		{
-			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
-			try
-			{
-				formatter.parse(dateS);
-			}
-			catch(ParseException e)
+			if(!Utilitaires.validDateFormat(dateS))
 			{
 				CloseOnError(out, "Veuillez entrer une date valide. Exemple : 01/12/2014", strNumS, strHeureS, dateS);
 				return;
@@ -118,7 +113,7 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 						// on verifie que la representation n'est pas deja presente
 						if (BDRequests.existeDateRep(numS,dateS))
 						{
-							out.println("<br><i> Cette date de representation existe deja, impossible de l'ajouter. </i></p>");
+							out.println("<br><i> Cette representation existe deja, impossible de l'ajouter. </i></p>");
 							printForm(out, strNumS, strHeureS, dateS);
 						}
 						else
@@ -207,10 +202,15 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 			out.println("<input type=text size=20 name=date>");
 		}
 		out.println("<br>");
-		/*if(strHeureS != null)
-		{*/
 		out.println("Heure de d&eacute;but de la repr&eacute;sentation :");
-		out.println("<input type=text size=20 name=heure>");
+		if(strHeureS != null)
+		{
+			out.println("<input type=text size=20 name=heure value=" + strHeureS + ">");
+		}
+		else
+		{
+			out.println("<input type=text size=20 name=heure>");
+		}
 		out.println("<br>");
 		out.println("<input type=submit>");
 		out.println("</form>");
