@@ -43,23 +43,37 @@ public class RepresentationsServlet extends HttpServlet {
 		int numS;
 		ServletOutputStream out = res.getOutputStream();   
 
+		ErrorLog errorLog = new ErrorLog();
 		res.setContentType("text/html");
 
-		out.println("<HEAD><TITLE> Liste des representations </TITLE></HEAD>");
+		out.println("<HEAD><TITLE> Liste des repr&eacute;sentations d'un spectacle </TITLE></HEAD>");
 		out.println("<BODY bgproperties=\"fixed\" background=\"/images/rideau.JPG\">");
-		out.println("<font color=\"#FFFFFF\"><h1> Liste des representations </h1>");
+		out.println("<font color=\"#FFFFFF\"><h1> Liste des repr&eacute;sentations d'un spectacle </h1>");
 		out.println("<p><i><font color=\"#FFFFFF\">");
-
+		
 		strNumS = req.getParameter("numS");
 		if (strNumS == null) 
 		{
+			out.println("<font color=\"#FFFFFF\"><p> Liste des spectacles existants : </p>");
+			try 
+			{
+				Vector<Spectacle> spec = BDRequests.getSpectacles();
+				for (Spectacle s : spec)
+				{
+					out.println(s.getNom() + " : " + s.getNumero() + "<br>");
+				}
+				out.println("<br>");
+			}catch(Exception e)
+			{					
+				out.println("<p><i><font color=\"#FFFFFF\">Impossible d'afficher la liste des spectacles.</i></p>");
+				errorLog.writeException(e);
+			}
 			printForm(out);
 		} else 
 		{
 			boolean error = false;
 			String nom;
 			// afficher resultat requete
-			ErrorLog errorLog = new ErrorLog();
 			try
 			{
 				numS = Integer.parseInt(strNumS);
@@ -67,8 +81,7 @@ public class RepresentationsServlet extends HttpServlet {
 			catch(NumberFormatException e)
 			{
 				error = true;
-				out.println("<p><i><font color=\"#FFFFFF\">Vous n'avez pas entr&eacute; un nombre.</i></p>");
-				printForm(out);
+				CloseOnError(out, "Vous n'avez pas entr&eacute; un num&eacute;ro.");
 				return;
 			}
 			if(!error)
@@ -125,7 +138,7 @@ public class RepresentationsServlet extends HttpServlet {
 		}
 			}
 
-	private void printForm(ServletOutputStream out) throws IOException
+	private static void printForm(ServletOutputStream out) throws IOException
 	{
 		out.println("<font color=\"#FFFFFF\">Veuillez saisir un num&eacute;ro de spectacle :");
 		out.println("<P>");
@@ -140,6 +153,16 @@ public class RepresentationsServlet extends HttpServlet {
 		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
 		out.println("</BODY>");
 	}
+	
+	private static void CloseOnError(ServletOutputStream out, String message) throws IOException
+	{
+		out.println("<p><i><font color=\"#FFFFFF\">" + message + "</i></p>");
+		printForm(out);
+		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");
+		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");
+		out.println("</BODY>");
+		out.close();
+	}
 
 	/**
 	 * HTTP POST request entry point.
@@ -153,11 +176,10 @@ public class RepresentationsServlet extends HttpServlet {
 	 * @throws IOException	   if an input or output error is detected 
 	 *					   when the servlet handles the POST request
 	 */
-	public void doPost(HttpServletRequest req, HttpServletResponse res)
-			throws ServletException, IOException
-			{
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
+	{
 		doGet(req, res);
-			}
+	}
 
 
 	/**
