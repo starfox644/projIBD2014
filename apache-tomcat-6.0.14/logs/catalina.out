@@ -9359,3 +9359,60 @@ avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , 
 apres connexion
 avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
 apres connexion
+avant connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+Connexion reussie...
+connexion ok
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+avant connect : jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:ufrima, , plassonc , bd2013
+apres connexion
+2008-12-20 00:00:00.0
+2014-02-01 20:00:00.0
+mars 25, 2014 9:37:13 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 25, 2014 9:37:14 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 26, 2014 2:24:28 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 26, 2014 2:24:28 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 26, 2014 2:24:28 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 654 ms
+mars 26, 2014 2:24:29 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 26, 2014 2:24:29 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 26, 2014 2:24:29 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 26, 2014 2:24:29 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 26, 2014 2:24:29 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/40  config=null
+mars 26, 2014 2:24:29 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 756 ms
+mars 26, 2014 2:25:48 PM org.apache.coyote.http11.Http11Protocol pause
+Infos: Suspension de Coyote HTTP/1.1 sur http-8080
+mars 26, 2014 2:25:49 PM org.apache.catalina.core.StandardService stop
+Infos: Arrêt du service Catalina
+mars 26, 2014 2:25:49 PM org.apache.coyote.http11.Http11Protocol destroy
+Infos: Arrêt de Coyote HTTP/1.1 sur http-8080
+mars 26, 2014 2:35:00 PM org.apache.catalina.core.AprLifecycleListener init
+Infos: The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /opt/ros/hydro/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+mars 26, 2014 2:35:00 PM org.apache.coyote.http11.Http11Protocol init
+Infos: Initialisation de Coyote HTTP/1.1 sur http-8080
+mars 26, 2014 2:35:00 PM org.apache.catalina.startup.Catalina load
+Infos: Initialization processed in 676 ms
+mars 26, 2014 2:35:00 PM org.apache.catalina.core.StandardService start
+Infos: Démarrage du service Catalina
+mars 26, 2014 2:35:00 PM org.apache.catalina.core.StandardEngine start
+Infos: Starting Servlet Engine: Apache Tomcat/6.0.14
+mars 26, 2014 2:35:01 PM org.apache.coyote.http11.Http11Protocol start
+Infos: Démarrage de Coyote HTTP/1.1 sur http-8080
+mars 26, 2014 2:35:01 PM org.apache.jk.common.ChannelSocket init
+Infos: JK: ajp13 listening on /0.0.0.0:8009
+mars 26, 2014 2:35:01 PM org.apache.jk.server.JkMain start
+Infos: Jk running ID=0 time=0/42  config=null
+mars 26, 2014 2:35:01 PM org.apache.catalina.startup.Catalina start
+Infos: Server startup in 749 ms
