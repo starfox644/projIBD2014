@@ -24,6 +24,9 @@ import modele.*;
 
 public class RepresentationsServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
+
 	/**
 	 * HTTP GET request entry point.
 	 *
@@ -99,10 +102,10 @@ public class RepresentationsServlet extends HttpServlet {
 						else
 						{
 							// affichage des dates de representations
-							out.println("Dates des repr&eacute;sentations de " + nom + " <br>");
+							out.println("<h2>Dates des repr&eacute;sentations de " + nom + " </h2><br>");
 							for (String r : reps)
 							{
-								out.println(r + "<br>");
+								out.println(Utilitaires.printDate(r) + "<br>");
 							}
 						}
 					}
@@ -111,11 +114,6 @@ public class RepresentationsServlet extends HttpServlet {
 						out.println("<p><i><font color=\"#FFFFFF\">Ce num&eacute;ro de spectacle n'existe pas</i></p>");
 					}
 				} 
-				catch (IOException e) 
-				{
-					errorLog.writeException(e);
-					error = true;
-				}
 				catch (ConnectionException e)
 				{
 					errorLog.writeException(e);

@@ -7,8 +7,6 @@ import java.util.Properties;
 
 import jus.util.IO;
 
-import oracle.jdbc.pool.OracleDataSource;
-import utils.Constantes;
 import exceptions.ConnectionException;
 
 public final class BDConnexion {

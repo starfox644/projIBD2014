@@ -167,7 +167,7 @@ public class Utilitaires {
 	public static boolean validDateFormat(String date)
 	{
 		boolean res = true;
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+		SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
 		try
 		{
 			formatter.parse(date);
