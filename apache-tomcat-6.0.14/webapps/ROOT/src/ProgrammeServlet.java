@@ -50,21 +50,16 @@ public class ProgrammeServlet extends HttpServlet {
 		// TO DO
 		// Recuperation de la liste de tous les spectacles de la saison.
 		// Puis construction dynamique d'une page web decrivant ces spectacles.
-		out.println("<p><i><font color=\"#FFFFFF\">");
 		// afficher resultat requete
 		ErrorLog errorLog = new ErrorLog();
 		try {
 			Vector<Representation> reps = BDRequests.getRepresentations();
-			out.println("Dates des repr&eacute;sentations <br>");
+			out.println("<font color=\"#FFFFFF\"><h2>Dates des repr&eacute;sentations</h2> <br>");
 			for (Representation r : reps)
 			{
 				out.println(r.getNom() + " : " + r.getDate() + "<br>");
 			}
 		}
-		catch (IOException e) 
-		{
-			errorLog.writeException(e);
-		} 
 		catch (ConnectionException e)
 		{
 			errorLog.writeException(e);

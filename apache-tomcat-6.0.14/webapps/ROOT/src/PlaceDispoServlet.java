@@ -63,7 +63,7 @@ public class PlaceDispoServlet extends HttpServlet {
 				if (BDRequests.isInSpectacles(Integer.parseInt(numS)))
 				{
 					// on verifie que la date de la representation existe et est valide
-					if (BDRequests.existeDateRep (Integer.parseInt(numS),dateS))
+					if (BDRequests.existeDateRep (Integer.parseInt(numS),dateS, 0))
 					{
 						Vector<Place> list= BDRequests.getPlacesDispo(dateS, numS);
 						int nb = BDRequests.getNbPlacesOccupees (dateS, numS);

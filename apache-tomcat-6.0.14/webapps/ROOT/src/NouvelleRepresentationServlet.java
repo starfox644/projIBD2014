@@ -82,7 +82,7 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 		{
 			if(!Utilitaires.validDateFormat(dateS))
 			{
-				CloseOnError(out, "Veuillez entrer une date valide. Exemple : 01/12/2014", strNumS, strHeureS, dateS);
+				CloseOnError(out, "Veuillez entrer une date valide. Exemple : 15/12/2014", strNumS, strHeureS, dateS);
 				return;
 			}
 			try
@@ -111,9 +111,9 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 					if (BDRequests.isInSpectacles(numS))
 					{
 						// on verifie que la representation n'est pas deja presente
-						if (BDRequests.existeDateRep(numS,dateS))
+						if (BDRequests.existeDateRep(numS,dateS, heureS))
 						{
-							out.println("<br><i> Cette representation existe deja, impossible de l'ajouter. </i></p>");
+							out.println("<br><i> Ce spectacle est d&eacute;ja pr&eacute;vu a cette heure, impossible de l'ajouter. </i></p>");
 							printForm(out, strNumS, strHeureS, dateS);
 						}
 						else

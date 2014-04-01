@@ -1,10 +1,7 @@
 package accesBD;
-import java.io.IOException;
 import java.sql.*;
 import java.util.Vector;
 
-import javax.servlet.ServletOutputStream;
-import utils.ErrorLog;
 import utils.Utilitaires;
 import exceptions.*;
 import modele.*;
@@ -174,11 +171,11 @@ public class BDRequests
 	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
-	public static boolean existeDateRep (int num, String date) throws RequestException, ConnectionException
+	public static boolean existeDateRep (int num, String date, int heure) throws RequestException, ConnectionException
 	{
 		boolean res = false;
 		String str = "select numS, dateRep from LesRepresentations " +
-				"  where numS=" + num + " and dateRep = to_date( '"+date+"' , 'DD/MM/YY')";
+				"  where numS=" + num + " and dateRep = to_date( '"+date+" " + heure + "' , 'DD/MM/YY HH24')";
 		SQLRequest request = new SQLRequest();
 		ResultSet rs = request.execute(str);
 		try
