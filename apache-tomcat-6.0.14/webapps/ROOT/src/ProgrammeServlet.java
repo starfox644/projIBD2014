@@ -24,6 +24,9 @@ import modele.*;
 
 public class ProgrammeServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
+
 	/**
 	 * HTTP GET request entry point.
 	 *
