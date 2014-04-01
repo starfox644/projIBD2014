@@ -37,7 +37,8 @@ public class PlaceDispoServlet extends HttpServlet {
 			throws ServletException, IOException
 	{
 		
-		String numS, dateS;
+		String strNumS, dateS, strHeureS;
+		int numS, heureS;
 		ServletOutputStream out = res.getOutputStream();   
 
 		res.setContentType("text/html");
@@ -50,23 +51,41 @@ public class PlaceDispoServlet extends HttpServlet {
 
 		out.println("<font color=\"#FFFFFF\"><h1> Recuperer les places disponibles de la representation </h1>");
 
-		numS		= req.getParameter("numS");
+		strNumS		= req.getParameter("numS");
 		dateS		= req.getParameter("date");
-		if (numS == null || dateS == null) {
+		strHeureS		= req.getParameter("heure");
+		if (strNumS == null || dateS == null || strHeureS == null) {
 			printForm(out);
 		} 
 		else 
 		{
-			
+			if(Utilitaires.validIntegerFormat(strHeureS))
+			{
+				heureS = Integer.parseInt(strHeureS);
+			}
+			else
+			{
+				out.close();
+				return;
+			}
+			if(Utilitaires.validIntegerFormat(strNumS))
+			{
+				numS = Integer.parseInt(strNumS);
+			}
+			else
+			{
+				out.close();
+				return;
+			}
 			try {
 				// on verifie que le numero de spectacle existe
-				if (BDRequests.isInSpectacles(Integer.parseInt(numS)))
+				if (BDRequests.isInSpectacles(numS))
 				{
 					// on verifie que la date de la representation existe et est valide
-					if (BDRequests.existeDateRep (Integer.parseInt(numS),dateS, 0))
+					if (BDRequests.existeDateRep (numS,dateS, heureS))
 					{
-						Vector<Place> list= BDRequests.getPlacesDispo(dateS, numS);
-						int nb = BDRequests.getNbPlacesOccupees (dateS, numS);
+						Vector<Place> list= BDRequests.getPlacesDispo(numS, dateS, heureS);
+						int nb = BDRequests.getNbPlacesOccupees (numS, dateS, heureS);
 						out.println("<br> Il y a " + nb+ " places occupees sur "
 								+ BDRequests.getNbPlacesTotales()+ "  places au total<br>");
 						out.println("<br> Voici la liste des places disponibes <br>");
@@ -151,6 +170,9 @@ public class PlaceDispoServlet extends HttpServlet {
 		out.println("<br>");
 		out.println("Date de la repr&eacute;sentation :");
 		out.println("<input type=text size=20 name=date>");
+		out.println("<br>");
+		out.println("Heure de la repr&eacute;sentation :");
+		out.println("<input type=text size=20 name=heure>");
 		out.println("<br>");
 		out.println("<input type=submit>");
 		out.println("</form>");

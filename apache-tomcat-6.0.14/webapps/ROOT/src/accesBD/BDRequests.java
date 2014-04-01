@@ -51,15 +51,19 @@ public class BDRequests
 	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
-	public static Vector<String> getSpectacleRepresentations (int numS) throws RequestException, ConnectionException 
+	public static Vector<Representation> getSpectacleRepresentations (int numS) throws RequestException, ConnectionException 
 	{
-		Vector<String> res = new Vector<String>();
-		String str = "select dateRep from LesRepresentations where numS = " + numS + " order by dateRep";
+		Vector<Representation> res = new Vector<Representation>();
+		String str = "select nomS, dateRep, numS " +
+				"from LesRepresentations " +
+				"natural join LesSpectacles " +
+				"where numS = " + numS
+				+ "order by dateRep";
 		SQLRequest request = new SQLRequest();
 		ResultSet rs = request.execute(str);
 		try {		
 			while (rs.next()) {
-				res.addElement(rs.getString(1));
+				res.addElement(new Representation (rs.getString(1), rs.getString(2), rs.getInt(3)));
 			}
 		} catch (SQLException e) {
 			throw new RequestException ("Erreur dans getSpectacleRepresentations \n"
@@ -200,7 +204,7 @@ public class BDRequests
 	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
-	public static Vector<Place> getPlacesDispo (String date, String numS) throws RequestException, ConnectionException 
+	public static Vector<Place> getPlacesDispo (int numS, String date, int heure) throws RequestException, ConnectionException 
 	{
 		Vector<Place> res = new Vector<Place>();
 		String str = "select noPlace, noRang, numZ" +
@@ -209,7 +213,7 @@ public class BDRequests
 				" (select noPlace, noRang" +
 				"	from LesPlaces" +
 				"	minus" +
-				"	select noPlace, noRang from LesTickets where dateRep = to_date('"+date+"' , 'DD/MM/YY') and numS = " + numS + ") order by noRang";
+				"	select noPlace, noRang from LesTickets where dateRep = to_date('"+date+" "+ heure + "' , 'DD/MM/YY HH24') and numS = " + numS + ") order by noRang";
 
 		SQLRequest request = new SQLRequest();
 		ResultSet rs = request.execute(str);
@@ -236,12 +240,12 @@ public class BDRequests
 	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
-	public static int getNbPlacesOccupees (String date, String numS) throws ConnectionException, RequestException
+	public static int getNbPlacesOccupees (int numS, String date, int heure) throws ConnectionException, RequestException
 	{
 		int nbPlaces = 0;
 		String str = "select count(noPlace) " +
 					"from LesTickets " +
-					"where dateRep = to_date('"+date+"' , 'DD/MM/YY') and numS = " + numS;
+					"where dateRep = to_date('"+date+" "+heure + "' , 'DD/MM/YY HH24') and numS = " + numS;
 
 		SQLRequest request = new SQLRequest();
 		ResultSet rs = request.execute(str);

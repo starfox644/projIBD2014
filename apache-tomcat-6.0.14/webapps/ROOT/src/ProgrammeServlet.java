@@ -60,7 +60,10 @@ public class ProgrammeServlet extends HttpServlet {
 			out.println("<font color=\"#FFFFFF\"><h2>Dates des repr&eacute;sentations</h2> <br>");
 			for (Representation r : reps)
 			{
-				out.println(r.getNom() + " : " + r.getDate() + "<br>");
+			    out.println("<a href=\"RepresentationsServlet?numS=" + r.getNumero() + "\">" 
+			    		+ r.getNom() + " : " + r.getDate()
+			    		+ "</a><br>");
+				//out.println(r.getNom() + " : " + r.getDate() + "<br>");
 			}
 		}
 		catch (ConnectionException e)
