@@ -58,7 +58,7 @@ public class ProgrammeServlet extends HttpServlet {
 			out.println("Dates des repr&eacute;sentations <br>");
 			for (Representation r : reps)
 			{
-				out.println(r.getNom() + " : " + r.getDate() + "<br>");
+				out.println(r.getNom() + " " + r.getNumero() + " : " + r.getDate() + "<br>");
 			}
 		}
 		catch (IOException e) 
