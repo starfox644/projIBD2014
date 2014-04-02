@@ -58,7 +58,7 @@ public class BDRequests
 				"from LesRepresentations " +
 				"natural join LesSpectacles " +
 				"where numS = " + numS
-				+ "order by dateRep";
+				+ "order by dateRep DESC";
 		SQLRequest request = new SQLRequest();
 		ResultSet rs = request.execute(str);
 		try {		
@@ -128,7 +128,7 @@ public class BDRequests
 	{
 		Vector<Spectacle> res = new Vector<Spectacle>();
 		SQLRequest request = new SQLRequest();
-		ResultSet rs = request.execute("select * from LesSpectacles");
+		ResultSet rs = request.execute("select * from LesSpectacles order by nomS");
 		try {
 			while (rs.next()) {
 				res.addElement(new Spectacle (rs.getInt(1), rs.getString(2)));

@@ -56,12 +56,12 @@ public class ProgrammeServlet extends HttpServlet {
 		// afficher resultat requete
 		ErrorLog errorLog = new ErrorLog();
 		try {
-			Vector<Representation> reps = BDRequests.getRepresentations();
-			out.println("<font color=\"#FFFFFF\"><h2>Dates des repr&eacute;sentations</h2> <br>");
-			for (Representation r : reps)
+			Vector<Spectacle> spec = BDRequests.getSpectacles();
+			out.println("<font color=\"#FFFFFF\"><h2>Les spectacles a l'affiche</h2> <br>");
+			for (Spectacle s : spec)
 			{
-			    out.println("<a href=\"RepresentationsServlet?numS=" + r.getNumero() + "\">" 
-			    		+ r.getNom() + " : " + r.getDate()
+			    out.println("<a href=\"RepresentationsServlet?numS=" + s.getNumero() + "\">" 
+			    		+ s.getNom() + " : " + s.getNumero()
 			    		+ "</a><br>");
 				//out.println(r.getNom() + " : " + r.getDate() + "<br>");
 			}
