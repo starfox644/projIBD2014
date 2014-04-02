@@ -46,8 +46,6 @@ public class RepresentationsServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
 	{
-		String strNumS;
-
 		InputParameters parameters = new InputParameters();
 		parameters.addParameter("numS", "Num&eacute;ro de spectacle", ParameterType.INTEGER);
 		int numS;
@@ -68,7 +66,7 @@ public class RepresentationsServlet extends HttpServlet {
 		out.println("<font color=\"#FFFFFF\"><h1> Liste des repr&eacute;sentations d'un spectacle </h1>");
 		out.println("<p><i><font color=\"#FFFFFF\">");
 		
-		boolean success = parameters.readParameters(req);
+		parameters.readParameters(req);
 		if(parameters.nullParameters())
 		{
 			out.println("<font color=\"#FFFFFF\"><p> Liste des spectacles existants : </p>");
@@ -92,7 +90,7 @@ public class RepresentationsServlet extends HttpServlet {
 		{
 			String nom;
 			boolean error = false;
-			if(!success)
+			if(!parameters.validParameters())
 			{
 				out.print(parameters.getHtmlError());
 				out.print(parameters.getHtmlForm(invite, formLink));

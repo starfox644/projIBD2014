@@ -46,6 +46,7 @@ public class PlaceDispoServlet extends HttpServlet {
 		parameters.addParameter("numS", "Num&eacute;ro de spectacle", ParameterType.INTEGER);
 		parameters.addParameter("date", "Date de repr&eacute;sentation", ParameterType.DATE);
 		parameters.addParameter("heure", "Heure de repr&eacute;sentation", ParameterType.HOUR);
+		
 		String dateS;
 		int numS, heureS;
 		ServletOutputStream out = res.getOutputStream();   
@@ -60,14 +61,14 @@ public class PlaceDispoServlet extends HttpServlet {
 
 		out.println("<font color=\"#FFFFFF\"><h1> Recuperer les places disponibles de la representation </h1>");
 
-		boolean success = parameters.readParameters(req);
+		parameters.readParameters(req);
 		if(parameters.nullParameters())
 		{
 			out.print(parameters.getHtmlForm(invite, formLink));
 		}
 		else 
 		{
-			if(!success)
+			if(!parameters.validParameters())
 			{
 				out.print(parameters.getHtmlError());
 				out.print(parameters.getHtmlForm(invite, formLink));

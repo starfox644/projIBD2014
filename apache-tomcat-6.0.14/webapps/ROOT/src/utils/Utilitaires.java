@@ -1,5 +1,4 @@
 package utils;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
@@ -166,11 +165,21 @@ public class Utilitaires {
 	
 	public static boolean validDateFormat(String date)
 	{
-		boolean res = true;
+		boolean res = false;
 		SimpleDateFormat formatter = new SimpleDateFormat(Constantes.dateFormat);
 		try
 		{
 			formatter.parse(date);
+			String[] d= date.split("/");
+			// verification du jour 
+			if (Integer.parseInt(d[0]) > 0 && Integer.parseInt(d[0]) < 32)
+			{
+				// verification du mois
+				if (Integer.parseInt(d[1]) > 0 && Integer.parseInt(d[1]) < 13)
+				{
+					res = true;
+				}
+			}
 		}
 		catch(ParseException e)
 		{

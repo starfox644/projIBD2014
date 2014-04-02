@@ -290,4 +290,62 @@ public class BDRequests
 		return res.get(0);
 	}
 
+	
+	/**
+	 * Renvoie la liste des places disponibles pour la representation du spectacle
+	 * de numero numS prevu a la date passee en parametre
+	 * @param user
+	 * @param date date de la representation
+	 * @param numS numero du spectacle
+	 * @return retour la liste des  places disponibles pour cette representatoion
+	 * @throws RequestException
+	 * @throws ConnectionException
+	 */
+	/*public static Place reserverPlace(String date, String numS, int numZ)
+		throws RequestException, ConnectionException 
+	{
+		Vector<Place> res = new Vector<Place>();
+		String strPlaces ;
+		String strMaxSerie ;
+		//String strDateRep ;
+		Place placeRes = null;
+		
+		SQLRequest request = new SQLRequest();
+		
+		// on verifie que le debut de la representation est bien dans au moins une heure
+		strPlaces =	" (select noPlace, noRang, numZ" +
+				"	from LesPlaces " +
+				"	where numZ=" + numZ + 
+				"	minus" +
+				"	select noPlace, noRang from LesTickets where dateRep = to_date('"+date+"' , 'DD/MM/YY') and numS = " + numS + ")" +
+				" order by noRang";
+		
+
+		ResultSet rs = request.execute(strPlaces);
+		try
+		{
+			while (rs.next()) {
+				res.addElement(new Place (rs.getInt(1), rs.getInt(2), rs.getInt(3)));
+			}
+			
+			// insertion des LesTickets
+			
+			String strRemove =	" insert into  ";
+			
+			// s'il reste des place disponibles
+			if (!res.isEmpty())
+			{
+				
+				placeRes = res.get(0);
+				
+			}
+
+		} catch (SQLException e) {
+			throw new RequestException (" Erreur dans l'interrogation des places : \n"
+					+ "Code Oracle : " + e.getErrorCode() + "\n"
+					+ "Message : " + e.getMessage() + "\n");
+		}
+		request.close();
+		return res;
+	}*/
 }
