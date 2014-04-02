@@ -6,6 +6,9 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Vector;
 
 import exceptions.*;
@@ -44,6 +47,10 @@ public class RepresentationsServlet extends HttpServlet {
 			{
 		String strNumS;
 		int numS;
+		SimpleDateFormat formatterOld;
+		SimpleDateFormat formatterNew;
+		Date tmpDate;
+		String tmpStrDate;
 		ServletOutputStream out = res.getOutputStream();   
 
 		ErrorLog errorLog = new ErrorLog();
@@ -94,7 +101,9 @@ public class RepresentationsServlet extends HttpServlet {
 					// si le nom n'est pas nul, le spectacle existe
 					if(nom != null)
 					{
-						Vector<String> reps = BDRequests.getSpectacleRepresentations(numS);
+						formatterOld = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+						formatterNew = new SimpleDateFormat(Utilitaires.dateFormat);
+						Vector<Representation> reps = BDRequests.getSpectacleRepresentations(numS);
 						if(reps.size() == 0)
 						{
 							out.println("Aucune repr&eacute;sentation pr&eacute;vue. <br>");
@@ -103,9 +112,16 @@ public class RepresentationsServlet extends HttpServlet {
 						{
 							// affichage des dates de representations
 							out.println("<h2>Dates des repr&eacute;sentations de " + nom + " </h2><br>");
-							for (String r : reps)
+							for (Representation r : reps)
 							{
-								out.println(Utilitaires.printDate(r) + "<br>");
+								tmpDate = formatterOld.parse(r.getDate());
+								tmpStrDate = formatterNew.format(tmpDate);
+							    /*out.println("<a href=\"PlacesDispoServlet?numS=" + r.getNumero() 
+							    		+ "\">" 
+							    		+ r.getNom() + " : " + r.getDate()
+							    		+ "</a><br>");*/
+								out.println(Utilitaires.printDate(r.getDate()) + "<br>");
+								//out.println(tmpStrDate + "<br>");
 							}
 						}
 					}
@@ -121,6 +137,9 @@ public class RepresentationsServlet extends HttpServlet {
 				}
 				catch (RequestException e)
 				{
+					errorLog.writeException(e);
+					error = true;
+				} catch (ParseException e) {
 					errorLog.writeException(e);
 					error = true;
 				}
