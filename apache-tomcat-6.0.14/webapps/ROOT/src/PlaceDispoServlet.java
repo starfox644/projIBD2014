@@ -6,9 +6,12 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import exceptions.ConnectionException;
 import exceptions.RequestException;
 
 import utils.ErrorLog;
+import utils.InputParameters;
+import utils.ParameterType;
 import utils.Utilitaires;
 
 import accesBD.BDRequests;
@@ -21,6 +24,9 @@ import java.util.Vector;
 
 public class PlaceDispoServlet extends HttpServlet {
 
+	private static final String invite = "Veuillez saisir les informations relatives &agrave; la repr&eacute;sentation";
+	private static final String formLink = "PlaceDispoServlet";
+	
 	/**
 	 * HTTP GET request entry point.
 	 *
@@ -36,8 +42,11 @@ public class PlaceDispoServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException
 	{
-		
-		String strNumS, dateS, strHeureS;
+		InputParameters parameters = new InputParameters();
+		parameters.addParameter("numS", "Num&eacute;ro de spectacle", ParameterType.INTEGER);
+		parameters.addParameter("date", "Date de repr&eacute;sentation", ParameterType.DATE);
+		parameters.addParameter("heure", "Heure de repr&eacute;sentation", ParameterType.HOUR);
+		String dateS;
 		int numS, heureS;
 		ServletOutputStream out = res.getOutputStream();   
 
@@ -51,32 +60,25 @@ public class PlaceDispoServlet extends HttpServlet {
 
 		out.println("<font color=\"#FFFFFF\"><h1> Recuperer les places disponibles de la representation </h1>");
 
-		strNumS		= req.getParameter("numS");
-		dateS		= req.getParameter("date");
-		strHeureS		= req.getParameter("heure");
-		if (strNumS == null || dateS == null || strHeureS == null) {
-			printForm(out);
-		} 
+		boolean success = parameters.readParameters(req);
+		if(parameters.nullParameters())
+		{
+			out.print(parameters.getHtmlForm(invite, formLink));
+		}
 		else 
 		{
-			if(Utilitaires.validIntegerFormat(strHeureS))
+			if(!success)
 			{
-				heureS = Integer.parseInt(strHeureS);
-			}
-			else
-			{
+				out.print(parameters.getHtmlError());
+				out.print(parameters.getHtmlForm(invite, formLink));
+				out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
+				out.println("</BODY>");
 				out.close();
 				return;
 			}
-			if(Utilitaires.validIntegerFormat(strNumS))
-			{
-				numS = Integer.parseInt(strNumS);
-			}
-			else
-			{
-				out.close();
-				return;
-			}
+			numS = parameters.getIntParameter("numS");
+			dateS = parameters.getStringParameter("date");
+			heureS = parameters.getIntParameter("heure");
 			try {
 				// on verifie que le numero de spectacle existe
 				if (BDRequests.isInSpectacles(numS))
@@ -98,29 +100,27 @@ public class PlaceDispoServlet extends HttpServlet {
 					}
 					else
 					{
-						out.println("<br> Cette date de representation n'existe pas <br>");
-						printForm(out);
+						out.println("Cette date de repr&eacute;sentation n'existe pas. <br><br>");
+						out.print(parameters.getHtmlForm(invite, formLink));
 						
 					}
 				}
 				else
 				{
-					out.println("<br> Ce numero de spectacle n'existe pas<br>");
-					printForm(out);
+					out.println("Ce num&eacute;ro de spectacle n'existe pas. <br><br>");
+					out.print(parameters.getHtmlForm(invite, formLink));
 				}
 			}
 			catch (RequestException e)
 			{
-				out.println("<p><i><font color=\"#FFFFFF\">Impossible d'acceder a la liste des places disponibles. Veuillez verifier le format de la date</i></p>");
-				out.println("<p><i><font color=\"#FFFFFF\">exemple : 01/12/2014</i></p>");
-				printForm(out);
+				out.println("<p><i><font color=\"#FFFFFF\">Impossible d'acceder a la liste des places disponibles.</i></p>");
+				out.print(parameters.getHtmlForm(invite, formLink));
+				errorLog.writeException(e);
+			} catch (ConnectionException e) {
+				out.println("<p><i><font color=\"#FFFFFF\">Impossible d'acceder a la liste des places disponibles.</i></p>");
+				out.print(parameters.getHtmlForm(invite, formLink));
 				errorLog.writeException(e);
 			} 
-			catch (Exception e)
-			{
-				out.println("<p><i><font color=\"#FFFFFF\">Impossible d'acceder a la liste des places disponibles.</i></p>");
-				errorLog.writeException(e);
-			}
 		}
 
 		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");
@@ -158,7 +158,7 @@ public class PlaceDispoServlet extends HttpServlet {
 		return "Ajoute une representation e une date donnee pour un spectacle existant";
 	}
 	
-	public static void printForm(ServletOutputStream out) throws IOException
+	/*public static void printForm(ServletOutputStream out) throws IOException
 	{
 		out.println("<font color=\"#FFFFFF\">Veuillez saisir les informations relatives &agrave; la repr&eacute;sentation :");
 		out.println("<P>");
@@ -168,7 +168,7 @@ public class PlaceDispoServlet extends HttpServlet {
 		out.println("Num&eacute;ro de spectacle :");
 		out.println("<input type=text size=20 name=numS>");
 		out.println("<br>");
-		out.println("Date de la repr&eacute;sentation :");
+		out.println("Date de repr&eacute;sentation :");
 		out.println("<input type=text size=20 name=date>");
 		out.println("<br>");
 		out.println("Heure de la repr&eacute;sentation :");
@@ -177,5 +177,15 @@ public class PlaceDispoServlet extends HttpServlet {
 		out.println("<input type=submit>");
 		out.println("</form>");
 	}
+	
+	private static void CloseOnError(ServletOutputStream out, String message) throws IOException
+	{
+		out.println("<p><i><font color=\"#FFFFFF\">" + message + "</i></p>");
+		printForm(out);
+		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");
+		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");
+		out.println("</BODY>");
+		out.close();
+	}*/
 
 }

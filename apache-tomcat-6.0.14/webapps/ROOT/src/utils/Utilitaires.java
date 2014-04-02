@@ -29,7 +29,6 @@ import exceptions.CategorieException;
  */
 public class Utilitaires {
 
-	public final static String dateFormat = "dd/MM/yyyy";
 	
 	public Utilitaires() {
 	}
@@ -168,7 +167,7 @@ public class Utilitaires {
 	public static boolean validDateFormat(String date)
 	{
 		boolean res = true;
-		SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+		SimpleDateFormat formatter = new SimpleDateFormat(Constantes.dateFormat);
 		try
 		{
 			formatter.parse(date);
@@ -192,5 +191,24 @@ public class Utilitaires {
 			res = false;
 		}
 		return res;
+	}
+	
+	public static boolean validHourFormat(String integer)
+	{
+		boolean valid = true;
+		int hour = -1;
+		try
+		{
+			hour = Integer.parseInt(integer);
+		}
+		catch(NumberFormatException e)
+		{
+			valid = false;
+		}
+		if(valid)
+		{
+			valid = hour >= 0 && hour <= 23;
+		}
+		return valid;
 	}
 }

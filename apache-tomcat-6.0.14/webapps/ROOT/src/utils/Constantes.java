@@ -27,6 +27,8 @@ public class Constantes {
 	
 	private static boolean isLogPathInit = false;
 	
+	public final static String dateFormat = "dd/MM/yyyy";
+	
 	private static void initConfigPath()
 	{
 		Map<String, String> env = System.getenv();
