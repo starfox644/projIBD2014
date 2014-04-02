@@ -221,6 +221,7 @@ public class ReservationServlet extends HttpServlet {
 					{
 						out.println("<br> Cette date de representation n'existe pas <br>");
 						printForm(out);
+						return;
 						
 					}
 				}
@@ -228,8 +229,9 @@ public class ReservationServlet extends HttpServlet {
 				{
 					out.println("<br> Ce numero de spectacle n'existe pas<br>");
 					printForm(out);
+					return;
 				}
-
+				request.commit();
 				request.close();
 			}
 			catch (RequestException e)
