@@ -213,7 +213,7 @@ public class BDRequests
 				" (select noPlace, noRang" +
 				"	from LesPlaces" +
 				"	minus" +
-				"	select noPlace, noRang from LesTickets where dateRep = to_date('"+date+" "+ heure + "' , 'DD/MM/YY HH24') and numS = " + numS + ") order by noRang";
+				"	select noPlace, noRang from LesTickets where dateRep = to_date('"+date+" "+ heure + "', 'DD/MM/YYYY HH24') and numS = " + numS + ") order by noRang";
 
 		SQLRequest request = new SQLRequest();
 		ResultSet rs = request.execute(str);
@@ -245,7 +245,7 @@ public class BDRequests
 		int nbPlaces = 0;
 		String str = "select count(noPlace) " +
 					"from LesTickets " +
-					"where dateRep = to_date('"+date+" "+heure + "' , 'DD/MM/YY HH24') and numS = " + numS;
+					"where dateRep = to_date('"+date+" "+heure + "' , 'DD/MM/YYYY HH24') and numS = " + numS;
 
 		SQLRequest request = new SQLRequest();
 		ResultSet rs = request.execute(str);

@@ -6,6 +6,7 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,7 +29,8 @@ import modele.*;
 public class RepresentationsServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
+	private static final String invite = "Veuillez saisir un num&eacute;ro de spectacle";
+	private static final String formLink = "RepresentationsServlet";
 
 	/**
 	 * HTTP GET request entry point.
@@ -42,27 +44,30 @@ public class RepresentationsServlet extends HttpServlet {
 	 * @throws IOException	   if an input or output error is detected 
 	 *					   when the servlet handles the GET request
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse res)
-			throws ServletException, IOException
-			{
-		String strNumS;
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
+	{
+		InputParameters parameters = new InputParameters();
+		parameters.addParameter("numS", "Num&eacute;ro de spectacle", ParameterType.INTEGER);
 		int numS;
 		SimpleDateFormat formatterOld;
 		SimpleDateFormat formatterNew;
+		Calendar calendar;
 		Date tmpDate;
 		String tmpStrDate;
+		int heureRep;
 		ServletOutputStream out = res.getOutputStream();   
 
 		ErrorLog errorLog = new ErrorLog();
 		res.setContentType("text/html");
 
 		out.println("<HEAD><TITLE> Liste des repr&eacute;sentations d'un spectacle </TITLE></HEAD>");
-		out.println("<BODY bgproperties=\"fixed\" background=\"/images/rideau.JPG\">");
+		out.println("<BODY bgproperties=\"fixed\" background=\"/images/rideau.JPG\" " +
+				"link=\"#FFFFFF\" vlink=\"#D0D0D0\" alink=\"#E0E0E0\">");
 		out.println("<font color=\"#FFFFFF\"><h1> Liste des repr&eacute;sentations d'un spectacle </h1>");
 		out.println("<p><i><font color=\"#FFFFFF\">");
 		
-		strNumS = req.getParameter("numS");
-		if (strNumS == null) 
+		parameters.readParameters(req);
+		if(parameters.nullParameters())
 		{
 			out.println("<font color=\"#FFFFFF\"><p> Liste des spectacles existants : </p>");
 			try 
@@ -78,100 +83,86 @@ public class RepresentationsServlet extends HttpServlet {
 				out.println("<p><i><font color=\"#FFFFFF\">Impossible d'afficher la liste des spectacles.</i></p>");
 				errorLog.writeException(e);
 			}
-			printForm(out);
+			out.print(parameters.getHtmlForm(invite, formLink));
+			out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
+			out.println("</BODY>");
 		} else 
 		{
-			boolean error = false;
 			String nom;
-			// afficher resultat requete
-			try
+			boolean error = false;
+			if(!parameters.validParameters())
 			{
-				numS = Integer.parseInt(strNumS);
-			}
-			catch(NumberFormatException e)
-			{
-				error = true;
-				CloseOnError(out, "Vous n'avez pas entr&eacute; un num&eacute;ro.");
-				return;
-			}
-			if(!error)
-			{
-				try {
-					nom = BDRequests.getNomSpectacle(numS);
-					// si le nom n'est pas nul, le spectacle existe
-					if(nom != null)
-					{
-						formatterOld = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
-						formatterNew = new SimpleDateFormat(Utilitaires.dateFormat);
-						Vector<Representation> reps = BDRequests.getSpectacleRepresentations(numS);
-						if(reps.size() == 0)
-						{
-							out.println("Aucune repr&eacute;sentation pr&eacute;vue. <br>");
-						}
-						else
-						{
-							// affichage des dates de representations
-							out.println("<h2>Dates des repr&eacute;sentations de " + nom + " </h2><br>");
-							for (Representation r : reps)
-							{
-								tmpDate = formatterOld.parse(r.getDate());
-								tmpStrDate = formatterNew.format(tmpDate);
-							    /*out.println("<a href=\"PlacesDispoServlet?numS=" + r.getNumero() 
-							    		+ "\">" 
-							    		+ r.getNom() + " : " + r.getDate()
-							    		+ "</a><br>");*/
-								out.println(Utilitaires.printDate(r.getDate()) + "<br>");
-								//out.println(tmpStrDate + "<br>");
-							}
-						}
-					}
-					else
-					{
-						out.println("<p><i><font color=\"#FFFFFF\">Ce num&eacute;ro de spectacle n'existe pas</i></p>");
-					}
-				} 
-				catch (ConnectionException e)
-				{
-					errorLog.writeException(e);
-					error = true;
-				}
-				catch (RequestException e)
-				{
-					errorLog.writeException(e);
-					error = true;
-				} catch (ParseException e) {
-					errorLog.writeException(e);
-					error = true;
-				}
-
-				if(error)
-				{
-					out.println("<p><i><font color=\"#FFFFFF\">Erreur dans l'interrogation</i></p>");
-				}
+				out.print(parameters.getHtmlError());
+				out.print(parameters.getHtmlForm(invite, formLink));
 				out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
 				out.println("</BODY>");
 				out.close();
+				return;
 			}
-		}
+			// afficher resultat requete
+			numS = parameters.getIntParameter("numS");
+			try {
+				nom = BDRequests.getNomSpectacle(numS);
+				// si le nom n'est pas nul, le spectacle existe
+				if(nom != null)
+				{
+					formatterOld = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+					formatterNew = new SimpleDateFormat(Constantes.dateFormat);
+					Vector<Representation> reps = BDRequests.getSpectacleRepresentations(numS);
+					if(reps.size() == 0)
+					{
+						out.println("Aucune repr&eacute;sentation pr&eacute;vue. <br>");
+					}
+					else
+					{
+						// affichage des dates de representations
+						out.println("<h2>Dates des repr&eacute;sentations de " + nom + " </h2><br>");
+						for (Representation r : reps)
+						{
+							tmpDate = formatterOld.parse(r.getDate());
+							tmpStrDate = formatterNew.format(tmpDate);
+							calendar = Calendar.getInstance();
+							calendar.setTime(tmpDate);
+							heureRep = calendar.get(Calendar.HOUR_OF_DAY);
+							out.println("<a href=\"PlaceDispoServlet?numS=" + r.getNumero() 
+									+ "&date=" + tmpStrDate
+									+ "&heure=" + heureRep + "\">" 
+									+ Utilitaires.printDate(r.getDate())
+									+ "</a><br>");
+						}
+					}
+				}
+				else
+				{
+					out.println("<p><i><font color=\"#FFFFFF\">Ce num&eacute;ro de spectacle n'existe pas</i></p>");
+					out.print(parameters.getHtmlForm(invite, formLink));
+				}
+			} 
+			catch (ConnectionException e)
+			{
+				errorLog.writeException(e);
+				error = true;
+			}
+			catch (RequestException e)
+			{
+				errorLog.writeException(e);
+				error = true;
+			} catch (ParseException e) {
+				errorLog.writeException(e);
+				error = true;
 			}
 
-	private static void printForm(ServletOutputStream out) throws IOException
-	{
-		out.println("<font color=\"#FFFFFF\">Veuillez saisir un num&eacute;ro de spectacle :");
-		out.println("<P>");
-		out.print("<form action=\"");
-		out.print("RepresentationsServlet\" ");
-		out.println("method=POST>");
-		out.println("Num&eacute;ro de spectacle :");
-		out.println("<input type=text size=20 name=numS>");
-		out.println("<br>");
-		out.println("<input type=submit>");
-		out.println("</form>");
-		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
-		out.println("</BODY>");
+			if(error)
+			{
+				out.println("<p><i><font color=\"#FFFFFF\">Erreur dans l'interrogation</i></p>");
+			}
+			out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
+			out.println("</BODY>");
+			out.close();
+		}
 	}
-	
-	private static void CloseOnError(ServletOutputStream out, String message) throws IOException
+
+	/*private static void CloseOnError(ServletOutputStream out, String message) throws IOException
 	{
 		out.println("<p><i><font color=\"#FFFFFF\">" + message + "</i></p>");
 		printForm(out);
@@ -179,7 +170,7 @@ public class RepresentationsServlet extends HttpServlet {
 		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");
 		out.println("</BODY>");
 		out.close();
-	}
+	}*/
 
 	/**
 	 * HTTP POST request entry point.
