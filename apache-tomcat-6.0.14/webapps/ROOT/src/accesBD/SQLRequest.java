@@ -22,6 +22,10 @@ public class SQLRequest
 	public SQLRequest() throws ConnectionException
 	{
 		_conn = BDConnexion.getConnexion();
+		if(_conn == null)
+		{
+			throw new ConnectionException("Unable to connect to the database.");
+		}
 	}
 	
 	/**

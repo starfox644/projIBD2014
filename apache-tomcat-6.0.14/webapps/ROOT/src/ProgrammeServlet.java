@@ -46,9 +46,11 @@ public class ProgrammeServlet extends HttpServlet {
 
 		res.setContentType("text/html");
 
-		out.println("<HEAD><TITLE> Programme de la saison </TITLE></HEAD>");
+		out.print(HtmlGen.htmlPreambule("Programme de la saison"));
+		
+		/*out.println("<HEAD><TITLE> Programme de la saison </TITLE></HEAD>");
 		out.println("<BODY bgproperties=\"fixed\" background=\"/images/rideau.JPG\">");
-		out.println("<font color=\"#FFFFFF\"><h1> Programme de la saison </h1>");
+		out.println("<font color=\"#FFFFFF\"><h1> Programme de la saison </h1>");*/
 
 		// TO DO
 		// Recuperation de la liste de tous les spectacles de la saison.
