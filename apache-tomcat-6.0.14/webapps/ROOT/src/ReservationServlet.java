@@ -88,6 +88,7 @@ public class ReservationServlet extends HttpServlet {
 					printError(out, new String("Le numero de la zone"));
 					return;
 				}
+
 				try
 				{
 					heure = Integer.parseInt(heureS);
@@ -97,7 +98,7 @@ public class ReservationServlet extends HttpServlet {
 					printError(out, new String("Le format de l'heure de la representation"));
 					return;
 				}
-				if (heure < 0 && heure > 23)
+				if (heure < 0 || heure > 23)
 				{
 					printError(out, new String("Le format de l'heure de la representation"));
 					return;
@@ -221,6 +222,11 @@ public class ReservationServlet extends HttpServlet {
 					{
 						out.println("<br> Cette date de representation n'existe pas <br>");
 						printForm(out);
+						out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");
+						out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");
+						out.println("</BODY>");
+						out.close();
+						return;
 						
 					}
 				}
@@ -228,8 +234,13 @@ public class ReservationServlet extends HttpServlet {
 				{
 					out.println("<br> Ce numero de spectacle n'existe pas<br>");
 					printForm(out);
+					out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");
+					out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");
+					out.println("</BODY>");
+					out.close();
+					return;
 				}
-
+				request.commit();
 				request.close();
 			}
 			catch (RequestException e)
