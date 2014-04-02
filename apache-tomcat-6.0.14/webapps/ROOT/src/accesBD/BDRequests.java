@@ -286,6 +286,7 @@ public class BDRequests
 		return res.get(0);
 	}
 
+	
 	/**
 	 * Renvoie la liste des places disponibles pour la representation du spectacle
 	 * de numero numS prevu a la date passee en parametre
