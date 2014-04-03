@@ -31,7 +31,7 @@ public class BDRequests
 		try
 		{
 			while (rs.next()) {
-				res.addElement(new Representation (rs.getString(1), Utilitaires.printDate(rs.getString(2)), rs.getInt(3)));
+				res.addElement(new Representation (rs.getString(1), rs.getString(2), rs.getInt(3)));
 			}
 		}
 		catch(SQLException e)

@@ -38,6 +38,11 @@
 <servlet-class>ReservationServlet</servlet-class> 
 </servlet>
 
+- <servlet> 
+<servlet-name>ZoneReservationServlet</servlet-name> 
+<servlet-class>ZoneReservationServlet</servlet-class> 
+</servlet>
+
 - <servlet-mapping> 
 <servlet-name>ProgrammeServlet</servlet-name> 
 <url-pattern>/servlet/ProgrammeServlet</url-pattern> 
@@ -51,6 +56,11 @@
 - <servlet-mapping> 
 <servlet-name>RepresentationsServlet</servlet-name> 
 <url-pattern>/servlet/RepresentationsServlet</url-pattern> 
+</servlet-mapping>
+
+- <servlet-mapping> 
+<servlet-name>ZoneReservationServlet</servlet-name> 
+<url-pattern>/servlet/ZoneReservationServlet</url-pattern> 
 </servlet-mapping>
 
 - <servlet-mapping> 

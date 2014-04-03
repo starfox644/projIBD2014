@@ -124,11 +124,17 @@ public class RepresentationsServlet extends HttpServlet {
 							calendar = Calendar.getInstance();
 							calendar.setTime(tmpDate);
 							heureRep = calendar.get(Calendar.HOUR_OF_DAY);
-							out.println("<a href=\"PlaceDispoServlet?numS=" + r.getNumero() 
+							/*out.println("<a href=\"PlaceDispoServlet?numS=" + r.getNumero() 
 									+ "&date=" + tmpStrDate
 									+ "&heure=" + heureRep + "\">" 
 									+ Utilitaires.printDate(r.getDate())
-									+ "</a><br>");
+									+ "</a><br>");*/
+
+							out.println(Utilitaires.printDate(r.getDate())+ "&nbsp;&nbsp;&nbsp" + "<a href=\"ZoneReservationServlet?numS=" + numS 
+										+ "&date=" + tmpStrDate
+										+ "&heure="+ heureRep + "\">" 
+										+ "	Reservation"
+										+ "</a><br>");
 						}
 					}
 				}

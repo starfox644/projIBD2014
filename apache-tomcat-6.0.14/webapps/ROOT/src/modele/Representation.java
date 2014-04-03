@@ -17,7 +17,7 @@ public class Representation {
 		return this.nomS;
 	}
 	
-	public String getDate () {
+	public String getDate() {
 		return this.dateRep;
 	}
 	
@@ -35,4 +35,6 @@ public class Representation {
 	public void setNumero (int n) {
 		this.numS = n;
 	}
+	
+	
 }

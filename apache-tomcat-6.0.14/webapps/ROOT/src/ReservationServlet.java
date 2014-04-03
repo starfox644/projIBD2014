@@ -1,6 +1,7 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import exceptions.ConnectionException;
 import exceptions.RequestException;
 
 import utils.ErrorLog;
@@ -14,6 +15,7 @@ import modele.*;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -53,7 +55,18 @@ public class ReservationServlet extends HttpServlet {
 		heureS		= req.getParameter("heure");
 		numZ		= req.getParameter("numZ");
 		int heure, num, numZone;
-		if (numS == null || dateS == null || numZ == null) {
+		
+		if (numS != null || dateS != null || heureS != null || numZ == null) 
+		{
+			out.println(" est null, les autres non");
+			out.println(" numS : " + numS);
+			out.println(" dateS : " + dateS);
+			out.println(" heures : " + heureS);
+
+
+		}
+		if (numS == null || dateS == null || heureS == null || numZ == null) 
+		{
 			printForm(out);
 		} 
 		else 
@@ -62,7 +75,6 @@ public class ReservationServlet extends HttpServlet {
 			try {
 
 				SQLRequest request = new SQLRequest();
-				Utilisateur user = Utilitaires.Identification();
 				// verification que la date soit valide
 				if(!Utilitaires.validDateFormat(dateS))
 				{
@@ -186,13 +198,12 @@ public class ReservationServlet extends HttpServlet {
 						}
 						
 						// ajout du ticket 
-						Ticket t = new Ticket(noSerie, num, dateH, p.getNoPlace(), p.getNoRang(), dateToday, 66);
-						out.println("<br> creation ticket ok. Le ticket est : " + t + "<br>");
+						Ticket t = new Ticket(noSerie, num, dateH, p.getNoPlace(), p.getNoRang(), dateToday);
+						out.println("<br> creation ticket ok. Le ticket est : " + t + "dans la zone " + p.getNumZ() + "<br>");
 						
 						String strTicket = "INSERT INTO LesTickets " +
 							    		   "VALUES( " + noSerie + ", " + num + ", "	+ "to_date('" + dateH  + "', 'DD/MM/YY HH24') , " 
-							    		   + p.getNoPlace() + ", "  + p.getNoRang() + ", to_date('" + dateToday + "', 'DD/MM/YY HH24') , " + 
-							    		   "66 )";		//TODO	   
+							    		   + p.getNoPlace() + ", "  + p.getNoRang() + ", to_date('" + dateToday + "', 'DD/MM/YY HH24'))";		//TODO	   
 						try
 						{
 							rs = request.execute(strTicket);
@@ -249,9 +260,21 @@ public class ReservationServlet extends HttpServlet {
 				printForm(out);
 				errorLog.writeException(e);
 			} 
-			catch (Exception e)
+			/*catch (Exception e)
 			{
 				out.println("<p><i><font color=\"#FFFFFF\">Impossible de reserver.</i></p>");
+				errorLog.writeException(e);
+			}*/ catch (NumberFormatException e) {
+				out.println("<p><i><font color=\"#FFFFFF\"> Reservation impossible. Erreur dans request</i></p>");
+				printForm(out);
+				errorLog.writeException(e);
+			} catch (ConnectionException e) {
+				out.println("<p><i><font color=\"#FFFFFF\"> Reservation impossible. Erreur dans request</i></p>");
+				printForm(out);
+				errorLog.writeException(e);
+			} catch (ParseException e) {
+				out.println("<p><i><font color=\"#FFFFFF\"> Reservation impossible. Erreur dans request</i></p>");
+				printForm(out);
 				errorLog.writeException(e);
 			}
 		}
