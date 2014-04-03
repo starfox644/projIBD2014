@@ -46,8 +46,11 @@ public class RepresentationsServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
 	{
+		// gestion des parametres de la servlet
 		InputParameters parameters = new InputParameters();
+		// numero de spectacle entier
 		parameters.addParameter("numS", "Num&eacute;ro de spectacle", ParameterType.INTEGER);
+		
 		int numS;
 		SimpleDateFormat formatterOld;
 		SimpleDateFormat formatterNew;
@@ -60,11 +63,14 @@ public class RepresentationsServlet extends HttpServlet {
 		ErrorLog errorLog = new ErrorLog();
 		res.setContentType("text/html");
 
-		out.println("<HEAD><TITLE> Liste des repr&eacute;sentations d'un spectacle </TITLE></HEAD>");
+		/*out.println("<HEAD><TITLE> Liste des repr&eacute;sentations d'un spectacle </TITLE></HEAD>");
 		out.println("<BODY bgproperties=\"fixed\" background=\"/images/rideau.JPG\" " +
 				"link=\"#FFFFFF\" vlink=\"#D0D0D0\" alink=\"#E0E0E0\">");
-		out.println("<font color=\"#FFFFFF\"><h1> Liste des repr&eacute;sentations d'un spectacle </h1>");
-		out.println("<p><i><font color=\"#FFFFFF\">");
+		out.println("<font color=\"#FFFFFF\"><h1> Liste des repr&eacute;sentations d'un spectacle </h1>");*/
+		
+		//out.println("<p><i><font color=\"#FFFFFF\">");
+		
+		out.print(HtmlGen.htmlPreambule("Liste des repr&eacute;sentations d'un spectacle"));
 		
 		parameters.readParameters(req);
 		if(parameters.nullParameters())
@@ -115,16 +121,21 @@ public class RepresentationsServlet extends HttpServlet {
 					}
 					else
 					{
+						calendar = Calendar.getInstance();
 						// affichage des dates de representations
 						out.println("<h2>Dates des repr&eacute;sentations de " + nom + " </h2><br>");
 						for (Representation r : reps)
 						{
+							// recuperation d'une string contenant la date sans l'heure
 							tmpDate = formatterOld.parse(r.getDate());
 							tmpStrDate = formatterNew.format(tmpDate);
-							calendar = Calendar.getInstance();
+							// recuperation de l'heure dans un entier
 							calendar.setTime(tmpDate);
 							heureRep = calendar.get(Calendar.HOUR_OF_DAY);
 							/*out.println("<a href=\"PlaceDispoServlet?numS=" + r.getNumero() 
+							// generation du lien avec les parametres necessaires pour la liste des places
+							out.println("<a href=\"PlaceDispoServlet?numS=" + r.getNumero() 
+>>>>>>> 2bf7081037284cd793c2c634c3eea0541fde8690
 									+ "&date=" + tmpStrDate
 									+ "&heure=" + heureRep + "\">" 
 									+ Utilitaires.printDate(r.getDate())
@@ -160,7 +171,7 @@ public class RepresentationsServlet extends HttpServlet {
 
 			if(error)
 			{
-				out.println("<p><i><font color=\"#FFFFFF\">Erreur dans l'interrogation</i></p>");
+				out.println("<p><i><font color=\"#FFFFFF\">Impossible d'afficher la liste des repr&eacute;sentations, veuillez r&eacute;essayer utltérieurement.</i></p>");
 			}
 			out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
 			out.println("</BODY>");

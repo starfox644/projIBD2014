@@ -5,6 +5,9 @@
  */
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import exceptions.ConnectionException;
+import exceptions.RequestException;
 import utils.*;
 import accesBD.*;
 import modele.*;
@@ -24,6 +27,9 @@ import java.util.Vector;
 
 public class NouvelleRepresentationServlet extends HttpServlet {
 
+	private static final String invite = "Veuillez saisir les informations relatives &agrave; la nouvelle repr&eacute;sentation";
+	private static final String formLink = "NouvelleRepresentationServlet";
+	
 	/**
 	 * HTTP GET request entry point.
 	 *
@@ -36,17 +42,22 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 	 * @throws IOException	 if an input or output error is detected 
 	 *				 when the servlet handles the GET request
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse res)
-			throws ServletException, IOException
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
 	{
+
+		InputParameters parameters = new InputParameters();
+		parameters.addParameter("numS", "Num&eacute;ro de spectacle", ParameterType.INTEGER);
+		parameters.addParameter("date", "Date de repr&eacute;sentation", ParameterType.DATE);
+		parameters.addParameter("heure", "Heure de repr&eacute;sentation", ParameterType.HOUR);
 
 		// Transformation des parametres vers les types adequats.
 		// Ajout de la nouvelle representation.
 		// Puis construction dynamique d'une page web de reponse.
-		String strNumS, dateS, strHeureS;
+		String dateS;
 		int numS = 0;
 		int heureS = 0;
 		ServletOutputStream out = res.getOutputStream();  
+		boolean error = false;
 
 		res.setContentType("text/html");
 
@@ -55,7 +66,7 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 
 
 		ErrorLog errorLog = new ErrorLog();
-		
+
 		// affichage de la listes des spectacles 
 		out.println("<font color=\"#FFFFFF\"><p> Liste des spectacles existants : </p>");
 		try 
@@ -72,79 +83,67 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 		}
 		out.println("<font color=\"#FFFFFF\"><h1> Ajouter une nouvelle repr&eacute;sentation </h1>");
 
-		strNumS		= req.getParameter("numS");
-		dateS		= req.getParameter("date");
-		strHeureS	= req.getParameter("heure");
-		if (strNumS == null || dateS == null || strHeureS == null) {
-			printForm(out, strNumS, strHeureS, dateS);
+		parameters.readParameters(req);
+		if(parameters.nullParameters())
+		{
+			out.print(parameters.getHtmlForm(invite, formLink));
 		}
 		else 
 		{
-			if(!Utilitaires.validDateFormat(dateS))
+			if(!parameters.validParameters())
 			{
-				CloseOnError(out, "Veuillez entrer une date valide. Exemple : 15/12/2014", strNumS, strHeureS, dateS);
+				out.print(parameters.getHtmlError());
+				out.print(parameters.getHtmlForm(invite, formLink));
+				out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
+				out.println("</BODY>");
+				out.close();
 				return;
 			}
+			numS = parameters.getIntParameter("numS");
+			dateS = parameters.getStringParameter("date");
+			heureS = parameters.getIntParameter("heure");
 			try
 			{
-				numS = Integer.parseInt(strNumS);
-			}
-			catch(NumberFormatException e)
-			{
-				CloseOnError(out, "Veuillez entrer un nombre pour le num&eacute;ro de spectacle.", strNumS, strHeureS, dateS);
-				return;
-			}
-			try
-			{
-				heureS = Integer.parseInt(strHeureS);
-			}
-			catch(NumberFormatException e)
-			{
-				CloseOnError(out, "Veuillez entrer un nombre pour l'heure du spectacle.", strNumS, strHeureS, dateS);
-				return;
-			}
-			try {
-				// on verifie que l'heure est valide
-				if (heureS >= 0 && heureS <= 23)
+				// on verifie que le numero de spectacle existe
+				if (BDRequests.isInSpectacles(numS))
 				{
-					// on verifie que le numero de spectacle existe
-					if (BDRequests.isInSpectacles(numS))
+					// on verifie que la representation n'est pas deja presente
+					if (BDRequests.existeDateRep(numS,dateS, heureS))
 					{
-						// on verifie que la representation n'est pas deja presente
-						if (BDRequests.existeDateRep(numS,dateS, heureS))
-						{
-							out.println("<br><i> Ce spectacle est d&eacute;ja pr&eacute;vu a cette heure, impossible de l'ajouter. </i></p>");
-							printForm(out, strNumS, strHeureS, dateS);
-						}
-						else
-						{
-							BDRequests.addRepresentation(numS, dateS, strHeureS);
-							out.println("<br> ajout de la representation realisee <br>");
-						}
+						out.println("<br><i> Ce spectacle est d&eacute;ja pr&eacute;vu a cette heure, impossible de l'ajouter. </i></p>");
+						out.print(parameters.getHtmlForm(invite, formLink));
 					}
 					else
 					{
-						out.println("<br><i> Ce num&eacute;ro de spectacle n'existe pas, veuillez v&eacute;rifier ce dernier dans la liste ci-dessus. </i></p>");
-						printForm(out, strNumS, strHeureS, dateS);
+						BDRequests.addRepresentation(numS, dateS, heureS);
+						out.println("<br> ajout de la representation realisee <br>");
 					}
 				}
 				else
 				{
-					out.println("<br><i> Heure invalide, impossible d'ajouter la representation. </i></p>");
-					printForm(out, strNumS, strHeureS, dateS);
+					out.println("<br><i> Ce num&eacute;ro de spectacle n'existe pas, veuillez v&eacute;rifier ce dernier dans la liste ci-dessus. </i></p>");
+					out.print(parameters.getHtmlForm(invite, formLink));
 				}
 			}
-			catch (Exception e)
+			catch (ConnectionException e)
 			{
-				out.println("<p><i><font color=\"#FFFFFF\">Impossible d'ajouter la representation. Veuillez r&eacute;essayer ult&eacute;rieurement.</i></p>");
 				errorLog.writeException(e);
-			} 
-		}
+				error = true;
+			}
+			catch (RequestException e)
+			{
+				errorLog.writeException(e);
+				error = true;
+			}
 
-		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");
-		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");
-		out.println("</BODY>");
-		out.close();
+			if(error)
+			{
+				out.println("<p><i><font color=\"#FFFFFF\">Impossible d'afficher la liste des repr&eacute;sentations, veuillez r&eacute;essayer utltérieurement.</i></p>");
+			}
+			out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");
+			out.println("</BODY>");
+			out.close();
+		}
 	}
 
 	/**
@@ -174,7 +173,7 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 	public String getServletInfo() {
 		return "Ajoute une representation e une date donnee pour un spectacle existant";
 	}
-	
+
 	private static void printForm(ServletOutputStream out, String strNumS, String strHeureS, String date) throws IOException
 	{
 		out.println("<font color=\"#FFFFFF\">Veuillez saisir les informations relatives &agrave; la nouvelle repr&eacute;sentation :");
@@ -215,7 +214,7 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 		out.println("<input type=submit>");
 		out.println("</form>");
 	}
-	
+
 	private static void CloseOnError(ServletOutputStream out, String message, String strNumS, String strHeureS, String dateS) throws IOException
 	{
 		out.println("<p><i><font color=\"#FFFFFF\">" + message + "</i></p>");

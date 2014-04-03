@@ -10,6 +10,7 @@ import exceptions.ConnectionException;
 import exceptions.RequestException;
 
 import utils.ErrorLog;
+import utils.HtmlGen;
 import utils.InputParameters;
 import utils.ParameterType;
 import utils.Utilitaires;
@@ -53,9 +54,10 @@ public class PlaceDispoServlet extends HttpServlet {
 
 		res.setContentType("text/html");
 
-		out.println("<HEAD><TITLE> Places disponibles pour une representation </TITLE></HEAD>");
-		out.println("<BODY bgproperties=\"fixed\" background=\"/images/rideau.JPG\">");
+		/*out.println("<HEAD><TITLE> Places disponibles pour une representation </TITLE></HEAD>");
+		out.println("<BODY bgproperties=\"fixed\" background=\"/images/rideau.JPG\">");*/
 
+		out.print(HtmlGen.htmlPreambule("Places disponibles pour une repr&eacute;sentation"));
 
 		ErrorLog errorLog = new ErrorLog();
 

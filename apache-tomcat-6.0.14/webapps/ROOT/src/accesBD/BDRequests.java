@@ -109,7 +109,7 @@ public class BDRequests
 	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
-	public static void addRepresentation (int num , String date, String heure) throws RequestException, ConnectionException 
+	public static void addRepresentation (int num , String date, int heure) throws RequestException, ConnectionException 
 	{
 		String str = "INSERT INTO LesRepresentations VALUES ("+num+", to_date( '"+date+" "+heure+"', 'DD/MM/YY HH24'))";
 		SQLRequest request = new SQLRequest();

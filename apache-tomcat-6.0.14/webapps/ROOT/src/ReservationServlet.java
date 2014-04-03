@@ -5,6 +5,7 @@ import exceptions.ConnectionException;
 import exceptions.RequestException;
 
 import utils.ErrorLog;
+import utils.HtmlGen;
 import utils.Utilitaires;
 
 import accesBD.BDRequests;
@@ -44,11 +45,13 @@ public class ReservationServlet extends HttpServlet {
 
 		res.setContentType("text/html");
 
-		out.println("<HEAD><TITLE> Reservation pour une representation</TITLE></HEAD>");
-		out.println("<BODY bgproperties=\"fixed\" background=\"/images/rideau.JPG\">");
+		/*out.println("<HEAD><TITLE> Reservation pour une representation</TITLE></HEAD>");
+		out.println("<BODY bgproperties=\"fixed\" background=\"/images/rideau.JPG\">");*/
 		ErrorLog errorLog = new ErrorLog();
 
-		out.println("<font color=\"#FFFFFF\"><h1> Reservation pour une representation </h1>");
+		//out.println("<font color=\"#FFFFFF\"><h1> Reservation pour une representation </h1>");
+
+		out.print(HtmlGen.htmlPreambule("Reservation pour une representation"));
 
 		numS		= req.getParameter("numS");
 		dateS		= req.getParameter("date");
