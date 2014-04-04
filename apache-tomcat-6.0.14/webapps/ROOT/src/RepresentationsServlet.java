@@ -134,12 +134,20 @@ public class RepresentationsServlet extends HttpServlet {
 							// recuperation de l'heure dans un entier
 							calendar.setTime(tmpDate);
 							heureRep = calendar.get(Calendar.HOUR_OF_DAY);
+							/*out.println("<a href=\"PlaceDispoServlet?numS=" + r.getNumero() 
 							// generation du lien avec les parametres necessaires pour la liste des places
 							out.println("<a href=\"PlaceDispoServlet?numS=" + r.getNumero() 
+>>>>>>> 2bf7081037284cd793c2c634c3eea0541fde8690
 									+ "&date=" + tmpStrDate
 									+ "&heure=" + heureRep + "\">" 
 									+ Utilitaires.printDate(r.getDate())
-									+ "</a><br>");
+									+ "</a><br>");*/
+
+							out.println(Utilitaires.printDate(r.getDate())+ "&nbsp;&nbsp;&nbsp" + "<a href=\"ZoneReservationServlet?numS=" + numS 
+										+ "&date=" + tmpStrDate
+										+ "&heure="+ heureRep + "\">" 
+										+ "	Reservation"
+										+ "</a><br>");
 						}
 					}
 				}

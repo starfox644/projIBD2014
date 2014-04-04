@@ -12,25 +12,14 @@ import utils.ErrorLog;
 import utils.HtmlGen;
 import utils.InputParameters;
 import utils.ParameterType;
-import utils.Utilitaires;
 
 import accesBD.BDCategories;
 import accesBD.BDPlaces;
-import accesBD.BDRepresentations;
-import accesBD.BDRequests;
 import accesBD.BDSpectacles;
-import accesBD.SQLRequest;
 
 import modele.*;
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Vector;
 
 public class ReservationServlet extends HttpServlet {
 
@@ -150,11 +139,13 @@ public class ReservationServlet extends HttpServlet {
 				out.println("<p><i><font color=\"#FFFFFF\"> Reservation impossible.</i></p>");
 				out.print(parameters.getHtmlForm(invite, formLink));
 				errorLog.writeException(e);
-			} catch (ConnectionException e) {
+			} 
+			catch (ConnectionException e)
+			{
 				out.println("<p><i><font color=\"#FFFFFF\"> Reservation impossible.</i></p>");
 				out.print(parameters.getHtmlForm(invite, formLink));
 				errorLog.writeException(e);
-			}
+			} 
 		}
 
 		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");

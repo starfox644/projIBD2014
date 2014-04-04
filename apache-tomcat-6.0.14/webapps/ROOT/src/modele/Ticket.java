@@ -8,9 +8,8 @@ public class Ticket {
 	private int noPlace;
 	private int noRang;
 	private String dateEmission;
-	private int noDossier;
 	
-	public Ticket (int ns, int num, String dateR, int p, int r, String dateEm, int noD)
+	public Ticket (int ns, int num, String dateR, int p, int r, String dateEm)
 	{
 		this.noSerie = ns;
 		this.numS = num;
@@ -18,7 +17,6 @@ public class Ticket {
 		this.noPlace = p;
 		this.noRang = r;
 		this.dateEmission = dateEm;
-		this.noDossier = noD;
 	}
 	
 	public int getNoSerie() {
@@ -68,20 +66,13 @@ public class Ticket {
 		this.dateEmission = dateEmission;
 	}
 	
-	public int getNoDossier() {
-		return noDossier;
-	}
-	
-	public void setNoDossier(int noDossier) {
-		this.noDossier = noDossier;
-	}
 	
 	public String toString()
 	{
 		
 		String str = new String ("noSerie : " + noSerie + "\n numS : " + numS + "\n dateRep : " + dateRep 
 								+ "\n noPlace : " + noPlace + "\n noRang : " + noRang + "\n dateEmission : " 
-								+ dateEmission + "\n noDossier : " + noDossier + "\n");
+								+ dateEmission + "\n");
 		return str;
 	}
 	
