@@ -14,7 +14,9 @@ import java.util.Vector;
 
 import exceptions.*;
 import utils.*;
+import accesBD.BDRepresentations;
 import accesBD.BDRequests;
+import accesBD.BDSpectacles;
 import modele.*;
 
 /**
@@ -78,7 +80,7 @@ public class RepresentationsServlet extends HttpServlet {
 			out.println("<font color=\"#FFFFFF\"><p> Liste des spectacles existants : </p>");
 			try 
 			{
-				Vector<Spectacle> spec = BDRequests.getSpectacles();
+				Vector<Spectacle> spec = BDSpectacles.getSpectacles();
 				for (Spectacle s : spec)
 				{
 					out.println(s.getNom() + " : " + s.getNumero() + "<br>");
@@ -108,13 +110,13 @@ public class RepresentationsServlet extends HttpServlet {
 			// afficher resultat requete
 			numS = parameters.getIntParameter("numS");
 			try {
-				nom = BDRequests.getNomSpectacle(numS);
+				nom = BDSpectacles.getNomSpectacle(numS);
 				// si le nom n'est pas nul, le spectacle existe
 				if(nom != null)
 				{
 					formatterOld = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
 					formatterNew = new SimpleDateFormat(Constantes.dateFormat);
-					Vector<Representation> reps = BDRequests.getSpectacleRepresentations(numS);
+					Vector<Representation> reps = BDRepresentations.getSpectacleRepresentations(numS);
 					if(reps.size() == 0)
 					{
 						out.println("Aucune repr&eacute;sentation pr&eacute;vue. <br>");

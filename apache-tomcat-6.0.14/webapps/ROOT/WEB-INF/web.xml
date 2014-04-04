@@ -38,6 +38,16 @@
 <servlet-class>ReservationServlet</servlet-class> 
 </servlet>
 
+- <servlet> 
+<servlet-name>ReservationConfirmServlet</servlet-name> 
+<servlet-class>ReservationConfirmServlet</servlet-class> 
+</servlet>
+
+- <servlet> 
+<servlet-name>PanierServlet</servlet-name> 
+<servlet-class>PanierServlet</servlet-class> 
+</servlet>
+
 - <servlet-mapping> 
 <servlet-name>ProgrammeServlet</servlet-name> 
 <url-pattern>/servlet/ProgrammeServlet</url-pattern> 
@@ -61,5 +71,15 @@
 - <servlet-mapping> 
 <servlet-name>ReservationServlet</servlet-name> 
 <url-pattern>/servlet/ReservationServlet</url-pattern> 
+</servlet-mapping>
+
+- <servlet-mapping> 
+<servlet-name>ReservationConfirmServlet</servlet-name> 
+<url-pattern>/servlet/ReservationConfirmServlet</url-pattern> 
+</servlet-mapping>
+
+- <servlet-mapping> 
+<servlet-name>PanierServlet</servlet-name> 
+<url-pattern>/servlet/PanierServlet</url-pattern> 
 </servlet-mapping>
 </web-app>

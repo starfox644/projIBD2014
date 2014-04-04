@@ -15,7 +15,10 @@ import utils.InputParameters;
 import utils.ParameterType;
 import utils.Utilitaires;
 
+import accesBD.BDPlaces;
+import accesBD.BDRepresentations;
 import accesBD.BDRequests;
+import accesBD.BDSpectacles;
 
 import modele.*;
 
@@ -84,15 +87,15 @@ public class PlaceDispoServlet extends HttpServlet {
 			heureS = parameters.getIntParameter("heure");
 			try {
 				// on verifie que le numero de spectacle existe
-				if (BDRequests.isInSpectacles(numS))
+				if (BDSpectacles.isInSpectacles(numS))
 				{
 					// on verifie que la date de la representation existe et est valide
-					if (BDRequests.existeDateRep (numS,dateS, heureS))
+					if (BDRepresentations.existeDateRep (numS,dateS, heureS))
 					{
-						Vector<Place> list= BDRequests.getPlacesDispo(numS, dateS, heureS);
-						int nb = BDRequests.getNbPlacesOccupees (numS, dateS, heureS);
+						Vector<Place> list= BDPlaces.getPlacesDispo(numS, dateS, heureS);
+						int nb = BDPlaces.getNbPlacesOccupees (numS, dateS, heureS);
 						out.println("<br> Il y a " + nb+ " places occupees sur "
-								+ BDRequests.getNbPlacesTotales()+ "  places au total<br>");
+								+ BDPlaces.getNbPlacesTotales()+ "  places au total<br>");
 						out.println("<br> Voici la liste des places disponibes <br>");
 						
 						for (Place p : list)

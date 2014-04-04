@@ -43,7 +43,8 @@ public class SQLRequest
 			_rs = _stmt.executeQuery(_request);
 		} catch (SQLException e) 
 		{
-			throw new RequestException ("Erreur d'execution de requete"
+			throw new RequestException ("Erreur d'execution de la requete : \n"
+					+ request + "\n"
 					+ "Code Oracle : " + e.getErrorCode()
 					+ "\nMessage : " + e.getMessage());
 		}

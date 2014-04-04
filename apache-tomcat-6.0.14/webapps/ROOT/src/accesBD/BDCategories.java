@@ -8,6 +8,7 @@ import java.util.Vector;
 
 import exceptions.CategorieException;
 import exceptions.ConnectionException;
+import exceptions.RequestException;
 
 import modele.Categorie;
 import modele.Utilisateur;
@@ -24,7 +25,7 @@ public class BDCategories {
 	 * @throws CategorieException
 	 * @throws ConnectionException
 	 */
-	public static Vector<Categorie> getCategorie ()
+	public static Vector<Categorie> getCategories ()
 	throws CategorieException, ConnectionException {
 		Vector<Categorie> res = new Vector<Categorie>();
 		String requete ;
@@ -48,5 +49,26 @@ public class BDCategories {
 		}
 		BDConnexion.FermerTout(conn, stmt, rs);
 		return res;
+	}
+	
+
+	public static Categorie getCategorie(String nomC) throws RequestException, ConnectionException
+	{
+		Categorie categorie = null;
+		String str = "select nomC, prix from LesCategories where nomC = '" + nomC + "'";
+		SQLRequest request = new SQLRequest();
+		ResultSet rs = request.execute(str);
+		try {
+			if(rs.next()) 
+			{
+				categorie = new Categorie(rs.getString(1), rs.getFloat(2));
+			}
+		} catch (SQLException e) {
+			throw new RequestException ("Erreur dans getCategorie \n"
+					+ "Code Oracle " + e.getErrorCode()
+					+ "Message " + e.getMessage());
+		}
+		request.close();
+		return categorie;
 	}
 }

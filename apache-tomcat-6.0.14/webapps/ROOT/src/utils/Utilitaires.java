@@ -45,7 +45,7 @@ public class Utilitaires {
 		try {
 			IO.afficherln("===================");
 			IO.afficherln("Listes des categories tarifaires");
-			res = BDCategories.getCategorie();
+			res = BDCategories.getCategories();
 			if (res.isEmpty()) {
 				IO.afficherln(" Liste vide ");
 			} else {

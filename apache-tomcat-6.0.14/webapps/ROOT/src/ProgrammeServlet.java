@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import accesBD.BDRequests;
+import accesBD.BDSpectacles;
 import exceptions.*;
 import utils.*;
 import modele.*;
@@ -58,22 +59,28 @@ public class ProgrammeServlet extends HttpServlet {
 		// afficher resultat requete
 		ErrorLog errorLog = new ErrorLog();
 		try {
-			Vector<Spectacle> spec = BDRequests.getSpectacles();
+			Vector<Spectacle> spec = BDSpectacles.getSpectacles();
 			out.println("<font color=\"#FFFFFF\"><h2>Les spectacles a l'affiche</h2> <br>");
+			out.println("<ul>");
 			for (Spectacle s : spec)
 			{
+				out.println("<li>");
 			    out.println("<a href=\"RepresentationsServlet?numS=" + s.getNumero() + "\">" 
 			    		+ s.getNom() + " : " + s.getNumero()
 			    		+ "</a><br>");
+				out.println("</li>");
 				//out.println(r.getNom() + " : " + r.getDate() + "<br>");
 			}
+			out.println("</ul>");
 		}
 		catch (ConnectionException e)
 		{
+			out.println("Impossible de r&eacute;cup&eacute;rer la liste de spectacles.<br>");
 			errorLog.writeException(e);
 		}
 		catch (RequestException e) 
 		{
+			out.println("Impossible de r&eacute;cup&eacute;rer la liste de spectacles.<br>");
 			errorLog.writeException(e);
 		}
 		out.println("</i></p>");

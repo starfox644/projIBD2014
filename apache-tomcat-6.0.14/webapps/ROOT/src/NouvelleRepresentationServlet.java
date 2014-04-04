@@ -71,7 +71,7 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 		out.println("<font color=\"#FFFFFF\"><p> Liste des spectacles existants : </p>");
 		try 
 		{
-			Vector<Spectacle> spec = BDRequests.getSpectacles();
+			Vector<Spectacle> spec = BDSpectacles.getSpectacles();
 			for (Spectacle s : spec)
 			{
 				out.println(s.getNom() + " : " + s.getNumero() + "<br>");
@@ -105,17 +105,17 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 			try
 			{
 				// on verifie que le numero de spectacle existe
-				if (BDRequests.isInSpectacles(numS))
+				if (BDSpectacles.isInSpectacles(numS))
 				{
 					// on verifie que la representation n'est pas deja presente
-					if (BDRequests.existeDateRep(numS,dateS, heureS))
+					if (BDRepresentations.existeDateRep(numS,dateS, heureS))
 					{
 						out.println("<br><i> Ce spectacle est d&eacute;ja pr&eacute;vu a cette heure, impossible de l'ajouter. </i></p>");
 						out.print(parameters.getHtmlForm(invite, formLink));
 					}
 					else
 					{
-						BDRequests.addRepresentation(numS, dateS, heureS);
+						BDRepresentations.addRepresentation(numS, dateS, heureS);
 						out.println("<br> ajout de la representation realisee <br>");
 					}
 				}

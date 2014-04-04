@@ -23,6 +23,7 @@ public class InputParameters
 	private LinkedList<String> _invalidParams;
 	/** noms des parametres tries dans l'ordre de leur ajout (pour l'affichage du formulaire) */
 	private LinkedList<String> _paramNames;
+	private LinkedList<String> _validParams;
 	/** indique l'absence d'erreurs de parametres (absents ou invalides) */
 	private boolean _success;
 	
@@ -32,6 +33,7 @@ public class InputParameters
 		_paramNames = new LinkedList<String>();
 		_absentParams = new LinkedList<String>();
 		_invalidParams = new LinkedList<String>();
+		_validParams = new LinkedList<String>();
 		_success = false;
 	}
 	
@@ -99,6 +101,10 @@ public class InputParameters
 			{
 				_invalidParams.add(name);
 			}
+			else
+			{
+				_validParams.add(name);
+			}
 		}
 	}
 	
@@ -111,6 +117,11 @@ public class InputParameters
 	public boolean validParameters()
 	{
 		return _success;
+	}
+	
+	public LinkedList<String> getValidParametersNames()
+	{
+		return _validParams;
 	}
 	
 	/**
@@ -222,7 +233,6 @@ public class InputParameters
 		form += link + " \" ";
 		form += "method=POST>";
 
-		
 		while(it.hasNext())
 		{
 			name = it.next();
