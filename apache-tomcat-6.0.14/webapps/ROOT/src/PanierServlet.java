@@ -96,7 +96,6 @@ public class PanierServlet extends HttpServlet {
 			else
 			{
 				out.println("<br> Contenu du panier : <br><br>");
-				//out.print(panier.toString());
 				out.println("<table>");
 				out.println("<tr>");
 				out.println("<th> Spectacle </th>" +
