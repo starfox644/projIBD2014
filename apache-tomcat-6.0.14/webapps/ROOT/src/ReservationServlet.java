@@ -108,8 +108,10 @@ public class ReservationServlet extends HttpServlet {
 							}
 							ContenuPanier contenu = new ContenuPanier(numS, nomS, dateS, heureS, 1, categorie);
 							panier.addContenu(contenu);
-							out.println("<br> Contenu du panier : <br>");
-							out.print(panier.toString());
+							/*out.println("<br> Contenu du panier : <br>");
+							out.print(panier.toString());*/
+							RequestDispatcher dispatcher = req.getRequestDispatcher("PanierServlet");
+							dispatcher.forward(req, res);
 						}
 					}
 					else
