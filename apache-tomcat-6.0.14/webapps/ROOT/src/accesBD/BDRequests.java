@@ -14,7 +14,7 @@ public class BDRequests
 
 	}
 
-	/**
+	 /**
 	 * 		Retourne la liste de toutes les representations, chacune contenant la date, le nom du spectacle et son numero.
 	 * @return Vector<Representation> contenant toutes les representations
 	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
