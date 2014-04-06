@@ -143,10 +143,12 @@ public class RepresentationsServlet extends HttpServlet {
 									+ Utilitaires.printDate(r.getDate())
 									+ "</a><br>");*/
 
-							out.println(Utilitaires.printDate(r.getDate())+ "&nbsp;&nbsp;&nbsp" + "<a href=\"ReservationServlet?numS=" + numS 
+							out.println(Utilitaires.printDate(r.getDate())+ "&nbsp;&nbsp;&nbsp" + "<a href=\"ReservationCategorieServlet?"
+									    + "numS=" + numS 
 										+ "&date=" + tmpStrDate
 										+ "&heure="+ heureRep 
-										+ "&nomC=balcon\">" 
+										//+ "&nomC=balcon 
+										+ "\">" 
 										+ "	Reservation"
 										+ "</a><br>");
 						}

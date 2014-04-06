@@ -62,30 +62,10 @@ public class ReservationServlet extends HttpServlet {
 
 		parameters.readParameters(req);
 		
-		
-		/* recuperation des parametres */
-		/*SnumS		= req.getParameter("numS");
-		dateS		= req.getParameter("date");
-		SheureS		= req.getParameter("heure");
-		nomC		= req.getParameter("nomC");
-		SnbPlaces		= req.getParameter("nbPlaces");*/
-
-		if(parameters.nullParameters())
+		if(parameters.nullParameters() )
 		{
 			out.print(parameters.getHtmlForm(invite, formLink));
 		}
-		/*else if (SnumS == null || dateS == null || SheureS == null)
-		//if(parameters.nullParameters())
-		{
-			out.print(parameters.getHtmlForm(invite, formLink));
-		}
-		else if (SnumS != null && dateS != null && SheureS != null)
-		{
-			if (nomC == null && SnbPlaces == null)
-			{
-				
-			}
-		}*/
 		else
 		{
 			if(!parameters.validParameters())
@@ -102,7 +82,6 @@ public class ReservationServlet extends HttpServlet {
 			heureS = parameters.getIntParameter("heure");
 			nomC = parameters.getStringParameter("nomC");
 			nbPlaces = parameters.getIntParameter("nbPlaces");
-			nomC = "balcon";
 			try 
 			{
 				String nomS = BDSpectacles.getNomSpectacle(numS);

@@ -53,6 +53,11 @@
 <servlet-class>ZoneReservationServlet</servlet-class> 
 </servlet>
 
+- <servlet> 
+<servlet-name>ReservationCategorieServlet</servlet-name> 
+<servlet-class>ReservationCategorieServlet</servlet-class> 
+</servlet>
+
 - <servlet-mapping> 
 <servlet-name>ProgrammeServlet</servlet-name> 
 <url-pattern>/servlet/ProgrammeServlet</url-pattern> 
@@ -92,4 +97,10 @@
 <servlet-name>PanierServlet</servlet-name> 
 <url-pattern>/servlet/PanierServlet</url-pattern> 
 </servlet-mapping>
+
+- <servlet-mapping> 
+<servlet-name>ReservationCategorieServlet</servlet-name> 
+<url-pattern>/servlet/ReservationCategorieServlet</url-pattern> 
+</servlet-mapping>
+
 </web-app>

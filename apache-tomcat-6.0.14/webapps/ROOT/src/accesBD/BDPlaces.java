@@ -171,7 +171,7 @@ public class BDPlaces
 	
 	public static boolean reserverPlace(int numS, String dateRep, String dateRes, int heureS, int numZ, int noPlace, int noRang)
 			throws RequestException, ConnectionException 
-			{
+	{
 		SQLRequest request = new SQLRequest();
 		ResultSet rs;
 		int i = 0;
@@ -258,7 +258,6 @@ public class BDPlaces
 	{
 		SQLRequest request = new SQLRequest();
 		ErrorLog log = null;
-		nbPlaces = 10;
 		try {
 			log = new ErrorLog();
 		} catch (IOException e) {}
@@ -307,7 +306,7 @@ public class BDPlaces
 						request.close();
 						throw new ReservationException("Il n'y a pas assez de places disponibles pour cette representation.");
 					}
-				/*for (int i = 0 ; i < placesDispo.size() ; i++)
+				for (int i = 0 ; i < placesDispo.size() ; i++)
 				{
 					System.out.println("numZ : "+ placesDispo.get(i).getNumZ() + 
 								    " , noRang : " + placesDispo.get(i).getNoRang() +
@@ -326,7 +325,7 @@ public class BDPlaces
 							    " , noRang : " + places.get(i).getNoRang() +
 							    " , noPlace : "+ places.get(i).getNoPlace());
 					}
-				}*/
+				}
 				
 			}
 		}
@@ -351,32 +350,32 @@ public class BDPlaces
 		{
 			j = i;
 			// verification q'ils ait le meme numero de zone
-			while( j < nbPlaces && (placesDispo.get(j).getNumZ() == placesDispo.get(j+1).getNumZ()))
+			while( j < (i+nbPlaces-1) && (placesDispo.get(j).getNumZ() == placesDispo.get(j+1).getNumZ()))
 			{
 				j++;
 			}
 			// meme zone, on continue la verif
-			if( j == nbPlaces )
+			if( j == (i+nbPlaces-1) )
 			{
 				System.out.println(" i = " + i + "  meme numZ");
 				j = i;
 				// verification q'ils ait le meme numero de rang
-				while( j < nbPlaces && (placesDispo.get(j).getNoRang() == placesDispo.get(j+1).getNoRang()))
+				while( j < (i+nbPlaces-1) && (placesDispo.get(j).getNoRang() == placesDispo.get(j+1).getNoRang()))
 				{
 					j++;
 				}
 				// meme noRang, on continue la verif
-				if( j == nbPlaces )
+				if( j == (i+nbPlaces-1) )
 				{
 					System.out.println(" i = " + i + "  meme rang");
 					j = i;
 					// verification q'ils ait des numeros de places successifs
-					while( j < nbPlaces && (placesDispo.get(j).getNoPlace() == (placesDispo.get(j+1).getNoPlace()-1)))
+					while( j < (i+nbPlaces-1) && (placesDispo.get(j).getNoPlace() == (placesDispo.get(j+1).getNoPlace()-1)))
 					{
 						j++;
 					}
 					// meme noRang, on continue la verif
-					if( j == nbPlaces )
+					if( j == (i+nbPlaces-1) )
 					{
 						System.out.println(" i = " + i + "  noRange + 1");
 						trouve = true;
