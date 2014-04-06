@@ -17,7 +17,6 @@ import utils.Utilitaires;
 
 import accesBD.BDPlaces;
 import accesBD.BDRepresentations;
-import accesBD.BDRequests;
 import accesBD.BDSpectacles;
 
 import modele.*;

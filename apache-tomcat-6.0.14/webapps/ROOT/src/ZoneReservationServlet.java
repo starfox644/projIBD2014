@@ -7,7 +7,6 @@ import exceptions.RequestException;
 import utils.ErrorLog;
 import utils.Utilitaires;
 
-import accesBD.BDRequests;
 import accesBD.SQLRequest;
 
 import modele.*;

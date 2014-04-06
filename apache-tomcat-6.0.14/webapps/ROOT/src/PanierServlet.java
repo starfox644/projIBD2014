@@ -153,7 +153,6 @@ public class PanierServlet extends HttpServlet {
 			for(ContenuPanier contenu : invalidContenus)
 			{
 				printLignePanier(out, contenu, -1);
-				out.println(contenu.getError() + "<br>");
 			}
 			out.println("</table>");
 		}
@@ -244,6 +243,7 @@ public class PanierServlet extends HttpServlet {
 		out.println("<tr>");
 		if(contenu.isInvalid())
 		{
+			out.print("<br>" + contenu.getError() + "<br>");
 			out.print("<del>");
 		}
 		out.print("<td>" + contenu.getSpectacle() + "</td>" +

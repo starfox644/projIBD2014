@@ -15,7 +15,6 @@ import java.util.Vector;
 import exceptions.*;
 import utils.*;
 import accesBD.BDRepresentations;
-import accesBD.BDRequests;
 import accesBD.BDSpectacles;
 import modele.*;
 
