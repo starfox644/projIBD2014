@@ -11,16 +11,18 @@ import exceptions.ConnectionException;
 import exceptions.RequestException;
 
 import modele.Categorie;
-import modele.Utilisateur;
 
+/**
+ * 		Requetes permettant de recuperer des donnees relatives aux categories.
+ */
 public class BDCategories {
 
 	public BDCategories () {
 		
 	}
+	
 	/**
 	 * retourne la liste des catégories définies dans la bd
-	 * @param Utilisateur
 	 * @return Vector<Categorie>
 	 * @throws CategorieException
 	 * @throws ConnectionException
@@ -52,16 +54,31 @@ public class BDCategories {
 	}
 	
 
+	/**
+	 * 		Renvoie la categorie correspondant au nom passe en parametre.
+	 * @param nomC	Nom de la categorie.
+	 * @return	Objet categorie correspondant au nom ou null si aucune categorie ne possede ce nom.
+	 * @throws RequestException
+	 * @throws ConnectionException
+	 */
 	public static Categorie getCategorie(String nomC) throws RequestException, ConnectionException
 	{
 		Categorie categorie = null;
-		SQLRequest request = new SQLRequest();
+		Transaction request = new Transaction();
 		categorie = getCategorie(request, nomC);
 		request.close();
 		return categorie;
 	}
 	
-	public static Categorie getCategorie(SQLRequest request, String nomC) throws RequestException, ConnectionException
+	/**
+	 * 		Renvoie la categorie correspondant au nom passe en parametre en utilisant
+	 * 		la transaction en parametre.
+	 * @param nomC	Nom de la categorie.
+	 * @return	Objet categorie correspondant au nom ou null si aucune categorie ne possede ce nom.
+	 * @throws RequestException
+	 * @throws ConnectionException
+	 */
+	public static Categorie getCategorie(Transaction request, String nomC) throws RequestException, ConnectionException
 	{
 		Categorie categorie = null;
 		String str = "select nomC, prix from LesCategories where nomC = '" + nomC + "'";

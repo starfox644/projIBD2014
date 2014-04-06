@@ -19,7 +19,7 @@ public class BDSpectacles
 	public static Vector<Spectacle> getSpectacles () throws RequestException, ConnectionException 
 	{
 		Vector<Spectacle> res = new Vector<Spectacle>();
-		SQLRequest request = new SQLRequest();
+		Transaction request = new Transaction();
 		ResultSet rs = request.execute("select * from LesSpectacles order by nomS");
 		try {
 			while (rs.next()) {
@@ -45,7 +45,7 @@ public class BDSpectacles
 	public static boolean isInSpectacles (int numS) throws RequestException, ConnectionException 
 	{
 		boolean res = false;
-		SQLRequest request = new SQLRequest();
+		Transaction request = new Transaction();
 		ResultSet rs = request.execute("select nomS from LesSpectacles where " + numS + "=numS");
 
 		try {
@@ -69,7 +69,7 @@ public class BDSpectacles
 	public static String getNomSpectacle(int numS) throws RequestException, ConnectionException
 	{
 		String nom;
-		SQLRequest request = new SQLRequest();
+		Transaction request = new Transaction();
 		try{
 			nom = getNomSpectacle(request, numS);
 		}
@@ -94,7 +94,7 @@ public class BDSpectacles
 	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
-	public static String getNomSpectacle(SQLRequest request, int numS) throws RequestException, ConnectionException
+	public static String getNomSpectacle(Transaction request, int numS) throws RequestException, ConnectionException
 	{
 		String nom = null;
 		String str = "select nomS from LesSpectacles where " + numS + "=numS";

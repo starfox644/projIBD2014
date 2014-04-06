@@ -147,12 +147,11 @@ public class PanierServlet extends HttpServlet {
 					"<th> Heure </th>" +
 					"<th> Categorie </th>" +
 					"<th> Nombre de places </th>" +
-					"<th> </th>" +
-					"<th> Prix total </th>");
+					"<th> Motif </th>");
 
 			for(ContenuPanier contenu : invalidContenus)
 			{
-				printLignePanier(out, contenu, -1);
+				printLigneInvalide(out, contenu);
 			}
 			out.println("</table>");
 		}
@@ -241,39 +240,38 @@ public class PanierServlet extends HttpServlet {
 	private void printLignePanier(ServletOutputStream out, ContenuPanier contenu, int index) throws IOException
 	{
 		out.println("<tr>");
-		if(contenu.isInvalid())
-		{
-			out.print("<br>" + contenu.getError() + "<br>");
-			out.print("<del>");
-		}
 		out.print("<td>" + contenu.getSpectacle() + "</td>" +
 				"<td>" + contenu.getDateS() +  "</td>" +
 				"<td>" + contenu.getHeure() + "</td>" +
 				"<td>" + contenu.getCategorie().getCategorie() +  "</td>" +
 				"<td>" + contenu.getNbPlaces() + "</td>");
-		if(!contenu.isInvalid())
-		{
-			out.print("<td><form action=\"PanierServlet\" method = \"post\"> " +
-					"<input type=\"submit\" value=\"+\">" +
-					"<input type=\"hidden\" name=\"add\" value=" + index + ">" +
-					"</form>" +
-					"<form action=\"PanierServlet\" method = \"post\"> " +
-					"<input type=\"submit\" value=\"-\">" +
-					"<input type=\"hidden\" name=\"sub\" value=" + index + ">" +
-					"</form></td>" +
-					"<td>" + contenu.getPrixTotal() + "</td>");
-			out.print("<td><form action=\"PanierServlet\" method = \"post\"> " +
-					"<input type=\"submit\" value=\"Retirer\">" +
-					"<input type=\"hidden\" name=\"delete\" value=" + index + ">" +
-					"</form></td>");
-		}
-		if(contenu.isInvalid())
-		{
-			out.print("</del>");
-		}
+		out.print("<td><form action=\"PanierServlet\" method = \"post\"> " +
+				"<input type=\"submit\" value=\"+\">" +
+				"<input type=\"hidden\" name=\"add\" value=" + index + ">" +
+				"</form>" +
+				"<form action=\"PanierServlet\" method = \"post\"> " +
+				"<input type=\"submit\" value=\"-\">" +
+				"<input type=\"hidden\" name=\"sub\" value=" + index + ">" +
+				"</form></td>" +
+				"<td>" + contenu.getPrixTotal() + "</td>");
+		out.print("<td><form action=\"PanierServlet\" method = \"post\"> " +
+				"<input type=\"submit\" value=\"Retirer\">" +
+				"<input type=\"hidden\" name=\"delete\" value=" + index + ">" +
+				"</form></td>");
 		out.println("</tr>");
 	}
 
+	private void printLigneInvalide(ServletOutputStream out, ContenuPanier contenu) throws IOException
+	{
+		out.println("<tr>");
+		out.print("<td><del>" + contenu.getSpectacle() + "</td></del>" +
+				"<td><del>" + contenu.getDateS() +  "</td></del>" +
+				"<td><del>" + contenu.getHeure() + "</td></del>" +
+				"<td><del>" + contenu.getCategorie().getCategorie() +  "</td></del>" +
+				"<td><del>" + contenu.getNbPlaces() + "</td></del>" +
+				"<td>" + contenu.getError() + "</td>");
+		out.println("</tr>");
+	}
 	/**
 	 * HTTP POST request entry point.
 	 *

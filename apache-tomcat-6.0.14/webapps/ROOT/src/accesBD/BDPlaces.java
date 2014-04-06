@@ -33,7 +33,7 @@ public class BDPlaces
 	public static Vector<Place> getPlacesDispo (int numS, String date, int heure) throws RequestException, ConnectionException 
 	{
 		Vector<Place> res = new Vector<Place>();
-		SQLRequest request = new SQLRequest();
+		Transaction request = new Transaction();
 		try
 		{
 			res = getPlacesDispo(request, numS, date, heure);
@@ -52,7 +52,7 @@ public class BDPlaces
 		return res;
 	}
 
-	public static Vector<Place> getPlacesDispo (SQLRequest request, int numS, String date, int heure) throws RequestException, ConnectionException 
+	public static Vector<Place> getPlacesDispo (Transaction request, int numS, String date, int heure) throws RequestException, ConnectionException 
 	{
 		Vector<Place> res = new Vector<Place>();
 		String str = "select noPlace, noRang, numZ" +
@@ -77,7 +77,7 @@ public class BDPlaces
 		return res;
 	}
 
-	public static Vector<Place> getPlacesDispo(SQLRequest request, int numS, String date, int heure, Categorie c) throws RequestException, ConnectionException 
+	public static Vector<Place> getPlacesDispo(Transaction request, int numS, String date, int heure, Categorie c) throws RequestException, ConnectionException 
 	{
 		String cat = c.getCategorie();
 		Vector<Place> res = new Vector<Place>();
@@ -125,7 +125,7 @@ public class BDPlaces
 				"from LesTickets " +
 				"where dateRep = to_date('"+date+" "+heure + "' , 'DD/MM/YYYY HH24') and numS = " + numS;
 
-		SQLRequest request = new SQLRequest();
+		Transaction request = new Transaction();
 		ResultSet rs = request.execute(str);
 		try {
 			while (rs.next()) {
@@ -153,7 +153,7 @@ public class BDPlaces
 		Vector<Integer> res = new Vector<Integer>();
 		String str = "select count(noPlace) " +
 				"from LesPlaces ";
-		SQLRequest request = new SQLRequest();
+		Transaction request = new Transaction();
 		ResultSet rs = request.execute(str);
 		try {
 			while (rs.next()) {
@@ -172,7 +172,7 @@ public class BDPlaces
 	public static boolean reserverPlace(int numS, String dateRep, String dateRes, int heureS, int numZ, int noPlace, int noRang)
 			throws RequestException, ConnectionException 
 			{
-		SQLRequest request = new SQLRequest();
+		Transaction request = new Transaction();
 		ResultSet rs;
 		int i = 0;
 
@@ -256,7 +256,7 @@ public class BDPlaces
 	public static boolean checkAjoutPanier(int numS, String dateS, int heureS, int nbPlaces, Categorie categorie) 
 			throws ConnectionException, RequestException, ReservationException
 	{
-		SQLRequest request = new SQLRequest();
+		Transaction request = new Transaction();
 		ErrorLog log = null;
 		nbPlaces = 10;
 		try {

@@ -1,6 +1,5 @@
 package accesBD;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -14,13 +13,19 @@ import modele.Categorie;
 import panier.ContenuPanier;
 import panier.Panier;
 import utils.Constantes;
-import utils.ErrorLog;
 
 import exceptions.ConnectionException;
 import exceptions.RequestException;
 
 public class BDPanier 
 {
+	/**
+	 * 		Charge le panier associe a un nom d'utilisateur.
+	 * @param login		Nom de l'utilisateur dont le panier est recupere.
+	 * @return			Panier associe au nom de l'utilisateur.
+	 * @throws ConnectionException
+	 * @throws RequestException
+	 */
 	public static Panier loadPanier(String login) throws ConnectionException, RequestException
 	{
 		System.out.println("entree dans load panier");
@@ -29,25 +34,19 @@ public class BDPanier
 
 		Calendar calendar;
 		Date tmpDate;
-		String dateS;
-		int heure;
-		
-		int numS;
-		String nomS;
-		String dateRep;
-		String nomC;
-		int prix;
-		int nbPlaces;
+		int heure, numS, prix, nbPlaces;
+		String nomS, dateRep, nomC, dateS;
 		
 		Categorie categorie;
 
 		calendar = Calendar.getInstance();
 		Panier panier = new Panier();
-		SQLRequest request = new SQLRequest();
+		Transaction request = new Transaction();
 		String recupRequest = 
 				"Select numS, nomS, dateRep, nomC, prix, nbPlaces "+
 				"from LesPaniers natural join LesSpectacles natural join LesCategories " +
 				"where login = '" + login + "'";
+		
 		ResultSet rs = request.execute(recupRequest);
 		System.out.println("lecture panier");
 		try {
@@ -85,6 +84,17 @@ public class BDPanier
 		return panier;
 	}
 	
+	/**
+	 * 		Synchronise le panier de l'utilisateur avec la base de donnees.
+	 * 		Le panier de l'utilisateur present dans la base est supprime,
+	 * 		puis le panier passe en parametre est ajoute.
+	 * @param login		Nom de l'utilisateur dont le panier doit etre synchronise.
+	 * @param panier	Panier a synchroniser avec la base.
+	 * @return			True si le panier a ete synchronise, false si l'utilisateur n'est
+	 * 					pas present dans la base.
+	 * @throws ConnectionException
+	 * @throws RequestException
+	 */
 	public static boolean synchronizePanier(String login, Panier panier) throws ConnectionException, RequestException
 	{
 		boolean removeSuccess = false;
@@ -93,7 +103,7 @@ public class BDPanier
 		String addReq;
 		ContenuPanier currContenu;
 
-		SQLRequest request = new SQLRequest();
+		Transaction request = new Transaction();
 		removeSuccess = removePanier(request, login);
 		if(removeSuccess)
 		{
@@ -117,7 +127,15 @@ public class BDPanier
 		return removeSuccess;
 	}
 
-	public static boolean removePanier(SQLRequest request, String login) throws RequestException
+	/**
+	 * 		Supprime le panier d'un utilisateur dans la base en utilisant la transaction
+	 * 		passee en parametre.
+	 * @param request		Transaction a utiliser.
+	 * @param login			Nom de l'utilisateur dont le panier doit etre supprime.
+	 * @return	true si le panier est supprime, false si l'utilisateur n'est pas present.
+	 * @throws RequestException
+	 */
+	public static boolean removePanier(Transaction request, String login) throws RequestException
 	{
 		String removeReq = 
 				"delete from LesPaniers " +
@@ -129,9 +147,15 @@ public class BDPanier
 		return loginPresent;
 	}
 	
+	/**
+	 * 		Supprime le panier d'un utilisateur dans la base.
+	 * @param login			Nom de l'utilisateur dont le panier doit etre supprime.
+	 * @return	true si le panier est supprime, false si l'utilisateur n'est pas present.
+	 * @throws RequestException
+	 */
 	public static boolean removePanier(String login) throws ConnectionException, RequestException
 	{
-		SQLRequest request = new SQLRequest();
+		Transaction request = new Transaction();
 		boolean loginPresent = false;
 		
 		loginPresent = removePanier(request, login);

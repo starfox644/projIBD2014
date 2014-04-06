@@ -24,7 +24,7 @@ public class BDRepresentations
 		String str = "select nomS, dateRep, numS " +
 				"from LesRepresentations " +
 				"natural join LesSpectacles order by dateRep";
-		SQLRequest request = new SQLRequest();
+		Transaction request = new Transaction();
 		ResultSet rs = request.execute(str);
 		try
 		{
@@ -57,7 +57,7 @@ public class BDRepresentations
 				"natural join LesSpectacles " +
 				"where numS = " + numS
 				+ "order by dateRep DESC";
-		SQLRequest request = new SQLRequest();
+		Transaction request = new Transaction();
 		ResultSet rs = request.execute(str);
 		try {		
 			while (rs.next()) {
@@ -83,7 +83,7 @@ public class BDRepresentations
 	public static boolean existeDateRep (int num, String date, int heure) throws RequestException, ConnectionException
 	{
 		boolean res = false;
-		SQLRequest request = new SQLRequest();
+		Transaction request = new Transaction();
 		try
 		{
 			res = existeDateRep(request, num, date, heure);
@@ -102,7 +102,7 @@ public class BDRepresentations
 		return res;
 	}
 	
-	public static boolean existeDateRep (SQLRequest request, int num, String date, int heure) throws RequestException, ConnectionException
+	public static boolean existeDateRep (Transaction request, int num, String date, int heure) throws RequestException, ConnectionException
 	{
 		boolean res = false;
 		String str = "select numS, dateRep from LesRepresentations " +
@@ -131,7 +131,7 @@ public class BDRepresentations
 	public static void addRepresentation (int num , String date, int heure) throws RequestException, ConnectionException 
 	{
 		String str = "INSERT INTO LesRepresentations VALUES ("+num+", to_date( '"+date+" "+heure+"', 'DD/MM/YY HH24'))";
-		SQLRequest request = new SQLRequest();
+		Transaction request = new Transaction();
 		request.execute(str);
 		request.commit();
 		request.close();

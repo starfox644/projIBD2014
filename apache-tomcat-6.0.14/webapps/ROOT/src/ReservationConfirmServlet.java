@@ -11,7 +11,7 @@ import utils.ParameterType;
 import utils.Utilitaires;
 
 import accesBD.BDPlaces;
-import accesBD.SQLRequest;
+import accesBD.Transaction;
 
 import modele.*;
 
