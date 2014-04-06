@@ -6,20 +6,15 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import accesBD.BDPanier;
+
 import panier.ContenuPanier;
 import panier.Panier;
 
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.Vector;
-
-import accesBD.BDPanier;
-import accesBD.BDPlaces;
-import accesBD.BDRequests;
-import accesBD.BDSpectacles;
 import exceptions.*;
 import utils.*;
-import modele.*;
 
 /**
  * Proramme Servlet.
@@ -47,11 +42,11 @@ public class PanierServlet extends HttpServlet {
 	 * @throws IOException	   if an input or output error is detected 
 	 *					   when the servlet handles the GET request
 	 */
-	public void doGet(HttpServletRequest req, HttpServletResponse res)
-			throws ServletException, IOException
-			{
-		int deleteIndex;
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException
+	{
+		int index;
 		boolean synch;
+		LinkedList<ContenuPanier> invalidContenus = new LinkedList<ContenuPanier>();
 		LinkedList<String> validParams;
 		ServletOutputStream out = res.getOutputStream();   
 
@@ -62,20 +57,21 @@ public class PanierServlet extends HttpServlet {
 
 		InputParameters parameters = new InputParameters();
 		parameters.addParameter("delete", "element du panier a retirer", ParameterType.INTEGER);
+		parameters.addParameter("add", "ajout d'une place", ParameterType.INTEGER);
+		parameters.addParameter("sub", "retrait d'une place", ParameterType.INTEGER);
 		parameters.addParameter("synch", "presence de choix de synchronisation du panier", ParameterType.BOOLEAN);
 		parameters.addParameter("synchPresent", "valeur synchronisation du panier", ParameterType.BOOLEAN);
 
 		HttpSession session = req.getSession();
-		String login;
 		ErrorLog errorLog = new ErrorLog();
-		login = (String)session.getAttribute("login");
-		
+
 		// creation d'un panier par defaut
 		Panier panier = new Panier();
 		try {
 			// recuperation du panier de l'utilisateur
 			// si l'utilisateur a un panier dans la base il est recupere, sinon on prend celui de la session
-			panier = Panier.getUserPanier(req.getSession());
+			panier = Panier.getUserPanier(req);
+			invalidContenus = panier.checkContenu();
 		} catch (ConnectionException e) {
 			errorLog.writeException(e);
 		} catch (RequestException e) {
@@ -83,18 +79,33 @@ public class PanierServlet extends HttpServlet {
 		}
 		parameters.readParameters(req);
 		validParams = parameters.getValidParametersNames();
-		
+
 		// delete : suppression d'un element du panier envoye par un bouton de suppression
 		if(validParams.contains("delete"))
 		{
-			deleteIndex = parameters.getIntParameter("delete");
-			if(deleteIndex < panier.size())
+			index = parameters.getIntParameter("delete");
+			if(index < panier.size())
 			{
 				// suppression de l'element du panier apres verification de l'indice
-				panier.removeContenu(deleteIndex);
+				panier.removeContenu(index);
 			}
 		}
-		
+		if(validParams.contains("add"))
+		{
+			index = parameters.getIntParameter("add");
+			if(index < panier.size())
+			{
+				panier.getContenu(index).addPlace();
+			}
+		}
+		if(validParams.contains("sub"))
+		{
+			index = parameters.getIntParameter("sub");
+			if(index < panier.size())
+			{
+				panier.getContenu(index).subPlace();
+			}
+		}
 		// parametre indiquant le changement de statut de la synchronisation avec la base
 		if(validParams.contains("synchPresent"))
 		{
@@ -111,6 +122,41 @@ public class PanierServlet extends HttpServlet {
 			}
 			session.setAttribute("synch", synch);
 		}
+		String login = (String)session.getAttribute("login");
+		if(invalidContenus.size() != 0)
+		{
+			if(panier.size() == 0 & login != null)
+			{
+				try {
+					BDPanier.removePanier(login);
+				} catch (ConnectionException e) 
+				{
+					errorLog.writeException(e);
+				} catch (RequestException e) 
+				{
+					errorLog.writeException(e);
+				}
+			}
+			out.println("<br> Ces commandes ne sont plus disponibles : <br>");
+			out.println("<table>");
+			out.println("<tr>");
+
+			// titres des colonnes du tableau
+			out.println("<th> Spectacle </th>" +
+					"<th> Date </th>" +
+					"<th> Heure </th>" +
+					"<th> Categorie </th>" +
+					"<th> Nombre de places </th>" +
+					"<th> </th>" +
+					"<th> Prix total </th>");
+
+			for(ContenuPanier contenu : invalidContenus)
+			{
+				printLignePanier(out, contenu, -1);
+				out.println(contenu.getError() + "<br>");
+			}
+			out.println("</table>");
+		}
 
 		if(panier.size() == 0)
 		{
@@ -121,24 +167,25 @@ public class PanierServlet extends HttpServlet {
 			out.println("<br> Contenu du panier : <br><br>");
 			out.println("<table>");
 			out.println("<tr>");
-			
+
 			// titres des colonnes du tableau
 			out.println("<th> Spectacle </th>" +
 					"<th> Date </th>" +
 					"<th> Heure </th>" +
 					"<th> Categorie </th>" +
 					"<th> Nombre de places </th>" +
+					"<th> </th>" +
 					"<th> Prix total </th>");
-			
+
 			for(int i = 0 ; i < panier.size() ; i++)
 			{
 				// affichage d'une commande du panier
 				printLignePanier(out, panier.getContenu(i), i);
 			}
 			out.println("</table>");
-			
+
 			out.println("<br> Prix total du panier : " + panier.getPrixTotal() + " <br>");
-			
+
 			// recuperation de l'attribut indiquant le stockage sur la base
 			if(session.getAttribute("synch") == null)
 			{
@@ -149,38 +196,17 @@ public class PanierServlet extends HttpServlet {
 			{
 				synch = (boolean)session.getAttribute("synch");
 			}
-			
-			// on teste si l'utilisateur est identifie
-			if(login != null)
-			{
-				// generation de bouton de demande de synchronisation du panier avec la base
-				out.print(generateCheckSynch(synch));
-				try {
-					if(synch)
-					{
-						// mise a jour du panier dans la base
-						BDPanier.synchronizePanier(login, panier);
-					}
-					else
-					{
-						// plus de sauvegarde du panier, suppression de celui-ci dans la base
-						BDPanier.removePanier(login);
-					}
-				}catch (RequestException e)
-				{
-					out.println("<p><i><font color=\"#FFFFFF\">Erreur de panier.</i></p>");
-					errorLog.writeException(e);
-				} catch (ConnectionException e) {
-					out.println("<p><i><font color=\"#FFFFFF\">Erreur de panier.</i></p>");
-					errorLog.writeException(e);
-				}
-			}
+
+			// generation de bouton de demande de synchronisation du panier avec la base
+			out.print(generateCheckSynch(synch));
 		}
+		System.out.println("avant save panier");
+		panier.synchronize(req, res);
 		out.println(HtmlGen.PiedPage(req));
 		out.println("</BODY>");
 		out.close();
-			}
-	
+	}
+
 	/**
 	 * 		Genere le code html pour le bouton d'activation de sauvegarde du panier sur la base.
 	 * @param synch
@@ -216,16 +242,35 @@ public class PanierServlet extends HttpServlet {
 	private void printLignePanier(ServletOutputStream out, ContenuPanier contenu, int index) throws IOException
 	{
 		out.println("<tr>");
+		if(contenu.isInvalid())
+		{
+			out.print("<del>");
+		}
 		out.print("<td>" + contenu.getSpectacle() + "</td>" +
 				"<td>" + contenu.getDateS() +  "</td>" +
 				"<td>" + contenu.getHeure() + "</td>" +
 				"<td>" + contenu.getCategorie().getCategorie() +  "</td>" +
-				"<td>" + contenu.getNbPlaces() + "</td>" +
-				"<td>" + contenu.getPrixTotal() + "</td>");
-		out.print("<td><form action=\"PanierServlet\" method = \"post\"> " +
-				"<input type=\"submit\" value=\"Retirer\">" +
-				"<input type=\"hidden\" name=\"delete\" value=" + index + ">" +
-				"</form></td>");
+				"<td>" + contenu.getNbPlaces() + "</td>");
+		if(!contenu.isInvalid())
+		{
+			out.print("<td><form action=\"PanierServlet\" method = \"post\"> " +
+					"<input type=\"submit\" value=\"+\">" +
+					"<input type=\"hidden\" name=\"add\" value=" + index + ">" +
+					"</form>" +
+					"<form action=\"PanierServlet\" method = \"post\"> " +
+					"<input type=\"submit\" value=\"-\">" +
+					"<input type=\"hidden\" name=\"sub\" value=" + index + ">" +
+					"</form></td>" +
+					"<td>" + contenu.getPrixTotal() + "</td>");
+			out.print("<td><form action=\"PanierServlet\" method = \"post\"> " +
+					"<input type=\"submit\" value=\"Retirer\">" +
+					"<input type=\"hidden\" name=\"delete\" value=" + index + ">" +
+					"</form></td>");
+		}
+		if(contenu.isInvalid())
+		{
+			out.print("</del>");
+		}
 		out.println("</tr>");
 	}
 

@@ -49,6 +49,7 @@ public class BDPanier
 				"from LesPaniers natural join LesSpectacles natural join LesCategories " +
 				"where login = '" + login + "'";
 		ResultSet rs = request.execute(recupRequest);
+		System.out.println("lecture panier");
 		try {
 			while(rs.next())
 			{
@@ -65,7 +66,8 @@ public class BDPanier
 				calendar.setTime(tmpDate);
 				heure = calendar.get(Calendar.HOUR_OF_DAY);
 				categorie = new Categorie(nomC, prix);
-				panier.addContenu(new ContenuPanier(numS, nomS, dateS, heure, nbPlaces, categorie));
+				ContenuPanier contenu = new ContenuPanier(numS, nomS, dateS, heure, nbPlaces, categorie);
+				panier.addContenu(contenu);
 			}
 		} 
 		catch(ParseException e)

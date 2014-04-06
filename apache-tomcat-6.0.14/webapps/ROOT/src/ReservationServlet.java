@@ -117,7 +117,7 @@ public class ReservationServlet extends HttpServlet {
 					{
 						System.out.println("avant check");
 						try {
-							BDPlaces.checkAjoutPanier(numS, dateS, heureS, nbPlaces, categorie, out);
+							BDPlaces.checkAjoutPanier(numS, dateS, heureS, nbPlaces, categorie);
 						}
 						catch (ReservationException e) 
 						{
@@ -128,7 +128,7 @@ public class ReservationServlet extends HttpServlet {
 						if(success)
 						{
 							HttpSession session = req.getSession();
-							Panier panier = Panier.getUserPanier(session);
+							Panier panier = Panier.getUserPanier(req);
 							ContenuPanier contenu = new ContenuPanier(numS, nomS, dateS, heureS, 1, categorie);
 							panier.addContenu(contenu);
 							RequestDispatcher dispatcher = req.getRequestDispatcher("PanierServlet");

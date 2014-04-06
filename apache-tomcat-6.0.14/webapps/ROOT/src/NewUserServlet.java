@@ -6,19 +6,11 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import panier.ContenuPanier;
-import panier.Panier;
-
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.Vector;
 
 import accesBD.BDLogin;
-import accesBD.BDRequests;
-import accesBD.BDSpectacles;
 import exceptions.*;
 import utils.*;
-import modele.*;
 
 /**
  * Proramme Servlet.

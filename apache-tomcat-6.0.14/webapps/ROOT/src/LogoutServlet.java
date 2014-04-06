@@ -1,24 +1,8 @@
-/*
- * @(#)ProgrammeServlet.java	1.0 2007/10/31
- * 
- * Copyright (c) 2007 Sara Bouchenak.
- */
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import panier.ContenuPanier;
-import panier.Panier;
-
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.Vector;
-
-import accesBD.BDLogin;
-import accesBD.BDRequests;
-import accesBD.BDSpectacles;
-import exceptions.*;
-import utils.*;
-import modele.*;
 
 /**
  * Proramme Servlet.
@@ -52,7 +36,6 @@ public class LogoutServlet extends HttpServlet {
 
 		HttpSession session = req.getSession();
 		session.removeAttribute("login");
-		session.removeAttribute("panier");
 		RequestDispatcher dispatcher = req.getRequestDispatcher("IdentificationServlet");
 		dispatcher.forward(req, res);
 	}

@@ -253,7 +253,7 @@ public class BDPlaces
 		return valid;
 	}
 
-	public static boolean checkAjoutPanier(int numS, String dateS, int heureS, int nbPlaces, Categorie categorie, ServletOutputStream out) 
+	public static boolean checkAjoutPanier(int numS, String dateS, int heureS, int nbPlaces, Categorie categorie) 
 			throws ConnectionException, RequestException, ReservationException
 	{
 		SQLRequest request = new SQLRequest();

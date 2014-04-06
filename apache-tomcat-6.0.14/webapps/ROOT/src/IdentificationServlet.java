@@ -1,33 +1,14 @@
-/*
- * @(#)ProgrammeServlet.java	1.0 2007/10/31
- * 
- * Copyright (c) 2007 Sara Bouchenak.
- */
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import panier.ContenuPanier;
 import panier.Panier;
-
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.Vector;
 
 import accesBD.BDLogin;
-import accesBD.BDRequests;
-import accesBD.BDSpectacles;
 import exceptions.*;
 import utils.*;
-import modele.*;
 
-/**
- * Proramme Servlet.
- *
- * This servlet dynamically returns the theater program.
- *
- * @author <a href="mailto:Sara.Bouchenak@imag.fr">Sara Bouchenak</a>
- * @version 1.0, 31/10/2007
- */
 
 public class IdentificationServlet extends HttpServlet {
 
@@ -63,11 +44,6 @@ public class IdentificationServlet extends HttpServlet {
 		parameters.addParameter("login", "Nom d'utilisateur", ParameterType.STRING);
 		parameters.addParameter("password", "Mot de passe", ParameterType.PASSWD);
 		
-		// TO DO
-		// Recuperation de la liste de tous les spectacles de la saison.
-		// Puis construction dynamique d'une page web decrivant ces spectacles.
-		// afficher resultat requete
-		
 		parameters.readParameters(req);
 		if(parameters.nullParameters())
 		{
@@ -86,7 +62,7 @@ public class IdentificationServlet extends HttpServlet {
 					{
 						session = req.getSession();
 						session.setAttribute("login", login);
-						session.removeAttribute("panier");
+						Panier.synchronizePanierSession(req, res);
 						out.println("Bonjour " + login +"<br>");
 					}
 					else
@@ -104,7 +80,7 @@ public class IdentificationServlet extends HttpServlet {
 					out.println("<p><i><font color=\"#FFFFFF\">Impossible de verifier l'identification.</i></p>");
 					out.print(parameters.getHtmlForm(invite, formLink));
 					log.writeException(e);
-				} 
+				}
 			}
 			else
 			{
@@ -113,27 +89,9 @@ public class IdentificationServlet extends HttpServlet {
 			}
 		}
 		
-		/*out.println("</i></p>");
-		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");*/
 		out.println(HtmlGen.PiedPage(req));
 		out.println("</BODY>");
 		out.close();
-	}
-	
-	private void printLignePanier(ServletOutputStream out, ContenuPanier contenu, int index) throws IOException
-	{
-		out.println("<tr>");
-		out.print("<td>" + contenu.getSpectacle() + "</td>" +
-				"<td>" + contenu.getDateS() +  "</td>" +
-				"<td>" + contenu.getHeure() + "</td>" +
-				"<td>" + contenu.getCategorie().getCategorie() +  "</td>" +
-				"<td>" + contenu.getNbPlaces() + "</td>" +
-				"<td>" + contenu.getPrixTotal() + "</td>");
-		out.print("<td><form action=\"PanierServlet\" method = \"post\"> " +
-				"<input type=\"submit\" value=\"Retirer\">" +
-				"<input type=\"hidden\" name=\"delete\" value=" + index + ">" +
-				"</form></td>");
-		out.println("</tr>");
 	}
 
 	/**
