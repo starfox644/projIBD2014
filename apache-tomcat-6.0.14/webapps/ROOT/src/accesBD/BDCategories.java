@@ -55,8 +55,16 @@ public class BDCategories {
 	public static Categorie getCategorie(String nomC) throws RequestException, ConnectionException
 	{
 		Categorie categorie = null;
-		String str = "select nomC, prix from LesCategories where nomC = '" + nomC + "'";
 		SQLRequest request = new SQLRequest();
+		categorie = getCategorie(request, nomC);
+		request.close();
+		return categorie;
+	}
+	
+	public static Categorie getCategorie(SQLRequest request, String nomC) throws RequestException, ConnectionException
+	{
+		Categorie categorie = null;
+		String str = "select nomC, prix from LesCategories where nomC = '" + nomC + "'";
 		ResultSet rs = request.execute(str);
 		try {
 			if(rs.next()) 
@@ -68,7 +76,6 @@ public class BDCategories {
 					+ "Code Oracle " + e.getErrorCode()
 					+ "Message " + e.getMessage());
 		}
-		request.close();
 		return categorie;
 	}
 }

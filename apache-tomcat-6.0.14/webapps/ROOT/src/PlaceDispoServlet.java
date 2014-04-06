@@ -129,8 +129,9 @@ public class PlaceDispoServlet extends HttpServlet {
 			} 
 		}
 
-		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");
-		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");
+		/*out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");
+		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");*/
+		out.println(HtmlGen.PiedPage(req));
 		out.println("</BODY>");
 		out.close();
 	}

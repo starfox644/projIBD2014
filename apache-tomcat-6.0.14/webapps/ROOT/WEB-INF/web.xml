@@ -13,7 +13,8 @@
 --> 
 
 
-- <servlet> 
+  
+<servlet> 
 <servlet-name>ProgrammeServlet</servlet-name> 
 <servlet-class>ProgrammeServlet</servlet-class> 
 </servlet>
@@ -53,6 +54,21 @@
 <servlet-class>ZoneReservationServlet</servlet-class> 
 </servlet>
 
+- <servlet> 
+<servlet-name>IdentificationServlet</servlet-name> 
+<servlet-class>IdentificationServlet</servlet-class> 
+</servlet>
+
+- <servlet> 
+<servlet-name>NewUserServlet</servlet-name> 
+<servlet-class>NewUserServlet</servlet-class> 
+</servlet>
+
+- <servlet> 
+<servlet-name>LogoutServlet</servlet-name> 
+<servlet-class>LogoutServlet</servlet-class> 
+</servlet>
+
 - <servlet-mapping> 
 <servlet-name>ProgrammeServlet</servlet-name> 
 <url-pattern>/servlet/ProgrammeServlet</url-pattern> 
@@ -89,7 +105,24 @@
 </servlet-mapping>
 
 - <servlet-mapping> 
+<servlet-name>IdentificationServlet</servlet-name> 
+<url-pattern>/servlet/IdentificationServlet</url-pattern> 
+</servlet-mapping>
+
+- <servlet-mapping> 
+<servlet-name>NewUserServlet</servlet-name> 
+<url-pattern>/servlet/NewUserServlet</url-pattern> 
+</servlet-mapping>
+
+- <servlet-mapping> 
 <servlet-name>PanierServlet</servlet-name> 
 <url-pattern>/servlet/PanierServlet</url-pattern> 
 </servlet-mapping>
+
+- <servlet-mapping> 
+<servlet-name>LogoutServlet</servlet-name> 
+<url-pattern>/servlet/LogoutServlet</url-pattern> 
+</servlet-mapping>
+
 </web-app>
+

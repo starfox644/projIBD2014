@@ -102,7 +102,8 @@ public class RepresentationsServlet extends HttpServlet {
 			{
 				out.print(parameters.getHtmlError());
 				out.print(parameters.getHtmlForm(invite, formLink));
-				out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
+				//out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
+				out.println(HtmlGen.PiedPage(req));
 				out.println("</BODY>");
 				out.close();
 				return;
@@ -176,7 +177,8 @@ public class RepresentationsServlet extends HttpServlet {
 			{
 				out.println("<p><i><font color=\"#FFFFFF\">Impossible d'afficher la liste des repr&eacute;sentations, veuillez r&eacute;essayer utltérieurement.</i></p>");
 			}
-			out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
+			//out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
+			out.println(HtmlGen.PiedPage(req));
 			out.println("</BODY>");
 			out.close();
 		}

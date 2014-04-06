@@ -35,6 +35,11 @@ public class Parameter
 		return _rowValue;
 	}
 	
+	public ParameterType getType()
+	{
+		return _type;
+	}
+	
 	public boolean isPresent()
 	{
 		return (_rowValue != null && !_rowValue.equals(""));
@@ -65,7 +70,11 @@ public class Parameter
 				case HOUR:
 					valid = Utilitaires.validHourFormat(_rowValue);
 					break;
+				case BOOLEAN:
+					valid = (_rowValue.equals("true") || _rowValue.equals("false"));
+					break;
 				default:
+					// String et passwd ne provoquent pas d'erreurs (chaines de caracteres)
 					valid = true;
 					break;
 			}

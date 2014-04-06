@@ -69,7 +69,7 @@ public class ReservationServlet extends HttpServlet {
 			{
 				out.print(parameters.getHtmlError());
 				out.print(parameters.getHtmlForm(invite, formLink));
-				out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
+				out.println(HtmlGen.PiedPage(req));
 				out.println("</BODY>");
 				out.close();
 				return;
@@ -81,14 +81,17 @@ public class ReservationServlet extends HttpServlet {
 			nomC = "balcon";
 			try 
 			{
+				System.out.println("avant nom");
 				String nomS = BDSpectacles.getNomSpectacle(numS);
 				// on verifie que le numero de spectacle existe
 				if (nomS != null)
 				{
+					System.out.println("avant categorie");
 					Categorie categorie = BDCategories.getCategorie(nomC);
 					success = true;
 					if(categorie != null)
 					{
+						System.out.println("avant check");
 						try {
 							BDPlaces.checkAjoutPanier(numS, dateS, heureS, 1);
 						}
@@ -97,15 +100,17 @@ public class ReservationServlet extends HttpServlet {
 							out.println("<br>" + e.getMessage() + "<br>");
 							success = false;
 						}
+						System.out.println("apres check");
 						if(success)
 						{
 							HttpSession session = req.getSession();
-							Panier panier = (Panier)session.getAttribute("panier");
+							/*Panier panier = (Panier)session.getAttribute("panier");
 							if(panier == null)
 							{
 								panier = new Panier();
 								session.setAttribute("panier", panier);
-							}
+							}*/
+							Panier panier = Panier.getUserPanier(session);
 							ContenuPanier contenu = new ContenuPanier(numS, nomS, dateS, heureS, 1, categorie);
 							panier.addContenu(contenu);
 							/*out.println("<br> Contenu du panier : <br>");
@@ -118,8 +123,7 @@ public class ReservationServlet extends HttpServlet {
 					{
 						out.println("<br> Cette categorie n'existe pas <br>");
 						out.print(parameters.getHtmlForm(invite, formLink));
-						out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");
-						out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");
+						out.println(HtmlGen.PiedPage(req));
 						out.println("</BODY>");
 						out.close();
 						return;
@@ -129,8 +133,7 @@ public class ReservationServlet extends HttpServlet {
 				{
 					out.println("<br> Ce numero de spectacle n'existe pas<br>");
 					out.print(parameters.getHtmlForm(invite, formLink));
-					out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");
-					out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");
+					out.println(HtmlGen.PiedPage(req));
 					out.println("</BODY>");
 					out.close();
 					return;
@@ -149,9 +152,7 @@ public class ReservationServlet extends HttpServlet {
 				errorLog.writeException(e);
 			} 
 		}
-
-		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");
-		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");
+		out.println(HtmlGen.PiedPage(req));
 		out.println("</BODY>");
 		out.close();
 	}

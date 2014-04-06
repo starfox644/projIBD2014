@@ -127,8 +127,9 @@ public class ReservationConfirmServlet extends HttpServlet {
 			out.println("<p><i><font color=\"#FFFFFF\"> Reservation impossible.</i></p>");
 			errorLog.writeException(e);
 		}
-		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");
-		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");
+		/*out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");
+		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");*/
+		out.println(HtmlGen.PiedPage(req));
 		out.println("</BODY>");
 		out.close();
 	}
