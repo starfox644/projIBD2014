@@ -9,8 +9,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
 
+import javax.servlet.ServletOutputStream;
+
 import utils.ErrorLog;
 
+import modele.Categorie;
 import modele.Place;
 import exceptions.ConnectionException;
 import exceptions.RequestException;
@@ -35,7 +38,12 @@ public class BDPlaces
 		{
 			res = getPlacesDispo(request, numS, date, heure);
 		}
-		catch(Exception e)
+		catch (ConnectionException e)
+		{
+			request.close();
+			throw e;
+		}
+		catch (RequestException e)
 		{
 			request.close();
 			throw e;
@@ -69,6 +77,38 @@ public class BDPlaces
 		return res;
 	}
 
+	public static Vector<Place> getPlacesDispo(SQLRequest request, int numS, String date, int heure, Categorie c) throws RequestException, ConnectionException 
+	{
+		String cat = c.getCategorie();
+		Vector<Place> res = new Vector<Place>();
+		String str = " select noPlace, noRang, numZ" +
+					  " from " + 
+						" (select noPlace, noRang, numZ" +
+						"  from LesPlaces " +
+						"  where numZ in (select numZ" +
+						"				 from LesZones" +
+						"				 where nomC='"+ cat +"'))"+
+						" natural join " +
+						"   ((select noPlace, noRang" +
+						"	from LesPlaces)" +
+						"	minus" +
+						"	(select noPlace, noRang from LesTickets " +
+						"	where dateRep = to_date('"+date+" "+ heure + "', 'DD/MM/YYYY HH24') and numS = " + numS + "))" +
+						" order by numZ, noRang, noPlace";
+						//" order by noPlace, noRang, numZ";
+		ResultSet rs = request.execute(str);
+		try {
+			while (rs.next()) {
+				res.addElement(new Place (rs.getInt(1), rs.getInt(2), rs.getInt(3)));
+			}
+
+		} catch (SQLException e) {
+			throw new RequestException (" Erreur dans getPlacesDispo : \n"
+					+ "Code Oracle : " + e.getErrorCode() + "\n"
+					+ "Message : " + e.getMessage() + "\n");
+		}
+		return res;
+	}
 	/**
 	 * Renvoie le nombre de places occupees pour la representation du spectacle
 	 * de numero numS prevu a la date passee en parametre.
@@ -128,6 +168,7 @@ public class BDPlaces
 		return res.get(0);
 	}
 
+	
 	public static boolean reserverPlace(int numS, String dateRep, String dateRes, int heureS, int numZ, int noPlace, int noRang)
 			throws RequestException, ConnectionException 
 			{
@@ -212,11 +253,12 @@ public class BDPlaces
 		return valid;
 	}
 
-	public static boolean checkAjoutPanier(int numS, String dateS, int heureS, int nbPlaces) throws ConnectionException, RequestException, ReservationException
+	public static boolean checkAjoutPanier(int numS, String dateS, int heureS, int nbPlaces, Categorie categorie, ServletOutputStream out) 
+			throws ConnectionException, RequestException, ReservationException
 	{
 		SQLRequest request = new SQLRequest();
 		ErrorLog log = null;
-		
+		nbPlaces = 10;
 		try {
 			log = new ErrorLog();
 		} catch (IOException e) {}
@@ -249,15 +291,43 @@ public class BDPlaces
 			Vector<Integer> result = new Vector<Integer>();
 			Vector<Place> placesDispo = new Vector<Place>();
 			Place p = null;
-			int i = 0;
 			// on verifie qu'il reste des places disponibles pour 
 			// cette representation
-			placesDispo = BDPlaces.getPlacesDispo(request, numS, dateS, heureS);
-			// plus de place
-			if (placesDispo.isEmpty())
+			placesDispo = BDPlaces.getPlacesDispo(request, numS, dateS, heureS, categorie);
+			if (placesDispo.isEmpty() || placesDispo.size() < nbPlaces)
 			{
 				request.close();
 				throw new ReservationException("Il n'y a plus de place disponible pour cette representation.");
+			}
+			else
+			{
+					Vector<Place> places = placesSucc(placesDispo, nbPlaces);
+					if(places.isEmpty())
+					{
+						request.close();
+						throw new ReservationException("Il n'y a pas assez de places disponibles pour cette representation.");
+					}
+				/*for (int i = 0 ; i < placesDispo.size() ; i++)
+				{
+					System.out.println("numZ : "+ placesDispo.get(i).getNumZ() + 
+								    " , noRang : " + placesDispo.get(i).getNoRang() +
+								    " , noPlace : "+ placesDispo.get(i).getNoPlace());
+				}
+				if (places.isEmpty())
+				{
+					System.out.println(" Les places succ sont ::: Y en A PAS MOUAH AHAHAH");
+				}
+				else
+				{
+					System.out.println(" Les places succ sont ::: ");
+					for (int i  = 0 ; i < places.size() ; i++)
+					{
+						System.out.println("numZ : "+ places.get(i).getNumZ() + 
+							    " , noRang : " + places.get(i).getNoRang() +
+							    " , noPlace : "+ places.get(i).getNoPlace());
+					}
+				}*/
+				
 			}
 		}
 		else
@@ -267,5 +337,62 @@ public class BDPlaces
 		}
 		request.close();
 		return true;
+	}
+	
+	public static Vector<Place> placesSucc(Vector<Place> placesDispo, int nbPlaces)
+	{
+		Vector<Place> places = new Vector<Place>();
+		boolean trouve = false;
+		int i = 0;
+		int j = 0; 
+		if ((placesDispo.size()-nbPlaces) < 0)
+			return null;
+		while (i < (placesDispo.size()-nbPlaces) && !trouve)
+		{
+			j = i;
+			// verification q'ils ait le meme numero de zone
+			while( j < nbPlaces && (placesDispo.get(j).getNumZ() == placesDispo.get(j+1).getNumZ()))
+			{
+				j++;
+			}
+			// meme zone, on continue la verif
+			if( j == nbPlaces )
+			{
+				System.out.println(" i = " + i + "  meme numZ");
+				j = i;
+				// verification q'ils ait le meme numero de rang
+				while( j < nbPlaces && (placesDispo.get(j).getNoRang() == placesDispo.get(j+1).getNoRang()))
+				{
+					j++;
+				}
+				// meme noRang, on continue la verif
+				if( j == nbPlaces )
+				{
+					System.out.println(" i = " + i + "  meme rang");
+					j = i;
+					// verification q'ils ait des numeros de places successifs
+					while( j < nbPlaces && (placesDispo.get(j).getNoPlace() == (placesDispo.get(j+1).getNoPlace()-1)))
+					{
+						j++;
+					}
+					// meme noRang, on continue la verif
+					if( j == nbPlaces )
+					{
+						System.out.println(" i = " + i + "  noRange + 1");
+						trouve = true;
+						for (int z = i ; z < i + nbPlaces ; z++)
+						{
+							places.add(placesDispo.get(z));
+							System.out.println("numZ : "+ placesDispo.get(z).getNumZ() + 
+								    " , noRang : " + placesDispo.get(z).getNoRang() +
+								    " , noPlace : "+ placesDispo.get(z).getNoPlace());
+						}
+						System.out.println("**********************");
+					}
+				}
+			}
+			i++;
+		}
+		return places;
 	}
 }

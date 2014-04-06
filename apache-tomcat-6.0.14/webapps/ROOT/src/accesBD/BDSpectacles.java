@@ -73,7 +73,12 @@ public class BDSpectacles
 		try{
 			nom = getNomSpectacle(request, numS);
 		}
-		catch(Exception e)
+		catch (ConnectionException e)
+		{
+			request.close();
+			throw e;
+		}
+		catch (RequestException e)
 		{
 			request.close();
 			throw e;
