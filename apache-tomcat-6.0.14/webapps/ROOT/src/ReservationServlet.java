@@ -46,8 +46,10 @@ public class ReservationServlet extends HttpServlet {
 		parameters.addParameter("date", "Date de repr&eacute;sentation", ParameterType.DATE);
 		parameters.addParameter("heure", "Heure de repr&eacute;sentation", ParameterType.HOUR);
 		parameters.addParameter("nomC", "Cat&eacute;gorie", ParameterType.STRING);
+		parameters.addParameter("nbPlaces", "Nombre de places", ParameterType.INTEGER);
 		String dateS;
-		int numS, heureS;
+		int numS, heureS, nbPlaces;
+		//String SnumS, SheureS, SnbPlaces;
 		String nomC;
 		boolean success;
 		ServletOutputStream out = res.getOutputStream();   
@@ -59,10 +61,31 @@ public class ReservationServlet extends HttpServlet {
 		out.print(HtmlGen.htmlPreambule("Reservation pour une representation"));
 
 		parameters.readParameters(req);
+		
+		
+		/* recuperation des parametres */
+		/*SnumS		= req.getParameter("numS");
+		dateS		= req.getParameter("date");
+		SheureS		= req.getParameter("heure");
+		nomC		= req.getParameter("nomC");
+		SnbPlaces		= req.getParameter("nbPlaces");*/
+
 		if(parameters.nullParameters())
 		{
 			out.print(parameters.getHtmlForm(invite, formLink));
 		}
+		/*else if (SnumS == null || dateS == null || SheureS == null)
+		//if(parameters.nullParameters())
+		{
+			out.print(parameters.getHtmlForm(invite, formLink));
+		}
+		else if (SnumS != null && dateS != null && SheureS != null)
+		{
+			if (nomC == null && SnbPlaces == null)
+			{
+				
+			}
+		}*/
 		else
 		{
 			if(!parameters.validParameters())
@@ -78,6 +101,7 @@ public class ReservationServlet extends HttpServlet {
 			dateS = parameters.getStringParameter("date");
 			heureS = parameters.getIntParameter("heure");
 			nomC = parameters.getStringParameter("nomC");
+			nbPlaces = parameters.getIntParameter("nbPlaces");
 			nomC = "balcon";
 			try 
 			{
@@ -90,7 +114,7 @@ public class ReservationServlet extends HttpServlet {
 					if(categorie != null)
 					{
 						try {
-							BDPlaces.checkAjoutPanier(numS, dateS, heureS, 1);
+							BDPlaces.checkAjoutPanier(numS, dateS, heureS, nbPlaces, categorie, out);
 						}
 						catch (ReservationException e) 
 						{
@@ -106,7 +130,7 @@ public class ReservationServlet extends HttpServlet {
 								panier = new Panier();
 								session.setAttribute("panier", panier);
 							}
-							ContenuPanier contenu = new ContenuPanier(numS, nomS, dateS, heureS, 1, categorie);
+							ContenuPanier contenu = new ContenuPanier(numS, nomS, dateS, heureS, nbPlaces, categorie);
 							panier.addContenu(contenu);
 							/*out.println("<br> Contenu du panier : <br>");
 							out.print(panier.toString());*/

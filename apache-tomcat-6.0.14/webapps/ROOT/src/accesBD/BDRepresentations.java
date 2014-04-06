@@ -87,7 +87,13 @@ public class BDRepresentations
 		try
 		{
 			res = existeDateRep(request, num, date, heure);
-		} catch(Exception e)
+		} 
+		catch (ConnectionException e)
+		{
+			request.close();
+			throw e;
+		}
+		catch (RequestException e)
 		{
 			request.close();
 			throw e;
