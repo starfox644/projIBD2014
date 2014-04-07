@@ -9,6 +9,10 @@ import utils.Utilitaires;
 import exceptions.ConnectionException;
 import exceptions.RequestException;
 
+/**
+ * 		Requetes permettant de recuperer des informations sur les representations
+ * 		ou d'en ajouter.
+ */
 public class BDRepresentations 
 {
 	
@@ -44,7 +48,7 @@ public class BDRepresentations
 
 	/**
 	 * 		Retourne les dates de representations d'un spectacle identifie par son numero.
-	 * @param num String contenant le numero du spectacle.
+	 * @param numS Numero du spectacle.
 	 * @return Vector<String> contenant les dates de la representation.
 	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
@@ -73,10 +77,11 @@ public class BDRepresentations
 	}
 	
 	/**
-	 * Renvoie true si le spectacle identifie par num est programme a la date passee en parametre, false sinon
+	 * 		Verifie si une certaine representation est programmee a une certaine date
+	 * 		a la granularite de l'heure.
 	 * @param num	numero du spectacle 
 	 * @param date	date de la representation 
-	 * @return	true si le spectacle est programme a cette date, false sinon
+	 * @return	true si la representation spectacle est programme a cette date, false sinon
 	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */

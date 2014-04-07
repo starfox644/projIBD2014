@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
 import java.text.ParseException;
 
 import modele.Categorie;
@@ -17,6 +16,10 @@ import utils.Constantes;
 import exceptions.ConnectionException;
 import exceptions.RequestException;
 
+/**
+ * 		Requetes permettant de gerer les paniers heberges dans la base
+ * 		des utilisateurs loges.
+ */
 public class BDPanier 
 {
 	/**
@@ -42,6 +45,8 @@ public class BDPanier
 		calendar = Calendar.getInstance();
 		Panier panier = new Panier();
 		Transaction request = new Transaction();
+		
+		// requete de recuperation des infos du panier, avec les noms de spectacles et les categories
 		String recupRequest = 
 				"Select numS, nomS, dateRep, nomC, prix, nbPlaces "+
 				"from LesPaniers natural join LesSpectacles natural join LesCategories " +
@@ -99,19 +104,27 @@ public class BDPanier
 	{
 		boolean removeSuccess = false;
 
+		// base de la requete d'ajout
 		String addReqBase = "INSERT INTO LesPaniers VALUES ('" + login + "', ";
 		String addReq;
 		ContenuPanier currContenu;
 
 		Transaction request = new Transaction();
+		
+		// suppression des eventuels anciens paniers de l'utilisateur
 		removeSuccess = removePanier(request, login);
+		
+		// si le login n'est pas present, remove success vaut false
 		if(removeSuccess)
 		{
+			// verification de la presence d'elements dans le panier
 			if(panier.size() > 0)
 			{
 				for(int i = 0 ; i < panier.size() ; i++)
 				{
 					currContenu = panier.getContenu(i);
+					// construction de la requete d'ajout a partir de la requete de base
+					// et de l'element actuel du panier
 					addReq = addReqBase +
 							currContenu.getNumS() + ", " +
 							"to_date('" + currContenu.getDateS() + 
@@ -137,6 +150,7 @@ public class BDPanier
 	 */
 	public static boolean removePanier(Transaction request, String login) throws RequestException
 	{
+		// requete de suppression du panier
 		String removeReq = 
 				"delete from LesPaniers " +
 						"where login = '" + login + "'";
