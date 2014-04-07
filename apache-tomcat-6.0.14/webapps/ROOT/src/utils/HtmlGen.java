@@ -3,8 +3,20 @@ package utils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 		Parties de pages en html communes a toutes les pages.
+ */
 public class HtmlGen 
 {
+	/**
+	 * 		Genere un pied de page en html.
+	 * 		Affiche les liens a la page d'accueil, au panier et a la liste des spectacles.
+	 * 		Si l'utilisateur est loge, affiche son nom et le lien deconnexion, 
+	 * 		sinon affiche le lien connexion.
+	 * @param req	Requete de la servlet dont le pied de page est genere, pour afficher le nom d'utilisateur.
+	 * @return		String contenant le pied de page a renvoyer au format html.
+	 * 				La balise /body n'est pas ajoutee.
+	 */
 	public static String PiedPage(HttpServletRequest req)
 	{
 		HttpSession session;
@@ -32,6 +44,11 @@ public class HtmlGen
 		return res;
 	}
 	
+	/**
+	 * 		Genere un preambule commun a toutes les pages du site.
+	 * @param title	Titre de la page.
+	 * @return	String contenant le preambule de la page au format html a renvoyer au client.
+	 */
 	public static String htmlPreambule(String title)
 	{
 		String res = "";

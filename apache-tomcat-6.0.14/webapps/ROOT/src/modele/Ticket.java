@@ -1,5 +1,8 @@
 package modele;
 
+/**
+ * 		Definit un ticket dans la base de donnees.
+ */
 public class Ticket {
 
 	private int noSerie;

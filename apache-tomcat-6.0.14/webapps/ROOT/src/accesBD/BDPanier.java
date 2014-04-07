@@ -131,7 +131,7 @@ public class BDPanier
 							currContenu.getNumS() + ", " +
 							"to_date('" + currContenu.getDateS() + 
 							" " + currContenu.getHeure()  + "', 'DD/MM/YY HH24'), '" +
-							currContenu.getCategorie().getCategorie() + "', " +
+							currContenu.getCategorie().getNom() + "', " +
 							currContenu.getNbPlaces() + ")";
 					request.execute(addReq);
 				}

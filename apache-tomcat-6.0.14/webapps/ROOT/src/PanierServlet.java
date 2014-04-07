@@ -243,7 +243,7 @@ public class PanierServlet extends HttpServlet {
 		out.print("<td>" + contenu.getSpectacle() + "</td>" +
 				"<td>" + contenu.getDateS() +  "</td>" +
 				"<td>" + contenu.getHeure() + "</td>" +
-				"<td>" + contenu.getCategorie().getCategorie() +  "</td>" +
+				"<td>" + contenu.getCategorie().getNom() +  "</td>" +
 				"<td>" + contenu.getNbPlaces() + "</td>");
 		out.print("<td><form action=\"PanierServlet\" method = \"post\"> " +
 				"<input type=\"submit\" value=\"+\">" +
@@ -267,7 +267,7 @@ public class PanierServlet extends HttpServlet {
 		out.print("<td><del>" + contenu.getSpectacle() + "</td></del>" +
 				"<td><del>" + contenu.getDateS() +  "</td></del>" +
 				"<td><del>" + contenu.getHeure() + "</td></del>" +
-				"<td><del>" + contenu.getCategorie().getCategorie() +  "</td></del>" +
+				"<td><del>" + contenu.getCategorie().getNom() +  "</td></del>" +
 				"<td><del>" + contenu.getNbPlaces() + "</td></del>" +
 				"<td>" + contenu.getError() + "</td>");
 		out.println("</tr>");

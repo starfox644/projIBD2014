@@ -27,8 +27,12 @@ public class Constantes {
 	
 	private static boolean isLogPathInit = false;
 	
+	/** Format des dates geres par le site. */
 	public final static String dateFormat = "dd/MM/yyyy";
 	
+	/**
+	 * 		Initialisation du chemin du dossier de configuration.
+	 */
 	private static void initConfigPath()
 	{
 		Map<String, String> env = System.getenv();
@@ -45,6 +49,9 @@ public class Constantes {
 		isConfigPathInit = true;
 	}
 	
+	/**
+	 * 		Initialisation du chemin du dossier des fichiers de log du serveur.
+	 */
 	private static void initLogDirPath()
 	{
 		Map<String, String> env = System.getenv();
@@ -61,6 +68,10 @@ public class Constantes {
 		isLogPathInit = true;
 	}
 	
+	/**
+	 * 		Renvoie le chemin du dossier contenant les fichiers de configuration du serveur.
+	 * @return Chemin du dossier contenant les fichiers de configuration du serveur.
+	 */
 	public static String getConfigPath()
 	{
 		if(!isConfigPathInit)
@@ -70,6 +81,10 @@ public class Constantes {
 		return ConfigPath;
 	}
 	
+	/**
+	 * 		Renvoie le chemin du dossier contenant les fichiers de log du serveur.
+	 * @return Chemin du dossier contenant les fichiers de log du serveur.
+	 */
 	public static String getLogPath()
 	{
 		if(!isLogPathInit)

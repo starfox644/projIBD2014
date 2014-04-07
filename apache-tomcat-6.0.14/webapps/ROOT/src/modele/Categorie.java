@@ -1,28 +1,36 @@
 package modele;
 
+/**
+ * 		Definit une categorie de place de la salle de theatre.
+ */
 public class Categorie {
 
-	private String categorie;
+	private String nom;
 	private float prix;
 	
-	public Categorie (String c, float p) {
-		this.categorie = c;
-		this.prix = p;
+	/**
+	 * 		Cree une categorie avec un nom et un prix par place.
+	 * @param nom Nom de la categorie.
+	 * @param prix Prix par place de la categorie.
+	 */
+	public Categorie (String nom, float prix) {
+		this.nom = nom;
+		this.prix = prix;
 	}
 
-	public String getCategorie () {
-		return this.categorie;
+	/**
+	 * 		Renvoie le nom de la categorie.
+	 * @return Nom de la categorie.
+	 */
+	public String getNom () {
+		return this.nom;
 	}
 	
+	/**
+	 * 		Renvoie le prix par place de la categorie.
+	 * @return Prix par place de la categorie.
+	 */
 	public float getPrix () {
 		return this.prix;
-	}
-	
-	public void setCategorie (String c) {
-		this.categorie = c;
-	}
-	
-	public void setPrix (float p) {
-		this.prix = p;
 	}
 }

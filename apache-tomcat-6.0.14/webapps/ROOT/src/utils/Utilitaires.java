@@ -50,7 +50,7 @@ public class Utilitaires {
 				IO.afficherln(" Liste vide ");
 			} else {
 				for (int i = 0; i < res.size(); i++) {
-					IO.afficherln(res.elementAt(i).getCategorie() + " (prix : "
+					IO.afficherln(res.elementAt(i).getNom() + " (prix : "
 							+ res.elementAt(i).getPrix() + ")");
 				}
 			}

@@ -23,10 +23,14 @@ public class InputParameters
 	private LinkedList<String> _invalidParams;
 	/** noms des parametres tries dans l'ordre de leur ajout (pour l'affichage du formulaire) */
 	private LinkedList<String> _paramNames;
+	/** noms des parametres valides. */
 	private LinkedList<String> _validParams;
 	/** indique l'absence d'erreurs de parametres (absents ou invalides) */
 	private boolean _success;
 	
+	/**
+	 * 		Cree un gestionnaire de parametres d'une page.
+	 */
 	public InputParameters()
 	{
 		_params = new Hashtable<String, Parameter>();
@@ -38,11 +42,12 @@ public class InputParameters
 	}
 	
 	/**
-	 * 		Ajoute un nouveau paramètre à récupérer.
-	 * @param name			Nom du paramètre tel qu'il est défini dans le formulaire.
-	 * @param description	Description du paramètre affichée dans le formulaire et dans
+	 * 		Ajoute un nouveau parametre a recuperer.
+	 * @param name			Nom du parametre tel qu'il est defini dans le formulaire.
+	 * 						Ce nom permettra de le recuperer par la suite.
+	 * @param description	Description du parametre affichee dans le formulaire et dans
 	 * 						les messages d'erreur.
-	 * @param type			Type du paramètre pour la vérification de validité.
+	 * @param type			Type du parametre pour la verification de validite.
 	 */
 	public void addParameter(String name, String description, ParameterType type)
 	{
@@ -52,8 +57,8 @@ public class InputParameters
 	}
 	
 	/**
-	 * 		Permet de vérifier si tous les paramètres valent null, ce qui correspond
-	 * 		à la première génération de formulaire pour le client.
+	 * 		Permet de veifier si tous les parametres valent null, ce qui correspond
+	 * 		a la premiere génération de formulaire pour le client.
 	 * @return true si tous les parametres valent null, false sinon.
 	 */
 	public boolean nullParameters()
@@ -72,8 +77,9 @@ public class InputParameters
 	}
 	
 	/**
-	 * 		Lit les paramètres ajoutés grâce à addParameter dans la requête.
-	 * 		Vérifie leur validité, qui peut être vérifiée avec validParameters.
+	 * 		Lit les parametres ajoutes grace à addParameter dans la requete
+	 * 		et verifie leur validite.
+	 * 		Apres l'appel a cette methode, la methode validParameters peut etre appelee.
 	 * @see validParameters
 	 * @param req	Requete du client sur la servlet.
 	 */
@@ -107,16 +113,22 @@ public class InputParameters
 	}
 	
 	/**
-	 * 		Indique si les paramètres sont corrects. 
-	 * 		Si cette méthode renvoie false, un message d'erreur au format HTML
-	 * 		peut être récupéré grâce à getHtmlError.
-	 * @return true si les paramètres sont valides, false sinon.
+	 * 		Indique si tous les parametres sont corrects. 
+	 * 		Un parametre est considere correct s'il est present (non null et non vide)
+	 * 		et si il correspond a son type defini par ParameterType.
+	 * 		Si cette methode renvoie false, un message d'erreur au format HTML
+	 * 		peut etre recupere grace à getHtmlError.
+	 * @return true si les parametres sont valides, false sinon.
 	 */
 	public boolean validParameters()
 	{
 		return _success;
 	}
 	
+	/**
+	 * 		Renvoie la liste des noms des parametres valides.
+	 * @return Liste des noms des parametres valides.
+	 */
 	public LinkedList<String> getValidParametersNames()
 	{
 		return _validParams;
@@ -169,8 +181,8 @@ public class InputParameters
 	}
 	
 	/**
-	 * 		Renvoie une liste de descriptions suivant les noms de la liste passés en paramètre.
-	 * 		Utilisé pour générer les messages d'erreur.
+	 * 		Renvoie une liste de descriptions suivant les noms de la liste passes en parametre,
+	 * 		utilisee pour generer les messages d'erreur.
 	 * @param list	Liste contenant les noms des paramètres dont les descriptions sont placées dans la liste.
 	 * @return	Liste de descriptions séparées par des virgules.
 	 */
@@ -212,11 +224,12 @@ public class InputParameters
 	}
 	
 	/**
-	 * 		Renvoie le formulaire au format HTML généré selon les descriptions de paramètres
-	 * 		et 
-	 * @param invite
-	 * @param link
-	 * @return
+	 * 		Renvoie le formulaire au format HTML genere selon les descriptions de paramètres.
+	 * 		Les parametres recuperes sont places dans le formulaire a l'exception des champs
+	 * 		de type PASSWD.
+	 * @param invite		Titre du formulaire.
+	 * @param link			Lien vers lequel l'utilisateur est redirige lors de la validation du formulaire.
+	 * @return	String contenant le formulaire au format html a renvoyer au client.
 	 */
 	public String getHtmlForm(String invite, String link)
 	{
@@ -258,9 +271,12 @@ public class InputParameters
 	}
 	
 	/**
-	 * 		Permet de récupérer la valeur d'un paramètre sous forme de string.
+	 * 		Permet de recuperer la valeur d'un parametre sous forme de string.
+	 * 		La methode readParameters doit etre appelee auparavant
+	 * 		et le nom du parametre doit etre contenu dans la liste renvoyee
+	 * 		par getValidParametersNames ou alors validParameters doit renvoyer true.
 	 * @param name	Nom du paramètre à récupérer.
-	 * @return String contenant la valeur du paramètre.
+	 * @return String contenant la valeur du parametre.
 	 */
 	public String getStringParameter(String name)
 	{
@@ -268,15 +284,26 @@ public class InputParameters
 	}
 	
 	/**
-	 * 		Permet de récupérer la valeur d'un paramètre sous forme d'entier.
-	 * @param name	Nom du paramètre à récupérer.
-	 * @return int contenant la valeur du paramètre.
+	 * 		Permet de recuperer la valeur d'un parametre sous forme d'entier.
+	 * 		La methode readParameters doit etre appelee auparavant
+	 * 		et le nom du parametre doit etre contenu dans la liste renvoyee
+	 * 		par getValidParametersNames ou alors validParameters doit renvoyer true.
+	 * @param name	Nom du parametre à recuperer.
+	 * @return int contenant la valeur du parametre.
 	 */
 	public int getIntParameter(String name)
 	{
 		return Integer.parseInt(_params.get(name).getRowValue());
 	}
 	
+	/**
+	 * 		Permet de recuperer la valeur d'un parametre sous forme de booleen.
+	 * 		La methode readParameters doit etre appelee auparavant
+	 * 		et le nom du parametre doit etre contenu dans la liste renvoyee
+	 * 		par getValidParametersNames ou alors validParameters doit renvoyer true.
+	 * @param name	Nom du parametre a recuperer.
+	 * @return boolean contenant la valeur du paramètre.
+	 */
 	public boolean getBooleanParameter(String name)
 	{
 		return Boolean.parseBoolean(_params.get(name).getRowValue());

@@ -106,7 +106,7 @@ public class BDPlaces
 	 */
 	public static Vector<Place> getPlacesDispo(Transaction request, int numS, String date, int heure, Categorie c) throws RequestException 
 	{
-		String cat = c.getCategorie();
+		String cat = c.getNom();
 		Vector<Place> res = new Vector<Place>();
 		String str = " select noPlace, noRang, numZ" +
 				" from " + 
