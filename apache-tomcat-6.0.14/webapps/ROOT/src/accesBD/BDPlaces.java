@@ -363,24 +363,36 @@ public class BDPlaces
 		if (BDRepresentations.existeDateRep (request, numS, dateS, heureS))
 		{
 			Vector<Place> placesDispo = new Vector<Place>();
-			// recuperation de la liste de toutes les places disponibles pour la representation
-			// dans la categorie demandee
-			placesDispo = BDPlaces.getPlacesDispo(request, numS, dateS, heureS, categorie);
-			// on verifie qu'il reste au moins une place disponible a la representation demandee
-			if (placesDispo.isEmpty() || placesDispo.size() < nbPlaces)
+			if(categorie != null)
 			{
-				request.close();
-				throw new ReservationException("Il n'y a plus de place disponible pour cette representation.");
+				// recuperation de la liste de toutes les places disponibles pour la representation
+				// dans la categorie demandee
+				placesDispo = BDPlaces.getPlacesDispo(request, numS, dateS, heureS, categorie);
+				// on verifie qu'il reste au moins une place disponible a la representation demandee
+				if (placesDispo.isEmpty() || placesDispo.size() < nbPlaces)
+				{
+					request.close();
+					throw new ReservationException("Il n'y a plus de place disponible pour cette representation.");
+				}
+				else
+				{
+					// on verifie qu'il reste des places disponibles pour 
+					// cette representation dans la categorie demandee
+					Vector<Place> places = placesSucc(placesDispo, nbPlaces);
+					if(places.isEmpty())
+					{
+						request.close();
+						throw new ReservationException("Il n'y a pas assez de places disponibles pour cette representation.");
+					}
+				}
 			}
 			else
 			{
-				// on verifie qu'il reste des places disponibles pour 
-				// cette representation dans la categorie demandee
-				Vector<Place> places = placesSucc(placesDispo, nbPlaces);
-				if(places.isEmpty())
+				placesDispo = BDPlaces.getPlacesDispo(request, numS, dateS, heureS);
+				if (placesDispo.isEmpty() || placesDispo.size() < nbPlaces)
 				{
 					request.close();
-					throw new ReservationException("Il n'y a pas assez de places disponibles pour cette representation.");
+					throw new ReservationException("Il n'y a plus de place disponible pour cette representation.");
 				}
 			}
 		}

@@ -29,16 +29,16 @@ public class HtmlGen
 		if(login != null)
 		{
 			res += "<font color=\"#FFFFFF\"> Bienvenue " + login + "<br>"; 
-			res += "<p><font color=\"#FFFFFF\"><a href=\"LogoutServlet\">D&eacute;connexion</a></p>";
+			res += "<p><font color=\"#FFFFFF\"><a href=\"/Deconnexion\">D&eacute;connexion</a></p>";
 		}
 		else
 		{
-			res += "<p><font color=\"#FFFFFF\"><a href=\"IdentificationServlet\">Connexion</a></p>";
+			res += "<p><font color=\"#FFFFFF\"><a href=\"/Identification\">Connexion</a></p>";
 		}
-		res += "<p><font color=\"#FFFFFF\"><a href=\"PanierServlet\">Mon panier</a></p>";
+		res += "<p><font color=\"#FFFFFF\"><a href=\"/Panier\">Mon panier</a></p>";
 		
 		res += "<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>";
-		res += "<hr><p><font color=\"#FFFFFF\"><a href=\"ProgrammeServlet\">Liste des spectacles</a></p>";
+		res += "<hr><p><font color=\"#FFFFFF\"><a href=\"/Programme\">Liste des spectacles</a></p>";
 		
 		res += "<hr>";
 		return res;

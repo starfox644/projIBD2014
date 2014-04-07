@@ -12,116 +12,114 @@
  Define servlets that are included in the Theater application 
 --> 
 
-
-  
-<servlet> 
-<servlet-name>ProgrammeServlet</servlet-name> 
-<servlet-class>ProgrammeServlet</servlet-class> 
-</servlet>
-
 - <servlet> 
 <servlet-name>NouvelleRepresentationServlet</servlet-name> 
-<servlet-class>NouvelleRepresentationServlet</servlet-class> 
+<servlet-class>adminServlets.NouvelleRepresentationServlet</servlet-class> 
+</servlet>
+
+<servlet> 
+<servlet-name>ProgrammeServlet</servlet-name> 
+<servlet-class>infosServlets.ProgrammeServlet</servlet-class> 
 </servlet>
 
 - <servlet> 
 <servlet-name>RepresentationsServlet</servlet-name> 
-<servlet-class>RepresentationsServlet</servlet-class> 
+<servlet-class>infosServlets.RepresentationsServlet</servlet-class> 
 </servlet>
 
 - <servlet> 
 <servlet-name>PlaceDispoServlet</servlet-name> 
-<servlet-class>PlaceDispoServlet</servlet-class> 
+<servlet-class>infosServlets.PlaceDispoServlet</servlet-class> 
 </servlet>
 
 - <servlet> 
 <servlet-name>ReservationServlet</servlet-name> 
-<servlet-class>ReservationServlet</servlet-class> 
+<servlet-class>commandesServlets.ReservationServlet</servlet-class> 
 </servlet>
 
 -<servlet> 
 <servlet-name>ReservationConfirmServlet</servlet-name> 
-<servlet-class>ReservationConfirmServlet</servlet-class> 
+<servlet-class>commandesServlets.ReservationConfirmServlet</servlet-class> 
 </servlet>
 
 - <servlet> 
 <servlet-name>PanierServlet</servlet-name> 
-<servlet-class>PanierServlet</servlet-class> 
+<servlet-class>commandesServlets.PanierServlet</servlet-class> 
 </servlet>
 
 - <servlet> 
 <servlet-name>ZoneReservationServlet</servlet-name> 
-<servlet-class>ZoneReservationServlet</servlet-class> 
+<servlet-class>commandesServlets.ZoneReservationServlet</servlet-class> 
 </servlet>
 
 - <servlet> 
 <servlet-name>IdentificationServlet</servlet-name> 
-<servlet-class>IdentificationServlet</servlet-class> 
+<servlet-class>loginServlets.IdentificationServlet</servlet-class> 
 </servlet>
 
 - <servlet> 
 <servlet-name>NewUserServlet</servlet-name> 
-<servlet-class>NewUserServlet</servlet-class> 
+<servlet-class>loginServlets.NewUserServlet</servlet-class> 
 </servlet>
 
 - <servlet> 
 <servlet-name>LogoutServlet</servlet-name> 
-<servlet-class>LogoutServlet</servlet-class> 
+<servlet-class>loginServlets.LogoutServlet</servlet-class> 
 </servlet>
 
 - <servlet-mapping> 
-<servlet-name>ProgrammeServlet</servlet-name> 
-<url-pattern>/servlet/ProgrammeServlet</url-pattern> 
+<servlet-name>NouvelleRepresentationServlet</servlet-name> 
+<url-pattern>/admin/NouvelleRepresentation</url-pattern> 
 </servlet-mapping>
 
 - <servlet-mapping> 
-<servlet-name>NouvelleRepresentationServlet</servlet-name> 
-<url-pattern>/servlet/NouvelleRepresentationServlet</url-pattern> 
+<servlet-name>ProgrammeServlet</servlet-name> 
+<url-pattern>/Programme</url-pattern> 
 </servlet-mapping>
 
 - <servlet-mapping> 
 <servlet-name>RepresentationsServlet</servlet-name> 
-<url-pattern>/servlet/RepresentationsServlet</url-pattern> 
-</servlet-mapping>
-
-- <servlet-mapping> 
-<servlet-name>ZoneReservationServlet</servlet-name> 
-<url-pattern>/servlet/ZoneReservationServlet</url-pattern> 
+<url-pattern>/Representations</url-pattern> 
 </servlet-mapping>
 
 - <servlet-mapping> 
 <servlet-name>PlaceDispoServlet</servlet-name> 
-<url-pattern>/servlet/PlaceDispoServlet</url-pattern> 
+<url-pattern>/PlacesDispo</url-pattern> 
+</servlet-mapping>
+
+- <servlet-mapping> 
+<servlet-name>ZoneReservationServlet</servlet-name> 
+<url-pattern>/ChoixCategorie</url-pattern> 
 </servlet-mapping>
 
 - <servlet-mapping> 
 <servlet-name>ReservationServlet</servlet-name> 
-<url-pattern>/servlet/ReservationServlet</url-pattern> 
+<url-pattern>/Reservation</url-pattern> 
 </servlet-mapping>
 
 - <servlet-mapping> 
 <servlet-name>ReservationConfirmServlet</servlet-name> 
-<url-pattern>/servlet/ReservationConfirmServlet</url-pattern> 
-</servlet-mapping>
-
-- <servlet-mapping> 
-<servlet-name>IdentificationServlet</servlet-name> 
-<url-pattern>/servlet/IdentificationServlet</url-pattern> 
-</servlet-mapping>
-
-- <servlet-mapping> 
-<servlet-name>NewUserServlet</servlet-name> 
-<url-pattern>/servlet/NewUserServlet</url-pattern> 
+<url-pattern>/Confirmation</url-pattern> 
 </servlet-mapping>
 
 - <servlet-mapping> 
 <servlet-name>PanierServlet</servlet-name> 
-<url-pattern>/servlet/PanierServlet</url-pattern> 
+<url-pattern>/Panier</url-pattern> 
+</servlet-mapping>
+
+- <servlet-mapping> 
+<servlet-name>IdentificationServlet</servlet-name> 
+<url-pattern>/Identification</url-pattern> 
+</servlet-mapping>
+
+- <servlet-mapping> 
+<servlet-name>NewUserServlet</servlet-name> 
+<url-pattern>/NouvelUtilisateur</url-pattern> 
 </servlet-mapping>
 
 - <servlet-mapping> 
 <servlet-name>LogoutServlet</servlet-name> 
-<url-pattern>/servlet/LogoutServlet</url-pattern> 
+<url-pattern>/Deconnexion</url-pattern> 
 </servlet-mapping>
 
 </web-app>
