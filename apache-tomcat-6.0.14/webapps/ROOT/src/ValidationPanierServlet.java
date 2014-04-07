@@ -64,6 +64,10 @@ public class ValidationPanierServlet extends HttpServlet {
 		{
 
 			SQLRequest request;
+			Calendar today = Calendar.getInstance();
+			int month = today.get(Calendar.MONTH)+1;
+			String dateToday = new String (today.get(Calendar.DAY_OF_MONTH) + "/" + month + "/" + today.get(Calendar.YEAR)
+								+ " " + today.get(Calendar.HOUR_OF_DAY));
 			try {
 				request = new SQLRequest();
 			} catch (ConnectionException e1) {
@@ -80,32 +84,47 @@ public class ValidationPanierServlet extends HttpServlet {
 				
 				// pour chaque ligne du panier
 				// on verifie s'il y a encore assez de place consecutive 
+				// si c'est bon, on reserve
 				while (i < panier.size() && possible)
 				{
+					// on recupere les places a reserver pour cette ligne
 					tmp = validerLignePanier(request, panier.getContenu(i));
-					if (tmp != null)
+					if (!tmp.isEmpty())
+					{
 						placesReserv.add(tmp);
+						ContenuPanier contenu = panier.getContenu(i);
+						// on reserve chaque place
+						for(int j = 0 ; j < tmp.size(); j++)
+						{
+							Place p = tmp.get(j);
+							BDPlaces.reserverPlace(request, contenu.getNumS(), contenu.getDateS(), dateToday,
+									contenu.getHeure(), p.getNumZ(), p.getNoPlace(), p.getNoRang());
+						}	
+					}
 					else
 						possible = false;
 					i++;
+					
 				}
 				
-				// il reste assez de places pour toutes les representations
-				if (i == panier.size())
+				// si toutes les reservations on pu etre reservees
+				if (i == panier.size() && possible)
 				{
-					// on reserve les places
-					reserverPlaces(request, panier, placesReserv);
 					// affichage du recapitulatif de la commande
-					validationOk(out, panier, placesReserv);
-					request.commit();
+					if (validationOk(request, out, panier, placesReserv))
+					{
+						request.commit();
+						// panier.clear(); TODO
+					}
 					request.close();
 				}
 				else
 				{
 					out.println("Il ne reste plus assez de places pour la representation : " 
-							+ panier.getContenu(i).getSpectacle() 
-							+ "a la date : " + panier.getContenu(i).getDateS() + "<br>" +
+							+ panier.getContenu(i-1).getSpectacle() 
+							+ "a la date : " + panier.getContenu(i-1).getDateS() + "<br>" +
 							" Commande annulee ");
+					request.rollback();
 					request.close();
 				}
 			} 
@@ -122,7 +141,6 @@ public class ValidationPanierServlet extends HttpServlet {
 				request.close();
 				return;
 			} catch (RequestException e) {
-				// TODO Auto-generated catch block
 				errorLog.writeException(e);
 				out.println("Validation du panier impossible, erreur interne <br>");	
 				try {
@@ -138,6 +156,7 @@ public class ValidationPanierServlet extends HttpServlet {
 		}
 		else
 			out.println("Erreur panier vide <br>");
+		
 		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");
 		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");
 		out.println("</BODY>");
@@ -186,13 +205,44 @@ public class ValidationPanierServlet extends HttpServlet {
 		int heureS = reserv.getHeure();
 		Categorie categorie = reserv.getCategorie();
 		Vector<Place> placesDispo = BDPlaces.getPlacesDispo(request, numS, dateS, heureS, categorie);
+		
+		if (placesDispo.size() == 0)
+			return placesDispo;
+		System.out.println("***************Places Dispo ****************");
+		for (int i = 0 ; i < placesDispo.size() ; i++)
+		{
+			System.out.println("numZ : "+ placesDispo.get(i).getNumZ() + 
+						    " , noRang : " + placesDispo.get(i).getNoRang() +
+						    " , noPlace : "+ placesDispo.get(i).getNoPlace());
+		}
+		
 		Vector<Place> places = BDPlaces.placesSucc(placesDispo, reserv.getNbPlaces());
+		if (places.isEmpty())
+		{
+			System.out.println(" Les places succ sont ::: Y en A PAS MOUAH AHAHAH");
+		}
+		else
+		{
+			System.out.println(" Les places succ sont ::: ");
+			for (int i  = 0 ; i < places.size() ; i++)
+			{
+				System.out.println("numZ : "+ places.get(i).getNumZ() + 
+					    " , noRang : " + places.get(i).getNoRang() +
+					    " , noPlace : "+ places.get(i).getNoPlace());
+			}
+		}
 		return places;
 	}
 	
-	public static void validationOk(ServletOutputStream out, Panier panier, Vector<Vector<Place>> placesRes) throws IOException, ConnectionException, RequestException
+	public static boolean validationOk(SQLRequest request, ServletOutputStream out, Panier panier, Vector<Vector<Place>> placesRes) throws IOException, ConnectionException, RequestException
 	{
 		int nbPlaces;
+		if (placesRes.size() == 0)
+		{
+			out.println("Liste Vide");
+			request.rollback();
+			return false;
+		}
 		out.println("Votre commande a bien été validée <br>" +
 				" Récapitulatif de votre commande : <br><br>");
 		for(int i = 0 ; i < panier.size() ; i++)
@@ -232,10 +282,10 @@ public class ValidationPanierServlet extends HttpServlet {
 		}
 		
 		out.println("<br> Prix total de la commande : " + panier.getPrixTotal() + " <br>");
-
+		return true;
 	}
 	
-	public static void reserverPlaces(SQLRequest request, Panier panier, Vector<Vector<Place>> placesRes) throws ConnectionException, RequestException
+	/*public static void reserverPlaces(SQLRequest request, Panier panier, Vector<Vector<Place>> placesRes) throws ConnectionException, RequestException
 	{
 		Calendar today = Calendar.getInstance();
 		today.add(Calendar.HOUR, 1);
@@ -258,5 +308,5 @@ public class ValidationPanierServlet extends HttpServlet {
 				
 		}
 	
-	}
+	}*/
 }

@@ -26,6 +26,11 @@ public class SQLRequest
 		{
 			throw new ConnectionException("Unable to connect to the database.");
 		}
+		try {
+			_conn.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+		} catch (SQLException e) {
+			throw new ConnectionException("Unable to set serializable.");
+		}
 	}
 	
 	/**

@@ -61,7 +61,8 @@ public class BDPlaces
 				" (select noPlace, noRang" +
 				"	from LesPlaces" +
 				"	minus" +
-				"	select noPlace, noRang from LesTickets where dateRep = to_date('"+date+" "+ heure + "', 'DD/MM/YYYY HH24') and numS = " + numS + ") order by noRang";
+				"	select noPlace, noRang from LesTickets where dateRep = to_date('"+date+" "+ heure + "', 'DD/MM/YYYY HH24') and numS = " + numS + ") " +
+				" order by numZ, noRang, noPlace";
 
 		ResultSet rs = request.execute(str);
 		try {
@@ -81,21 +82,20 @@ public class BDPlaces
 	{
 		String cat = c.getCategorie();
 		Vector<Place> res = new Vector<Place>();
-		String str = " select noPlace, noRang, numZ" +
-					  " from " + 
-						" (select noPlace, noRang, numZ" +
-						"  from LesPlaces " +
-						"  where numZ in (select numZ" +
-						"				 from LesZones" +
-						"				 where nomC='"+ cat +"'))"+
-						" natural join " +
-						"   ((select noPlace, noRang" +
-						"	from LesPlaces)" +
-						"	minus" +
-						"	(select noPlace, noRang from LesTickets " +
-						"	where dateRep = to_date('"+date+" "+ heure + "', 'DD/MM/YYYY HH24') and numS = " + numS + "))" +
-						" order by numZ, noRang, noPlace";
-						//" order by noPlace, noRang, numZ";
+		String str =
+		" select noPlace, noRang, numZ" +
+		" from LesPlaces" +
+		" where (noPlace, noRang) in" +
+		"    ((select noPlace, noRang "+
+		"    from LesPlaces" +
+		"    where numZ in" +
+		"    	(select numZ" +
+		"		from LesZones" +
+		"		where nomC='" + cat + "'))" +
+		" minus" +
+		"	(select noPlace, noRang from LesTickets " +
+		"	where dateRep = to_date('" +date+ " " + heure + "', 'DD/MM/YYYY HH24')  and numS= " + numS + ")) " +
+		" order by numZ, noRang, noPlace" ;
 		ResultSet rs = request.execute(str);
 		try {
 			while (rs.next()) {
@@ -220,8 +220,8 @@ public class BDPlaces
 				"VALUES( " + noSerie + ", " + numS + ", "	+ "to_date('" + dateRep + " " + heureS  + "', 'DD/MM/YY HH24') , " 
 				+ noPlace + ", "  + noRang + ", to_date('" + dateRes + "', 'DD/MM/YY HH24'))";
 		rs = request.execute(strTicket);
-		request.commit();
-		request.close();
+		//request.commit();
+		//request.close();
 		return true;
 			}
 
@@ -295,7 +295,7 @@ public class BDPlaces
 			if (placesDispo.isEmpty() || placesDispo.size() < nbPlaces)
 			{
 				request.close();
-				throw new ReservationException("Il n'y a plus de place disponible pour cette representation.");
+				throw new ReservationException("Il n'y a pas assez de place disponible pour cette representation.");
 			}
 			else
 			{
@@ -344,8 +344,8 @@ public class BDPlaces
 		int i = 0;
 		int j = 0; 
 		if ((placesDispo.size()-nbPlaces) < 0)
-			return null;
-		while (i < (placesDispo.size()-nbPlaces) && !trouve)
+			return places;
+		while (i < (placesDispo.size()-nbPlaces+1) && !trouve)
 		{
 			j = i;
 			// verification q'ils ait le meme numero de zone

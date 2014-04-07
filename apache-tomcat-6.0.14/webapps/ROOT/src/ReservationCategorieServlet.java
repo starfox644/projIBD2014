@@ -58,7 +58,7 @@ public class ReservationCategorieServlet extends HttpServlet {
 				// on verifie que les parametres sont valides
 				// avant de les envoyer a ReservationServlet
 				try {
-					if (BDCategories.getCategorie(nomC) != null )//&& )
+					if (BDCategories.getCategorie(nomC) != null )
 					{
 						if (Utilitaires.validIntegerFormat(nbPlaces))
 						{
