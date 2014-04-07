@@ -32,7 +32,8 @@ public class BDPlaces
 	 * @param date Date de la representation sans l'heure, au format defini par Constantes.dateFormat.
 	 * @param heure Heure du spectacle.
 	 * @return Vector<Place> contenant les places disponibles pour cette representation.
-	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static Vector<Place> getPlacesDispo (int numS, String date, int heure) throws RequestException, ConnectionException 
@@ -42,11 +43,6 @@ public class BDPlaces
 		try
 		{
 			res = getPlacesDispo(request, numS, date, heure);
-		}
-		catch (ConnectionException e)
-		{
-			request.close();
-			throw e;
 		}
 		catch (RequestException e)
 		{
@@ -67,10 +63,10 @@ public class BDPlaces
 	 * @param date Date de la representation sans l'heure, au format defini par Constantes.dateFormat.
 	 * @param heure Heure du spectacle.
 	 * @return Vector<Place> contenant les places disponibles pour cette representation.
-	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
-	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 */
-	public static Vector<Place> getPlacesDispo (Transaction request, int numS, String date, int heure) throws RequestException, ConnectionException 
+	public static Vector<Place> getPlacesDispo (Transaction request, int numS, String date, int heure) throws RequestException
 	{
 		Vector<Place> res = new Vector<Place>();
 		String str = "select noPlace, noRang, numZ" +
@@ -105,10 +101,10 @@ public class BDPlaces
 	 * @param heure Heure du spectacle.
 	 * @param categorie Categorie ou le nombre de places doit etre verifie.
 	 * @return Vector<Place> contenant les places disponibles pour cette representation.
-	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
-	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 */
-	public static Vector<Place> getPlacesDispo(Transaction request, int numS, String date, int heure, Categorie c) throws RequestException, ConnectionException 
+	public static Vector<Place> getPlacesDispo(Transaction request, int numS, String date, int heure, Categorie c) throws RequestException 
 	{
 		String cat = c.getCategorie();
 		Vector<Place> res = new Vector<Place>();
@@ -147,7 +143,8 @@ public class BDPlaces
 	 * @param numS Numero du spectacle.
 	 * @param heure Heure du spectacle.
 	 * @return Le nombre de places occupees pour cette representation
-	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static int getNbPlacesOccupees (int numS, String date, int heure) throws ConnectionException, RequestException
@@ -176,7 +173,8 @@ public class BDPlaces
 	/**
 	 * 		Renvoie le nombre de places de la salle de theatre.
 	 * @return le nombre de places que contient le theatre.
-	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static int getNbPlacesTotales ()	throws ConnectionException, RequestException
@@ -271,7 +269,8 @@ public class BDPlaces
 	 * @param date Date de la representation sans l'heure, au format defini par Constantes.dateFormat.
 	 * @param heure Heure du spectacle.
 	 * @return		True si la date de representation est valide, false sinon.
-	 * @throws ParseException
+	 * 
+	 * @throws ParseException	Si la date donnee en parametre n'est pas au bon format.
 	 */
 	private static boolean validDateRep(String dateS, int heureS) throws ParseException
 	{
@@ -320,8 +319,9 @@ public class BDPlaces
 	 * @param nbPlaces
 	 * @param categorie
 	 * @return
-	 * @throws ConnectionException
-	 * @throws RequestException
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
+	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 * @throws ReservationException		
 	 * 					Si l'ajout au panier est impossible.
 	 * 					Contient un message affichable a l'utilisateur indiquant

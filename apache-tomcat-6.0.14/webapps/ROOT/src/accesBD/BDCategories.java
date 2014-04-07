@@ -22,8 +22,9 @@ public class BDCategories {
 	}
 	
 	/**
-	 * retourne la liste des catégories définies dans la bd
-	 * @return Vector<Categorie>
+	 * 		Retourne la liste des categories definies dans la bd.
+	 * @return Vector<Categorie> contenant toutes les categories.
+	 * 
 	 * @throws CategorieException
 	 * @throws ConnectionException
 	 */
@@ -58,8 +59,9 @@ public class BDCategories {
 	 * 		Renvoie la categorie correspondant au nom passe en parametre.
 	 * @param nomC	Nom de la categorie.
 	 * @return	Objet categorie correspondant au nom ou null si aucune categorie ne possede ce nom.
-	 * @throws RequestException
-	 * @throws ConnectionException
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
+	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static Categorie getCategorie(String nomC) throws RequestException, ConnectionException
 	{
@@ -75,8 +77,9 @@ public class BDCategories {
 	 * 		la transaction en parametre.
 	 * @param nomC	Nom de la categorie.
 	 * @return	Objet categorie correspondant au nom ou null si aucune categorie ne possede ce nom.
-	 * @throws RequestException
-	 * @throws ConnectionException
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
+	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static Categorie getCategorie(Transaction request, String nomC) throws RequestException, ConnectionException
 	{

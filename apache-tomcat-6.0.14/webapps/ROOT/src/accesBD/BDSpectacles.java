@@ -8,12 +8,16 @@ import modele.Spectacle;
 import exceptions.ConnectionException;
 import exceptions.RequestException;
 
+/**
+ * 		Requetes permettant de recuperer des informations sur les spectacles.
+ */
 public class BDSpectacles
 {
 	/**
-	 * Retourne la liste de tous les spectacles.
+	 * 		Retourne la liste de tous les spectacles.
 	 * @return Vector<Spectacle> contenant tous les spectacles.
-	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static Vector<Spectacle> getSpectacles () throws RequestException, ConnectionException 
@@ -36,10 +40,11 @@ public class BDSpectacles
 
 
 	/**
-	 * Renvoie true si le spectacle dont le numero est passe en argument existe, false sinon
-	 * @param numS numero du spectacle 
-	 * @return true si le spectacle identifie pas numS existe, false sinon
-	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
+	 * 		 Verifie si un numero de spectacle est present dans la base.
+	 * @param numS Numero du spectacle. 
+	 * @return true si le spectacle identifie pas numS est present dans la base, false sinon.
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static boolean isInSpectacles (int numS) throws RequestException, ConnectionException 
@@ -63,7 +68,8 @@ public class BDSpectacles
 	 * 		Permet de recuperer le nom d'un spectacle a partir de son numero.
 	 * @param numS Numero du spectacle dont on veut recuperer le nom.
 	 * @return String contenant le nom du spectacle associe au numero, ou null s'il n'y en a pas d'associe au numero.
-	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static String getNomSpectacle(int numS) throws RequestException, ConnectionException
@@ -72,11 +78,6 @@ public class BDSpectacles
 		Transaction request = new Transaction();
 		try{
 			nom = getNomSpectacle(request, numS);
-		}
-		catch (ConnectionException e)
-		{
-			request.close();
-			throw e;
 		}
 		catch (RequestException e)
 		{
@@ -88,13 +89,15 @@ public class BDSpectacles
 	}
 	
 	/**
-	 * 		Permet de recuperer le nom d'un spectacle a partir de son numero.
+	 * 		Permet de recuperer le nom d'un spectacle a partir de son numero en utilisant
+	 * 		une transaction deja cree.
+	 * @param request transaction a utiliser.
 	 * @param numS Numero du spectacle dont on veut recuperer le nom.
 	 * @return String contenant le nom du spectacle associe au numero, ou null s'il n'y en a pas d'associe au numero.
-	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
-	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 */
-	public static String getNomSpectacle(Transaction request, int numS) throws RequestException, ConnectionException
+	public static String getNomSpectacle(Transaction request, int numS) throws RequestException
 	{
 		String nom = null;
 		String str = "select nomS from LesSpectacles where " + numS + "=numS";

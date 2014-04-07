@@ -19,8 +19,9 @@ public class BDLogin
 	 * @param login		Nom de l'utilisateur.
 	 * @param passwd	Mot de passe de l'utilisateur.
 	 * @return			true si le couple est connu et l'utilisateur peut etre identifie, false sinon.
-	 * @throws ConnectionException
-	 * @throws RequestException
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
+	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static boolean isLoginAccepted(String login, String passwd) throws ConnectionException, RequestException
 	{
@@ -62,9 +63,10 @@ public class BDLogin
 	 * @param login		Nom de l'utilisateur a ajouter.
 	 * @param passwd	Mot de passe a associer au nom de l'utilisateur.
 	 * @return	false si le nom d'utilisateur est deja present dans la base et
-	 * 			n'est pas ajoute, true sinon
-	 * @throws ConnectionException
-	 * @throws RequestException
+	 * 			n'est pas ajoute, true sinon.
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
+	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static boolean addLogin(String login, String passwd) throws ConnectionException, RequestException
 	{
@@ -104,7 +106,8 @@ public class BDLogin
 	 * @param request	Transaction utilisee.
 	 * @param login		Nom de l'utilisateur a rechercher.
 	 * @return			true si le nom d'utilisateur est present, false sinon.
-	 * @throws RequestException
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 */
 	public static boolean isLoginPresent(Transaction request, String login) throws RequestException
 	{

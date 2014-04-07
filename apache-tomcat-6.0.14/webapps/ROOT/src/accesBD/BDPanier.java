@@ -26,8 +26,9 @@ public class BDPanier
 	 * 		Charge le panier associe a un nom d'utilisateur.
 	 * @param login		Nom de l'utilisateur dont le panier est recupere.
 	 * @return			Panier associe au nom de l'utilisateur.
-	 * @throws ConnectionException
-	 * @throws RequestException
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
+	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static Panier loadPanier(String login) throws ConnectionException, RequestException
 	{
@@ -97,8 +98,9 @@ public class BDPanier
 	 * @param panier	Panier a synchroniser avec la base.
 	 * @return			True si le panier a ete synchronise, false si l'utilisateur n'est
 	 * 					pas present dans la base.
-	 * @throws ConnectionException
-	 * @throws RequestException
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
+	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static boolean synchronizePanier(String login, Panier panier) throws ConnectionException, RequestException
 	{
@@ -146,7 +148,8 @@ public class BDPanier
 	 * @param request		Transaction a utiliser.
 	 * @param login			Nom de l'utilisateur dont le panier doit etre supprime.
 	 * @return	true si le panier est supprime, false si l'utilisateur n'est pas present.
-	 * @throws RequestException
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 */
 	public static boolean removePanier(Transaction request, String login) throws RequestException
 	{
@@ -165,7 +168,9 @@ public class BDPanier
 	 * 		Supprime le panier d'un utilisateur dans la base.
 	 * @param login			Nom de l'utilisateur dont le panier doit etre supprime.
 	 * @return	true si le panier est supprime, false si l'utilisateur n'est pas present.
-	 * @throws RequestException
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
+	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static boolean removePanier(String login) throws ConnectionException, RequestException
 	{

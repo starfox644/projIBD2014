@@ -19,7 +19,8 @@ public class BDRepresentations
 	/**
 	 * 		Retourne la liste de toutes les representations, chacune contenant la date, le nom du spectacle et son numero.
 	 * @return Vector<Representation> contenant toutes les representations
-	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static Vector<Representation> getRepresentations () throws ConnectionException, RequestException
@@ -50,7 +51,8 @@ public class BDRepresentations
 	 * 		Retourne les dates de representations d'un spectacle identifie par son numero.
 	 * @param numS Numero du spectacle.
 	 * @return Vector<String> contenant les dates de la representation.
-	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static Vector<Representation> getSpectacleRepresentations (int numS) throws RequestException, ConnectionException 
@@ -79,10 +81,12 @@ public class BDRepresentations
 	/**
 	 * 		Verifie si une certaine representation est programmee a une certaine date
 	 * 		a la granularite de l'heure.
-	 * @param num	numero du spectacle 
-	 * @param date	date de la representation 
-	 * @return	true si la representation spectacle est programme a cette date, false sinon
-	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
+	 * @param num	Numero du spectacle.
+	 * @param date 	Date de la representation sans l'heure, au format defini par Constantes.dateFormat.
+	 * @param heure Heure du spectacle.
+	 * @return	true si la representation spectacle est programme a cette date, false sinon.
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static boolean existeDateRep (int num, String date, int heure) throws RequestException, ConnectionException
@@ -93,11 +97,6 @@ public class BDRepresentations
 		{
 			res = existeDateRep(request, num, date, heure);
 		} 
-		catch (ConnectionException e)
-		{
-			request.close();
-			throw e;
-		}
 		catch (RequestException e)
 		{
 			request.close();
@@ -107,7 +106,18 @@ public class BDRepresentations
 		return res;
 	}
 	
-	public static boolean existeDateRep (Transaction request, int num, String date, int heure) throws RequestException, ConnectionException
+	/**
+	 * 		Verifie si une certaine representation est programmee a une certaine date
+	 * 		a la granularite de l'heure, en utilisant une transaction cree.
+	 * @param request 	Transaction a utiliser.
+	 * @param num		Numero du spectacle.
+	 * @param date 		Date de la representation sans l'heure, au format defini par Constantes.dateFormat.
+	 * @param heure 	Heure du spectacle.
+	 * @return	true si la representation spectacle est programme a cette date, false sinon.
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
+	 */
+	public static boolean existeDateRep (Transaction request, int num, String date, int heure) throws RequestException
 	{
 		boolean res = false;
 		String str = "select numS, dateRep from LesRepresentations " +
@@ -127,10 +137,11 @@ public class BDRepresentations
 
 	/**
 	 * 		Ajoute une nouvelle representation pour un spectacle.
-	 * @param num Numero du spectacle.
-	 * @param date Date de la representation.
-	 * @param heure Heure de la representation.
-	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
+	 * @param num 		Numero du spectacle. 
+	 * @param date 		Date de la representation sans l'heure, au format defini par Constantes.dateFormat.
+	 * @param heure 	Heure de la representation.
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static void addRepresentation (int num , String date, int heure) throws RequestException, ConnectionException 

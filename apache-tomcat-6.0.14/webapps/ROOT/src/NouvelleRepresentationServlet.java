@@ -12,8 +12,6 @@ import utils.*;
 import accesBD.*;
 import modele.*;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Vector;
 
 /**
@@ -25,8 +23,10 @@ import java.util.Vector;
  * @version 1.0, 31/10/2007
  */
 
-public class NouvelleRepresentationServlet extends HttpServlet {
-
+public class NouvelleRepresentationServlet extends HttpServlet 
+{
+	private static final long serialVersionUID = 1L;
+	
 	private static final String invite = "Veuillez saisir les informations relatives &agrave; la nouvelle repr&eacute;sentation";
 	private static final String formLink = "NouvelleRepresentationServlet";
 	
@@ -173,56 +173,5 @@ public class NouvelleRepresentationServlet extends HttpServlet {
 
 	public String getServletInfo() {
 		return "Ajoute une representation e une date donnee pour un spectacle existant";
-	}
-
-	private static void printForm(ServletOutputStream out, String strNumS, String strHeureS, String date) throws IOException
-	{
-		out.println("<font color=\"#FFFFFF\">Veuillez saisir les informations relatives &agrave; la nouvelle repr&eacute;sentation :");
-		out.println("<P>");
-		out.print("<form action=\"");
-		out.print("NouvelleRepresentationServlet\" ");
-		out.println("method=POST>");
-		out.println("Num&eacute;ro de spectacle :");
-		if(strNumS != null)
-		{
-			out.println("<input type=text size=20 name=numS value="+strNumS+">");
-		}
-		else
-		{
-			out.println("<input type=text size=20 name=numS>");
-		}
-		out.println("<br>");
-		out.println("Date de la repr&eacute;sentation :");
-		if(date != null)
-		{
-			out.println("<input type=text size=20 name=date value=" + date + ">");
-		}
-		else
-		{
-			out.println("<input type=text size=20 name=date>");
-		}
-		out.println("<br>");
-		out.println("Heure de d&eacute;but de la repr&eacute;sentation :");
-		if(strHeureS != null)
-		{
-			out.println("<input type=text size=20 name=heure value=" + strHeureS + ">");
-		}
-		else
-		{
-			out.println("<input type=text size=20 name=heure>");
-		}
-		out.println("<br>");
-		out.println("<input type=submit>");
-		out.println("</form>");
-	}
-
-	private static void CloseOnError(ServletOutputStream out, String message, String strNumS, String strHeureS, String dateS) throws IOException
-	{
-		out.println("<p><i><font color=\"#FFFFFF\">" + message + "</i></p>");
-		printForm(out, strNumS, strHeureS, dateS);
-		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/admin/admin.html\">Page d'administration</a></p>");
-		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Page d'accueil</a></p>");
-		out.println("</BODY>");
-		out.close();
 	}
 }
