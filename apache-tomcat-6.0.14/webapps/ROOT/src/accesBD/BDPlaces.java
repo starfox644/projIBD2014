@@ -169,19 +169,19 @@ public class BDPlaces
 	}
 
 	
-	public static boolean reserverPlace(int numS, String dateRep, String dateRes, int heureS, int numZ, int noPlace, int noRang)
+	public static boolean reserverPlace(SQLRequest request, int numS, 
+			String dateRep, String dateRes, int heureS, int numZ, int noPlace, int noRang)
 			throws RequestException, ConnectionException 
 	{
-		SQLRequest request = new SQLRequest();
 		ResultSet rs;
 		int i = 0;
 
 		String verifReq = "select count(noSerie)" +
-				"from LesTickets " +
-				"where numS = " + numS +
-				"and dateRep = to_date('"+dateRep+" "+heureS + "' , 'DD/MM/YYYY HH24')" +
-				"and noPlace = " + noPlace +
-				"and noRang = " + noRang;
+				" from LesTickets " +
+				" where numS = " + numS +
+				" and dateRep = to_date('"+dateRep+" "+heureS + "' , 'DD/MM/YYYY HH24')" +
+				" and noPlace = " + noPlace +
+				" and noRang = " + noRang;
 		rs = request.execute(verifReq);
 
 		try {
@@ -218,8 +218,7 @@ public class BDPlaces
 
 		String strTicket = "INSERT INTO LesTickets " +
 				"VALUES( " + noSerie + ", " + numS + ", "	+ "to_date('" + dateRep + " " + heureS  + "', 'DD/MM/YY HH24') , " 
-				+ noPlace + ", "  + noRang + ", to_date('" + dateRes + "', 'DD/MM/YY HH24') , " + 
-				"66 )";
+				+ noPlace + ", "  + noRang + ", to_date('" + dateRes + "', 'DD/MM/YY HH24'))";
 		rs = request.execute(strTicket);
 		request.commit();
 		request.close();

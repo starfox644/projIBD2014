@@ -5,5 +5,7 @@ public enum ParameterType
 	INTEGER,
 	STRING,
 	DATE,
-	HOUR
+	HOUR,
+	PASSWD,
+	BOOLEAN
 }

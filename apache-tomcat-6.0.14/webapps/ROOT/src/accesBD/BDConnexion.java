@@ -20,7 +20,6 @@ public final class BDConnexion {
 	    * @return  une nouvelle connexion a la BD
 	    * @throws ConnectionException si la connexion a echoue
 	    */
-
 	public static Connection getConnexion() throws ConnectionException {
 		Connection conn = null ;
 		try {
@@ -36,9 +35,7 @@ public final class BDConnexion {
 			String mdp = p.getProperty("mdp");
 			Class.forName(driver);
 			// hopper@UFR, Oracle
-			System.out.println("avant connect : " + url + ", " + ", " + login +" , " + mdp);
 			conn = DriverManager.getConnection(url,login,mdp);
-			System.out.println("apres connexion");
 			conn.setAutoCommit(false);
 		} catch (SQLException e) {
 			IO.afficherln("Connexion impossible : " + e.getMessage());// handle any errors

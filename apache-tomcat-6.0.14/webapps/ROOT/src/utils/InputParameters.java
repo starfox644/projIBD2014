@@ -66,8 +66,6 @@ public class InputParameters
 		{
 			name = it.next();
 			current = _params.get(name);
-			System.out.println("name : " + name);
-			System.out.println("null ? " + current.isNull());
 			nullP &= current.isNull();
 		}
 		return nullP;
@@ -238,10 +236,18 @@ public class InputParameters
 			name = it.next();
 			current = _params.get(name);
 			form += current.getDescription() + " : ";
-			form += "<input type=text size=20 name=" + name;
-			if(current.isPresent())
+			if(current.getType() == ParameterType.PASSWD)
 			{
-				form += " value = " + current.getRowValue();
+				form += "<input type=password size=20 name=" + name;
+				// pas de valeur par defaut pour le mot de passe par securite
+			}
+			else if(current.getType() != ParameterType.BOOLEAN)
+			{
+				form += "<input type=text size=20 name=" + name;
+				if(current.isPresent())
+				{
+					form += " value = " + current.getRowValue();
+				}
 			}
 			form += ">";
 			form += "<br>";
@@ -269,5 +275,10 @@ public class InputParameters
 	public int getIntParameter(String name)
 	{
 		return Integer.parseInt(_params.get(name).getRowValue());
+	}
+	
+	public boolean getBooleanParameter(String name)
+	{
+		return Boolean.parseBoolean(_params.get(name).getRowValue());
 	}
 }

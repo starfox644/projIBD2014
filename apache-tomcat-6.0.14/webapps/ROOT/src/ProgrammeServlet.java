@@ -83,8 +83,9 @@ public class ProgrammeServlet extends HttpServlet {
 			out.println("Impossible de r&eacute;cup&eacute;rer la liste de spectacles.<br>");
 			errorLog.writeException(e);
 		}
-		out.println("</i></p>");
-		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
+		/*out.println("</i></p>");
+		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");*/
+		out.println(HtmlGen.PiedPage(req));
 		out.println("</BODY>");
 		out.close();
 	}

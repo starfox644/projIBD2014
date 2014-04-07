@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Vector;
 
+import accesBD.BDPanier;
+import accesBD.BDPlaces;
 import accesBD.BDRequests;
 import accesBD.BDSpectacles;
 import exceptions.*;
@@ -47,77 +49,171 @@ public class PanierServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException
-	{
+			{
 		int deleteIndex;
+		Boolean synch;
 		LinkedList<String> validParams;
 		ServletOutputStream out = res.getOutputStream();   
 
 		res.setContentType("text/html");
 
+		System.out.println("panier servlet get");
 		out.print(HtmlGen.htmlPreambule("Panier"));
-		
+
 		InputParameters parameters = new InputParameters();
 		parameters.addParameter("delete", "element du panier a retirer", ParameterType.INTEGER);
-		
-		// TO DO
-		// Recuperation de la liste de tous les spectacles de la saison.
-		// Puis construction dynamique d'une page web decrivant ces spectacles.
-		// afficher resultat requete
-		
+		parameters.addParameter("synch", "presence de choix de synchronisation du panier", ParameterType.BOOLEAN);
+		parameters.addParameter("synchPresent", "valeur synchronisation du panier", ParameterType.BOOLEAN);
+
 		HttpSession session = req.getSession();
-		Panier panier = (Panier)session.getAttribute("panier");
-		if(panier == null)
-		{
-			out.println("<br> Votre panier est vide. <br>");
-			panier = new Panier();
-			ContenuPanier contenu1 = new ContenuPanier(101, "manu chao", "12/03/14", 15, 3, new Categorie("balcon", 13.5f));
-			ContenuPanier contenu2 = new ContenuPanier(105, "indochine", "12/08/14", 23, 2, new Categorie("poulaillier", 39.99f));
-			panier.addContenu(contenu1);
-			panier.addContenu(contenu2);
-			session.setAttribute("panier", panier);
+		String login;
+		ErrorLog errorLog = new ErrorLog();
+		login = (String)session.getAttribute("login");
+		
+		// creation d'un panier par defaut
+		Panier panier = new Panier();
+		try {
+			// recuperation du panier de l'utilisateur
+			// si l'utilisateur a un panier dans la base il est recupere, sinon on prend celui de la session
+			panier = Panier.getUserPanier(req.getSession());
+		} catch (ConnectionException e) {
+			errorLog.writeException(e);
+		} catch (RequestException e) {
+			errorLog.writeException(e);
 		}
-		else
+		parameters.readParameters(req);
+		validParams = parameters.getValidParametersNames();
+		
+		// delete : suppression d'un element du panier envoye par un bouton de suppression
+		if(validParams.contains("delete"))
 		{
-			parameters.readParameters(req);
-			validParams = parameters.getValidParametersNames();
-			if(validParams.contains("delete"))
+			deleteIndex = parameters.getIntParameter("delete");
+			if(deleteIndex < panier.size())
 			{
-				deleteIndex = parameters.getIntParameter("delete");
-				if(deleteIndex < panier.size())
-				{
-					panier.removeContenu(deleteIndex);
-				}
+				// suppression de l'element du panier apres verification de l'indice
+				panier.removeContenu(deleteIndex);
 			}
-			
-			if(panier.size() == 0)
+		}
+		
+		// parametre indiquant le changement de statut de la synchronisation avec la base
+		if(validParams.contains("synchPresent"))
+		{
+			// parametre qui contient le changement de statut
+			if(validParams.contains("synch"))
 			{
-				out.println("<br> Votre panier est vide. <br>");
+				synch = parameters.getBooleanParameter("synch");
 			}
 			else
 			{
-				out.println("<br> Contenu du panier : <br><br>");
-				out.println("<table>");
-				out.println("<tr>");
-				out.println("<th> Spectacle </th>" +
-							"<th> Date </th>" +
-							"<th> Heure </th>" +
-							"<th> Categorie </th>" +
-							"<th> Nombre de places </th>" +
-							"<th> Prix total </th>");
-				for(int i = 0 ; i < panier.size() ; i++)
+				// si le parametre n'est pas present, la synchronisation doit etre activee
+				// le bouton de choix a ete desactive
+				synch = false;
+			}
+			session.setAttribute("synch", synch);
+		}
+
+		if(panier.size() == 0)
+		{
+			out.println("<br> Votre panier est vide. <br>");
+		}
+		else
+		{
+			out.println("<br> Contenu du panier : <br><br>");
+			out.println("<table>");
+			out.println("<tr>");
+			
+			// titres des colonnes du tableau
+			out.println("<th> Spectacle </th>" +
+					"<th> Date </th>" +
+					"<th> Heure </th>" +
+					"<th> Categorie </th>" +
+					"<th> Nombre de places </th>" +
+					"<th> Prix total </th>");
+			
+			for(int i = 0 ; i < panier.size() ; i++)
+			{
+				// affichage d'une commande du panier
+				printLignePanier(out, panier.getContenu(i), i);
+			}
+			out.println("</table>");
+			
+			out.println("<br> Prix total du panier : " + panier.getPrixTotal() + " <br>");
+			out.print("<form action=\"ValidationPanierServlet\" method=POST> <input type=\"submit\" " +
+					"value=\"valider le panier\">"); 
+			// recuperation de l'attribut indiquant le stockage sur la base
+			if(session.getAttribute("synch") == null)
+			{
+				// attribut non present : par defaut pas de stockage sur base
+				synch = false;
+			}
+			else
+			{
+				synch = (Boolean)session.getAttribute("synch");
+			}
+			
+			// on teste si l'utilisateur est identifie
+			if(login != null)
+			{
+				// generation de bouton de demande de synchronisation du panier avec la base
+				out.print(generateCheckSynch(synch));
+				try {
+					if(synch)
+					{
+						// mise a jour du panier dans la base
+						BDPanier.synchronizePanier(login, panier);
+					}
+					else
+					{
+						// plus de sauvegarde du panier, suppression de celui-ci dans la base
+						BDPanier.removePanier(login);
+					}
+				}catch (RequestException e)
 				{
-					printLignePanier(out, panier.getContenu(i), i);
+					out.println("<p><i><font color=\"#FFFFFF\">Erreur de panier.</i></p>");
+					errorLog.writeException(e);
+				} catch (ConnectionException e) {
+					out.println("<p><i><font color=\"#FFFFFF\">Erreur de panier.</i></p>");
+					errorLog.writeException(e);
 				}
-				out.println("</table>");
 			}
 		}
-		
-		out.println("</i></p>");
-		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");
+		out.println(HtmlGen.PiedPage(req));
 		out.println("</BODY>");
 		out.close();
-	}
+			}
 	
+	/**
+	 * 		Genere le code html pour le bouton d'activation de sauvegarde du panier sur la base.
+	 * @param synch
+	 * @return
+	 */
+	private String generateCheckSynch(boolean synch)
+	{
+		String str = "";
+
+		// generation du bouton radio pour la demande de sauvegarde du panier
+		str += "<form action=\"PanierServlet\" method=POST> " +
+				"<input type=\"hidden\" name=\"synchPresent\" value=\"true\" >" +
+				"<input type=\"checkbox\" name=\"synch\" value=\"true\" ";
+		if(synch)
+		{
+			// si la sauvegarde etait activee, le bouton est coche par defaut
+			str +="checked";
+		}
+		str +=  ">" +
+				" Sauvegarder mon panier pour la prochaine visite" +
+				"<input type=\"submit\" value=\"Valider\">" +
+				"</form>";
+		return str;
+	}
+
+	/**
+	 * 		Affichage d'une ligne du panier de l'utilisateur.
+	 * @param out			
+	 * @param contenu		Contient la ligne du panier a afficher.
+	 * @param index			Numero de la ligne dans le panier.
+	 * @throws IOException
+	 */
 	private void printLignePanier(ServletOutputStream out, ContenuPanier contenu, int index) throws IOException
 	{
 		out.println("<tr>");
@@ -147,7 +243,7 @@ public class PanierServlet extends HttpServlet {
 	 *					   when the servlet handles the POST request
 	 */
 	public void doPost(HttpServletRequest req, HttpServletResponse res)
-		throws ServletException, IOException
+			throws ServletException, IOException
 			{
 		doGet(req, res);
 			}

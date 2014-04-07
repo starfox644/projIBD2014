@@ -65,6 +65,21 @@ public class SQLRequest
 		}
 	}
 	
+	public void rollback() throws RequestException
+	{
+
+		if(_conn != null)
+		{
+			try {
+				_conn.rollback();
+			} catch (SQLException e) {
+				throw new RequestException (e.getMessage()
+						+ "Code Oracle : " + e.getErrorCode()
+						+ "\nMessage : " + e.getMessage());
+			}
+		}
+	}
+	
 	/**
 	 * 		Libere les ressources utilisees par la requete.
 	 */
