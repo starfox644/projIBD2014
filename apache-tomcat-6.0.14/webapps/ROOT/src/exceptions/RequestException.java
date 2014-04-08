@@ -7,6 +7,8 @@ package exceptions;
  */
 public class RequestException extends Exception
 {
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * 		Cree une exception indiquant une erreur au cours d'une requete.
 	 * @param message	Message contenant la requete et l'erreur provoquee.

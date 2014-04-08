@@ -48,8 +48,13 @@
 </servlet>
 
 - <servlet> 
-<servlet-name>ZoneReservationServlet</servlet-name> 
-<servlet-class>commandesServlets.ZoneReservationServlet</servlet-class> 
+<servlet-name>ReservationCategorieServlet</servlet-name> 
+<servlet-class>commandesServlets.ReservationCategorieServlet</servlet-class> 
+</servlet>
+
+- <servlet> 
+<servlet-name>ValidationPanierServlet</servlet-name> 
+<servlet-class>commandesServlets.ValidationPanierServlet</servlet-class> 
 </servlet>
 
 - <servlet> 
@@ -66,6 +71,7 @@
 <servlet-name>LogoutServlet</servlet-name> 
 <servlet-class>loginServlets.LogoutServlet</servlet-class> 
 </servlet>
+
 
 - <servlet-mapping> 
 <servlet-name>NouvelleRepresentationServlet</servlet-name> 
@@ -85,11 +91,6 @@
 - <servlet-mapping> 
 <servlet-name>PlaceDispoServlet</servlet-name> 
 <url-pattern>/PlacesDispo</url-pattern> 
-</servlet-mapping>
-
-- <servlet-mapping> 
-<servlet-name>ZoneReservationServlet</servlet-name> 
-<url-pattern>/ChoixCategorie</url-pattern> 
 </servlet-mapping>
 
 - <servlet-mapping> 
@@ -118,8 +119,18 @@
 </servlet-mapping>
 
 - <servlet-mapping> 
+<servlet-name>ReservationCategorieServlet</servlet-name> 
+<url-pattern>/ChoixCategorie</url-pattern> 
+</servlet-mapping>
+
+- <servlet-mapping> 
 <servlet-name>LogoutServlet</servlet-name> 
 <url-pattern>/Deconnexion</url-pattern> 
+</servlet-mapping>
+
+- <servlet-mapping> 
+<servlet-name>ValidationPanierServlet</servlet-name> 
+<url-pattern>/Validation</url-pattern> 
 </servlet-mapping>
 
 </web-app>

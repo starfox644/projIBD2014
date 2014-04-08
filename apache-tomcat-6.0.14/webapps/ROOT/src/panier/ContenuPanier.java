@@ -29,6 +29,9 @@ public class ContenuPanier
 	// message de l'erreur si le contenu est invalide
 	private String _error;
 	
+	/** Separateur de contenu au sein d'une commande dans le cookie. */
+	private final static String fieldSep = "&#&";
+	
 	/**
 	 * 		Cree une nouvelle commande de panier.
 	 * @param numS			Numero de spectacle.
@@ -150,8 +153,8 @@ public class ContenuPanier
 	 * 		Verifie si la commande est toujours disponible a partir de la methode BDPlaces.checkAjoutPanier.
 	 * 		Si la commande n'est plus disponible, isInvalid() renvoie vrai et getError() renvoie
 	 * 		un message decrivant la raison de l'invalidite de la commande. 
-	 * @see BDPlaces.checkAjoutPanier
 	 * 
+	 * @see BDPlaces#checkAjoutPanier(int, String, int, int, Categorie)
 	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
@@ -186,17 +189,17 @@ public class ContenuPanier
 	
 	/**
 	 * 		Transforme le contenu du panier en une ligne pouvant etre placée dans un cookie.
-	 * @return
+	 * @return	String contenant le contenu du panier pour etre ajoutee dans un cookie.
 	 */
 	public String toCookieForm()
 	{
 		String res = "";
-		res += _numS + "&#&";
-		res += _spectacle + "&#&";
-		res += _dateS + "&#&";
-		res += _heure + "&#&";
-		res += _nbPlaces + "&#&";
-		res += _categorie.getNom() + "&#&";
+		res += _numS + fieldSep;
+		res += _spectacle + fieldSep;
+		res += _dateS + fieldSep;
+		res += _heure + fieldSep;
+		res += _nbPlaces + fieldSep;
+		res += _categorie.getNom() + fieldSep;
 		res += _categorie.getPrix();
 		return res;
 	}

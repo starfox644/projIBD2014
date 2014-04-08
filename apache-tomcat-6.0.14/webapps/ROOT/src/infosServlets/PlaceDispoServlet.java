@@ -20,8 +20,11 @@ import modele.*;
 import java.io.IOException;
 import java.util.Vector;
 
-public class PlaceDispoServlet extends HttpServlet {
+public class PlaceDispoServlet extends HttpServlet 
+{
 
+	private static final long serialVersionUID = 1L;
+	
 	private static final String invite = "Veuillez saisir les informations relatives &agrave; la repr&eacute;sentation";
 	private static final String formLink = "/PlacesDispo";
 	

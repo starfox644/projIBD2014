@@ -22,9 +22,13 @@ public class HtmlGen
 		HttpSession session;
 		String login;
 		session = req.getSession();
+		//session.setAttribute("source", req.);
 		String res = "";
 		res += "</i></p>";
 		login = (String)session.getAttribute("login");
+		
+		res += "<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>";
+		res += "<hr><p><font color=\"#FFFFFF\"><a href=\"/Programme\">Liste des spectacles</a></p>";
 		res += "<hr>";
 		if(login != null)
 		{
@@ -33,13 +37,9 @@ public class HtmlGen
 		}
 		else
 		{
-			res += "<p><font color=\"#FFFFFF\"><a href=\"/Identification\">Connexion</a></p>";
+			res += "<p><font color=\"#FFFFFF\"><a href=\"/Identification\">M'identifier</a></p>";
 		}
 		res += "<p><font color=\"#FFFFFF\"><a href=\"/Panier\">Mon panier</a></p>";
-		
-		res += "<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>";
-		res += "<hr><p><font color=\"#FFFFFF\"><a href=\"/Programme\">Liste des spectacles</a></p>";
-		
 		res += "<hr>";
 		return res;
 	}

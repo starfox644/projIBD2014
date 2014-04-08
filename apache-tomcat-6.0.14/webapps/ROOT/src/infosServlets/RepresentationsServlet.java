@@ -148,14 +148,14 @@ public class RepresentationsServlet extends HttpServlet {
 							out.println(Utilitaires.printDate(r.getDate())+ "&nbsp;&nbsp;&nbsp");
 							if(addPossible)
 							{
-								out.println("<a href=\"/Reservation?numS=" + numS 
+								out.println("<a href=\"/ChoixCategorie?numS=" + numS 
 										+ "&date=" + tmpStrDate
 										+ "&heure="+ heureRep 
 										+ "&nomC=balcon\">" 
 										+ "Ajouter au panier"
 										+ "</a>");
 							}
-							else
+							else if(complet)
 							{
 								out.println("  Complet");
 							}

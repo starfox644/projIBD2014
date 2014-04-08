@@ -17,9 +17,7 @@ import utils.ParameterType;
 import accesBD.BDCategories;
 import accesBD.BDPlaces;
 import accesBD.BDSpectacles;
-
 import modele.*;
-
 import java.io.IOException;
 
 public class ReservationServlet extends HttpServlet {
@@ -63,30 +61,10 @@ public class ReservationServlet extends HttpServlet {
 
 		parameters.readParameters(req);
 		
-		
-		/* recuperation des parametres */
-		/*SnumS		= req.getParameter("numS");
-		dateS		= req.getParameter("date");
-		SheureS		= req.getParameter("heure");
-		nomC		= req.getParameter("nomC");
-		SnbPlaces		= req.getParameter("nbPlaces");*/
-
-		if(parameters.nullParameters())
+		if(parameters.nullParameters() )
 		{
 			out.print(parameters.getHtmlForm(invite, formLink));
 		}
-		/*else if (SnumS == null || dateS == null || SheureS == null)
-		//if(parameters.nullParameters())
-		{
-			out.print(parameters.getHtmlForm(invite, formLink));
-		}
-		else if (SnumS != null && dateS != null && SheureS != null)
-		{
-			if (nomC == null && SnbPlaces == null)
-			{
-				
-			}
-		}*/
 		else
 		{
 			if(!parameters.validParameters())
@@ -103,7 +81,6 @@ public class ReservationServlet extends HttpServlet {
 			heureS = parameters.getIntParameter("heure");
 			nomC = parameters.getStringParameter("nomC");
 			nbPlaces = parameters.getIntParameter("nbPlaces");
-			nomC = "balcon";
 			try 
 			{
 				String nomS = BDSpectacles.getNomSpectacle(numS);
@@ -124,9 +101,8 @@ public class ReservationServlet extends HttpServlet {
 						}
 						if(success)
 						{
-							HttpSession session = req.getSession();
 							Panier panier = Panier.getUserPanier(req);
-							ContenuPanier contenu = new ContenuPanier(numS, nomS, dateS, heureS, 1, categorie);
+							ContenuPanier contenu = new ContenuPanier(numS, nomS, dateS, heureS, nbPlaces, categorie);
 							panier.addContenu(contenu);
 							RequestDispatcher dispatcher = req.getRequestDispatcher("/Panier");
 							dispatcher.forward(req, res);

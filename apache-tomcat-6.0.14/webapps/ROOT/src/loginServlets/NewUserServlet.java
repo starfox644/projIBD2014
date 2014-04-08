@@ -1,9 +1,5 @@
 package loginServlets;
-/*
- * @(#)ProgrammeServlet.java	1.0 2007/10/31
- * 
- * Copyright (c) 2007 Sara Bouchenak.
- */
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -14,14 +10,12 @@ import exceptions.*;
 import utils.*;
 
 /**
- * Proramme Servlet.
- *
- * This servlet dynamically returns the theater program.
- *
- * @author <a href="mailto:Sara.Bouchenak@imag.fr">Sara Bouchenak</a>
- * @version 1.0, 31/10/2007
+ * 		Servlet permettant d'ajouter un utilisateur dans la base.
+ * 		<br>
+ * 		Genere un formulaire pour recuperer le login, mot de passe et la 
+ * 		confirmation du mot de passe du nouvel utilisateur puis ajoute
+ * 		l'utilisateur dans la base si le login n'y est pas deja present.
  */
-
 public class NewUserServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -78,7 +72,8 @@ public class NewUserServlet extends HttpServlet {
 					{
 						if(BDLogin.addLogin(login, passwd))
 						{
-							out.println("Ajout realise avec success. <br>");
+							out.println("Nouvel utilisateur ajout&eacute; avec succes. <br>");
+							req.getSession().setAttribute("login", login);
 						}
 						else
 						{
@@ -110,8 +105,6 @@ public class NewUserServlet extends HttpServlet {
 			}
 		}
 		
-		/*out.println("</i></p>");
-		out.println("<hr><p><font color=\"#FFFFFF\"><a href=\"/index.html\">Accueil</a></p>");*/
 		out.println(HtmlGen.PiedPage(req));
 		out.println("</BODY>");
 		out.close();

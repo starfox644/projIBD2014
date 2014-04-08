@@ -12,6 +12,7 @@ import exceptions.ConnectionException;
 import exceptions.RequestException;
 
 import accesBD.BDPanier;
+import accesBD.Transaction;
 
 /**
  * 		Represente le panier de l'utilisateur.
@@ -88,11 +89,12 @@ public class Panier
 	
 	/**
 	 * 		Verifie si les commandes du panier sont toujours valides.
-	 * 		Appelle la methode BDPanier.checkContenu sur chaque contenu du panier.
-	 * @see BDPanier.checkContenu
+	 * 		Appelle la methode check sur chaque contenu du panier.
+	 * 
 	 * @return	Une liste contenant les contenus de panier invalides.
-	 * @throws ConnectionException
-	 * @throws RequestException
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
+	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public LinkedList<ContenuPanier> checkContenu() throws ConnectionException, RequestException
 	{
@@ -117,17 +119,23 @@ public class Panier
 
 	/**
 	 * 		Retourne le panier de l'utilisateur.
+	 * 		<br>
 	 * 		Si le panier associe a la session n'est pas vide il est retourne et le champ synch
 	 * 		de la session n'est pas modifie.
+	 * 		<br>
 	 * 		Sinon, le champ synch est mis a true.
+	 * 		<br>
 	 * 		Si l'utilisateur est identifie, son panier est charge a partir de la base.
+	 * 		<br>
 	 * 		S'il n'est pas identifie il est charge a partir d'un cookie.
+	 * 		<br>
 	 * 		Si le panier n'est trouve ni dans la base ni dans un cookie, un panier vide est
 	 * 		cree.
-	 * @param request
-	 * @return
-	 * @throws ConnectionException
-	 * @throws RequestException
+	 * @param request	Requete transmise a la servlet.
+	 * @return	Panier de l'utilisateur charge, ou vide si aucun panier n'est charge.
+	 * 
+	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
+	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
 	 */
 	public static Panier getUserPanier(HttpServletRequest request) throws ConnectionException, RequestException
 	{
@@ -218,7 +226,6 @@ public class Panier
 	
 	/**
 	 * 		Synchronise le panier de l'utilisateur recupere a partir de la session actuelle.
-	 * @see Panier.synchronize
 	 * @param request
 	 * @param response
 	 */
@@ -325,6 +332,41 @@ public class Panier
 		// ajout du cookie a la reponse
 		response.addCookie(cookiePanier);
 	}
+	
+	/**
+	 * 		Vide le panier de la session de l'utilisateur.
+	 * 		Si l'utilisateur est loge, son panier est retire de la base.
+	 * @throws RequestException Si une erreur de requete survient pendant la suppression
+	 *  		de la base du panier de l'utilisateur.
+	 */							
+	public static void clearUserPanier(Transaction transaction, HttpServletRequest request, HttpServletResponse response) throws RequestException
+	{
+		HttpSession session = request.getSession();
+		Panier panier = (Panier)session.getAttribute("panier");
+		String login = (String)session.getAttribute("login");
+		if(panier != null)
+		{
+			panier.clear();
+		}
+		if(login != null)
+		{
+			// si l'utilisateur est loge, suppression de son panier de la base
+			BDPanier.removePanier(transaction, login);
+		}
+		// envoi d'un cookie vide pour effacer le contenu du panier
+		Cookie cookiePanier = new Cookie("panier", "");
+		cookiePanier.setMaxAge(0);
+		// ajout du cookie a la reponse
+		response.addCookie(cookiePanier);
+	}
+	
+	/**
+	 * 		Retire tous les elements du panier.
+	 */
+	public void clear()
+	{
+		_contenu.clear();
+	}
 
 	/**
 	 * 		Recupere le panier de l'utilisateur a partir d'un cookie envoye par celui-ci.
@@ -361,7 +403,7 @@ public class Panier
 	 * 		Construit un cookie contenant le contenu du panier sous forme de chaine de caracteres.
 	 * 		Le panier peut etre reconstruit a partir de ce cookie lorsqu'il est renvoye par le
 	 * 		navigateur de l'utilisateur.
-	 * @return
+	 * @return	Cookie contenant tout le contenu du panier pour le sauvegarder.
 	 */
 	public Cookie getCookieFromPanier()
 	{

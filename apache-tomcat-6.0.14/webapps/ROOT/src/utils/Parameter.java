@@ -8,8 +8,6 @@ public class Parameter
 {
 	/** valeur directement obtenue du formulaire */
 	private String _rowValue;
-	/** nom du parametre */
-	private final String _name;
 	/** description du parametre affichee dans le formulaire */
 	private final String _description;
 	/** type du parametre */
@@ -17,13 +15,11 @@ public class Parameter
 	
 	/**
 	 * 		Cree un parametre avec un nom, une description et un type.
-	 * @param name			Nom du parametre, pour le referencer.
 	 * @param description	Description du parametre affichee dans les formulaires et les erreurs.
 	 * @param type			Type du parametre pour la verification.
 	 */
-	public Parameter(String name, String description, ParameterType type)
+	public Parameter(String description, ParameterType type)
 	{
-		_name = name;
 		_description = description;
 		_type = type;
 		_rowValue = null;

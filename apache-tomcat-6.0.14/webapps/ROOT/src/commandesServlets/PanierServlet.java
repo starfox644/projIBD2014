@@ -195,6 +195,8 @@ public class PanierServlet extends HttpServlet {
 			out.println("</table>");
 
 			out.println("<br> Prix total du panier : " + panier.getPrixTotal() + " <br>");
+			out.print("<form action=\"/Validation\" method=POST> <input type=\"submit\" " +
+					"value=\"valider le panier\">"); 
 
 			// recuperation de l'attribut indiquant la sauvegarde du panier
 			if(session.getAttribute("synch") == null)
@@ -218,8 +220,8 @@ public class PanierServlet extends HttpServlet {
 
 	/**
 	 * 		Genere le code html pour le bouton d'activation de sauvegarde du panier sur la base.
-	 * @param synch
-	 * @return
+	 * @param synch	Indique si l'utilisateur a choisi de sauvegarder son panier ou non.
+	 * @return	String contenant le code html genere pour le bouton de choix.
 	 */
 	private String generateCheckSynch(boolean synch)
 	{

@@ -75,7 +75,8 @@ public class BDPlaces
 				" (select noPlace, noRang" +
 				"	from LesPlaces" +
 				"	minus" +
-				"	select noPlace, noRang from LesTickets where dateRep = to_date('"+date+" "+ heure + "', 'DD/MM/YYYY HH24') and numS = " + numS + ") order by noRang";
+				"	select noPlace, noRang from LesTickets where dateRep = to_date('"+date+" "+ heure + "', 'DD/MM/YYYY HH24') and numS = " + numS + ") " +
+				" order by numZ, noRang, noPlace";
 
 		ResultSet rs = request.execute(str);
 		try {
@@ -104,25 +105,25 @@ public class BDPlaces
 	 * 
 	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 */
-	public static Vector<Place> getPlacesDispo(Transaction request, int numS, String date, int heure, Categorie c) throws RequestException 
+	public static Vector<Place> getPlacesDispo(Transaction request, int numS, String date, int heure, Categorie categorie) throws RequestException 
 	{
-		String cat = c.getNom();
+		String cat = categorie.getNom();
 		Vector<Place> res = new Vector<Place>();
-		String str = " select noPlace, noRang, numZ" +
-				" from " + 
-				" (select noPlace, noRang, numZ" +
-				"  from LesPlaces " +
-				"  where numZ in (select numZ" +
-				"				 from LesZones" +
-				"				 where nomC='"+ cat +"'))"+
-				" natural join " +
-				"   ((select noPlace, noRang" +
-				"	from LesPlaces)" +
-				"	minus" +
-				"	(select noPlace, noRang from LesTickets " +
-				"	where dateRep = to_date('"+date+" "+ heure + "', 'DD/MM/YYYY HH24') and numS = " + numS + "))" +
-				" order by numZ, noRang, noPlace";
-
+		String str =
+		" select noPlace, noRang, numZ" +
+		" from LesPlaces" +
+		" where (noPlace, noRang) in" +
+		"    ((select noPlace, noRang "+
+		"    from LesPlaces" +
+		"    where numZ in" +
+		"    	(select numZ" +
+		"		from LesZones" +
+		"		where nomC='" + cat + "'))" +
+		" minus" +
+		"	(select noPlace, noRang from LesTickets " +
+		"	where dateRep = to_date('" +date+ " " + heure + "', 'DD/MM/YYYY HH24')  and numS= " + numS + ")) " +
+		" order by numZ, noRang, noPlace" ;
+		
 		ResultSet rs = request.execute(str);
 		try {
 			while (rs.next()) {
@@ -197,22 +198,19 @@ public class BDPlaces
 		request.close();
 		return res.get(0);
 	}
-
-	/**
-	 * 		Obsolete, remplacee dans une version prochaine
-	 */
-	public static boolean reserverPlace(int numS, String dateRep, String dateRes, int heureS, int numZ, int noPlace, int noRang)
+	
+	public static boolean reserverPlace(Transaction request, int numS, 
+			String dateRep, String dateRes, int heureS, int numZ, int noPlace, int noRang)
 			throws RequestException, ConnectionException 
-			{
-		Transaction request = new Transaction();
+	{
 		ResultSet rs;
 
 		String verifReq = "select count(noSerie)" +
-				"from LesTickets " +
-				"where numS = " + numS +
-				"and dateRep = to_date('"+dateRep+" "+heureS + "' , 'DD/MM/YYYY HH24')" +
-				"and noPlace = " + noPlace +
-				"and noRang = " + noRang;
+				" from LesTickets " +
+				" where numS = " + numS +
+				" and dateRep = to_date('"+dateRep+" "+heureS + "' , 'DD/MM/YYYY HH24')" +
+				" and noPlace = " + noPlace +
+				" and noRang = " + noRang;
 		rs = request.execute(verifReq);
 
 		try {
@@ -249,25 +247,26 @@ public class BDPlaces
 
 		String strTicket = "INSERT INTO LesTickets " +
 				"VALUES( " + noSerie + ", " + numS + ", "	+ "to_date('" + dateRep + " " + heureS  + "', 'DD/MM/YY HH24') , " 
-				+ noPlace + ", "  + noRang + ", to_date('" + dateRes + "', 'DD/MM/YY HH24') , " + 
-				"66 )";
+				+ noPlace + ", "  + noRang + ", to_date('" + dateRes + "', 'DD/MM/YY HH24'))";
 		rs = request.execute(strTicket);
-		request.commit();
-		request.close();
+		//request.commit();
+		//request.close();
 		return true;
 			}
 
 
 	/**
 	 * 		Methode utilisee en interne pour verifier la validite d'une commande.
+	 * 			<br>
 	 * 		Indique si la date et l'heure de representation passes en parametre sont
 	 * 		valides pour effectuer une reservation.
+	 * 			<br>
 	 * 		Un couple date / heure de representation est valide jusqu'a heure - 1,
 	 * 		elle est donc invalide si la date actuelle + 1 heure n'est pas
 	 * 		inferieure a la date de representation.
 	 * 
-	 * @param date Date de la representation sans l'heure, au format defini par Constantes.dateFormat.
-	 * @param heure Heure du spectacle.
+	 * @param dateS Date de la representation sans l'heure, au format defini par Constantes.dateFormat.
+	 * @param heureS Heure du spectacle.
 	 * @return		True si la date de representation est valide, false sinon.
 	 * 
 	 * @throws ParseException	Si la date donnee en parametre n'est pas au bon format.
@@ -302,23 +301,25 @@ public class BDPlaces
 	/**
 	 * 			Verifie si une commande peut etre ajoutee au panier de l'utilisateur, c'est a dire
 	 * 		qu'elle serait valide pour etre reservee a l'instant de l'ajout.
+	 * 			<br>
 	 * 
 	 * 			L'existence de la representation a l'heure demandee est verifiee.
-	 * 
+	 * 			<br>
 	 * 			Un couple date / heure de representation est valide jusqu'a heure - 1,
 	 * 		elle est donc invalide si la date actuelle + 1 heure n'est pas
 	 * 		inferieure a la date de representation.
+	 * 			<br>
 	 * 
 	 * 			Le nombre de places est valide si autant de places contigues peuvent etre
 	 * 		trouvees dans la categorie demandee.
+	 * 			<br>
 	 * 
 	 * 			
-	 * @param date Date de la representation sans l'heure, au format defini par Constantes.dateFormat.
+	 * @param dateS Date de la representation sans l'heure, au format defini par Constantes.dateFormat.
 	 * @param numS Numero du spectacle.
-	 * @param heureS
-	 * @param nbPlaces
-	 * @param categorie
-	 * @return
+	 * @param heureS	Heure du spectacle.
+	 * @param nbPlaces	Nombre de places de la commandes.
+	 * @param categorie	Categorie dans laquelle les places doivent etre placees.
 	 * 
 	 * @throws RequestException		Si une erreur pendant la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.
@@ -327,12 +328,11 @@ public class BDPlaces
 	 * 					Contient un message affichable a l'utilisateur indiquant
 	 * 					pourquoi il est impossible d'ajouter la place.
 	 */
-	public static boolean checkAjoutPanier(int numS, String dateS, int heureS, int nbPlaces, Categorie categorie) 
+	public static void checkAjoutPanier(int numS, String dateS, int heureS, int nbPlaces, Categorie categorie) 
 			throws ConnectionException, RequestException, ReservationException
 			{
 		Transaction request = new Transaction();
 		ErrorLog log = null;
-		nbPlaces = 10;
 		try {
 			log = new ErrorLog();
 		} catch (IOException e) {}
@@ -402,7 +402,6 @@ public class BDPlaces
 			throw new ReservationException("Cette repr&eacute;sentation n'existe plus.");
 		}
 		request.close();
-		return true;
 			}
 
 	/**
@@ -422,50 +421,43 @@ public class BDPlaces
 		// si le nombre de places libres n'atteint meme pas le nombre de places demandees
 		// inutile de faire plus de verifications
 		if ((placesDispo.size()-nbPlaces) < 0)
-			return null;
-		// parcours des places par groupe de nbPlaces consecutives
-		while (i < (placesDispo.size()-nbPlaces) && !trouve)
+			return places;
+			// parcours des places par groupe de nbPlaces consecutives
+		while (i < (placesDispo.size()-nbPlaces+1) && !trouve)
 		{
 			j = i;
 			// on verifie que les places ont le meme numero de zone
-			while( j < nbPlaces && (placesDispo.get(j).getNumZ() == placesDispo.get(j+1).getNumZ()))
+			while( j < (i+nbPlaces-1) && (placesDispo.get(j).getNumZ() == placesDispo.get(j+1).getNumZ()))
 			{
 				j++;
 			}
 			// meme zone, on continue la verification
-			if( j == nbPlaces )
+			if( j == (i+nbPlaces-1) )
 			{
-				//System.out.println(" i = " + i + "  meme numZ");
 				j = i;
 				// verification de l'egalite du numero de rang
-				while( j < nbPlaces && (placesDispo.get(j).getNoRang() == placesDispo.get(j+1).getNoRang()))
+				while( j < (i+nbPlaces-1) && (placesDispo.get(j).getNoRang() == placesDispo.get(j+1).getNoRang()))
 				{
 					j++;
 				}
 				// meme numero de rang, on continue la verification
-				if( j == nbPlaces )
+				if( j == (i+nbPlaces-1) )
 				{
-					//System.out.println(" i = " + i + "  meme rang");
 					j = i;
 					// verification des numeros de places successifs
-					while( j < nbPlaces && (placesDispo.get(j).getNoPlace() == (placesDispo.get(j+1).getNoPlace()-1)))
+					while( j < (i+nbPlaces-1) && (placesDispo.get(j).getNoPlace() == (placesDispo.get(j+1).getNoPlace()-1)))
 					{
 						j++;
 					}
 					// nbPlaces consecutives trouvees au meme rang et meme zone, ok
-					if( j == nbPlaces )
+					if( j == (i+nbPlaces-1) )
 					{
-						//System.out.println(" i = " + i + "  noRange + 1");
 						trouve = true;
 						// ajout des places trouvees au resultat
 						for (int z = i ; z < i + nbPlaces ; z++)
 						{
 							places.add(placesDispo.get(z));
-							/*System.out.println("numZ : "+ placesDispo.get(z).getNumZ() + 
-									" , noRang : " + placesDispo.get(z).getNoRang() +
-									" , noPlace : "+ placesDispo.get(z).getNoPlace());*/
 						}
-						//System.out.println("**********************");
 					}
 				}
 			}

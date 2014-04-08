@@ -6,14 +6,10 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 /**
- * Proramme Servlet.
- *
- * This servlet dynamically returns the theater program.
- *
- * @author <a href="mailto:Sara.Bouchenak@imag.fr">Sara Bouchenak</a>
- * @version 1.0, 31/10/2007
+ * 		Servlet gerant la deconnexion de l'utilisateur.
+ * 		Deconnecte l'utilisateur et le redirige vers la page de connexion
+ * 		sans generer de page html.
  */
-
 public class LogoutServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -32,10 +28,10 @@ public class LogoutServlet extends HttpServlet {
 			throws ServletException, IOException
 	{
 		res.setContentType("text/html");
-
+		
 		HttpSession session = req.getSession();
 		session.removeAttribute("login");
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/Identification");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/");
 		dispatcher.forward(req, res);
 	}
 

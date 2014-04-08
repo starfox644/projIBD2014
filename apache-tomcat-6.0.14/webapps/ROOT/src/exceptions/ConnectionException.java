@@ -3,7 +3,7 @@ package exceptions;
 /**
  * 		Exception levee lorsque l'acces a la base echoue.
  */
-public class ConnectionException extends ExceptionTheatre 
+public class ConnectionException extends Exception
 {
 
 	private static final long serialVersionUID = 1L;

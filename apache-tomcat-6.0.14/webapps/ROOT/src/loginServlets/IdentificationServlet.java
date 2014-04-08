@@ -72,7 +72,6 @@ public class IdentificationServlet extends HttpServlet {
 						session = req.getSession();
 						session.setAttribute("login", login);
 						Panier.synchronizePanierSession(req, res);
-						out.println("Bonjour " + login +"<br>");
 					}
 					else
 					{

@@ -7,11 +7,11 @@ import java.util.LinkedList;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 		Permet de gérer les paramètre d'une servlet :
- * 		- récupération
- * 		- génération de formulaire
- * 		- test de présence et de validité
- * 		- génération de messages d'erreurs
+ * 		Permet de gerer les parametres d'une servlet :
+ * 		- recuperation
+ * 		- generation de formulaire
+ * 		- test de presence et de validite
+ * 		- generation de messages d'erreurs
  */
 public class InputParameters 
 {
@@ -51,7 +51,7 @@ public class InputParameters
 	 */
 	public void addParameter(String name, String description, ParameterType type)
 	{
-		Parameter param = new Parameter(name, description, type);
+		Parameter param = new Parameter(description, type);
 		_params.put(name, param);
 		_paramNames.add(name);
 	}
@@ -80,7 +80,7 @@ public class InputParameters
 	 * 		Lit les parametres ajoutes grace à addParameter dans la requete
 	 * 		et verifie leur validite.
 	 * 		Apres l'appel a cette methode, la methode validParameters peut etre appelee.
-	 * @see validParameters
+	 * @see #validParameters()
 	 * @param req	Requete du client sur la servlet.
 	 */
 	public void readParameters(HttpServletRequest req)

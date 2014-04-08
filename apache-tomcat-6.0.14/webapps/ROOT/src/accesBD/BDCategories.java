@@ -1,12 +1,8 @@
 package accesBD;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Vector;
 
-import exceptions.CategorieException;
 import exceptions.ConnectionException;
 import exceptions.RequestException;
 
@@ -20,40 +16,6 @@ public class BDCategories {
 	public BDCategories () {
 		
 	}
-	
-	/**
-	 * 		Retourne la liste des categories definies dans la bd.
-	 * @return Vector<Categorie> contenant toutes les categories.
-	 * 
-	 * @throws CategorieException
-	 * @throws ConnectionException
-	 */
-	public static Vector<Categorie> getCategories ()
-	throws CategorieException, ConnectionException {
-		Vector<Categorie> res = new Vector<Categorie>();
-		String requete ;
-		Statement stmt ;
-		ResultSet rs ;
-		Connection conn = BDConnexion.getConnexion();
-		
-		requete = "select nomc, prix from LesCategories order by nomc";
-		System.out.println(requete);
-		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(requete);
-			while (rs.next()) {
-				System.out.println(rs.getString(1));
-				res.addElement(new Categorie (rs.getString(1), rs.getFloat(2)));
-			}
-		} catch (SQLException e) {
-			throw new CategorieException (" Problème dans l'interrogation des catégories.."
-					+ "Code Oracle " + e.getErrorCode()
-					+ "Message " + e.getMessage());
-		}
-		BDConnexion.FermerTout(conn, stmt, rs);
-		return res;
-	}
-	
 
 	/**
 	 * 		Renvoie la categorie correspondant au nom passe en parametre.

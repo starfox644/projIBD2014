@@ -9,6 +9,13 @@ import java.util.LinkedList;
 import exceptions.ConnectionException;
 import exceptions.RequestException;
 
+/**
+ * 		Gere la creation d'une connexion a la base permettant
+ * 		d'effectuer des requetes au sein d'une meme transaction.
+ * 		<br>
+ * 		Les ressources utilisees sont conservees jusqu'a la 
+ * 		liberation de la connexion pour etre sur de tout liberer.
+ */
 public class Transaction 
 {
 	private String _request;
@@ -18,6 +25,7 @@ public class Transaction
 	
 	/**
 	 * 		Cree un nouvel objet permettant d'effectuer des requetes SQL.
+	 * 		Par defaut la transaction est definie en mode serializable.
 	 * @throws ConnectionException 
 	 */
 	public Transaction() throws ConnectionException
@@ -27,16 +35,18 @@ public class Transaction
 		{
 			throw new ConnectionException("Unable to connect to the database.");
 		}
-		else
-		{
-			_rs = new LinkedList<ResultSet>();
-			_stmt = new LinkedList<Statement>();
+		_rs = new LinkedList<ResultSet>();
+		_stmt = new LinkedList<Statement>();
+		try {
+			_conn.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+		} catch (SQLException e) {
+			throw new ConnectionException("Unable to set serializable.");
 		}
 	}
 	
 	/**
 	 * 		Execute la requete SQL et renvoie un ResultSet contenant son resultat.
-	 * @param String requete a executer
+	 * @param request String contenant la requete a executer.
 	 * @return	Un ResultSet correspondant au resultat de la requete.
 	 * @throws RequestException		Si une erreur dans la requete (erreur SQL) s'est produite.
 	 * @throws ConnectionException	Si la connexion a la base de donnees n'a pu etre etablie.

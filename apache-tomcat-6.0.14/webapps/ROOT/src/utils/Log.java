@@ -7,10 +7,17 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+/**
+ * 		Permet de gerer un fichier de log.
+ */
 public class Log 
 {
 	private final String filePath;
 	
+	/**
+	 * 		Cree un fichier de log d'un certain type, place au debut du nom du fichier.
+	 * @param type	Type de fichier de log, place au debut du nom de fichier.
+	 */
 	public Log(String type)
 	{
 		String dir = Constantes.getLogPath();
@@ -30,6 +37,12 @@ public class Log
 		filePath = dir + type + "." + dateRep + ".log";
 	}
 	
+	/**
+	 * 		Ouvre le fichier de log ou le cree dans le dossier des
+	 * 		fichiers de log s'il n'existe pas.
+	 * @return	Fichier de log ouvert.
+	 * @throws IOException	Si le fichier n'a pas pu etre ouvert.
+	 */
 	private File openFile() throws IOException
 	{
 		File f = new File(filePath);
@@ -40,13 +53,16 @@ public class Log
 		return f;
 	}
 	
+	/**
+	 * 		Ecrit un message dans le fichier de log.
+	 * @param s		Message a ecrire dans le fichier.
+	 */
 	public void write(String s)
 	{
 		String hourStr;
 		int hour;
 		int minute;
 		int second;
-		Date d;
 		try
 		{
 			File f = openFile();
